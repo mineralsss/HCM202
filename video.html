@@ -1,27 +1,97 @@
-<!DOCTYPE html><html lang="vi"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Video – Vững tin Đảng</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#fff7e8;--paper:#fff;--text:#1a1a1a;--line:rgba(0,0,0,.08);--red:#cf2e2e;--br:16px}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
-.container{max-width:1000px;margin:0 auto;padding:24px}
-header{border-bottom:3px solid var(--red);background:linear-gradient(180deg,rgba(255,247,232,.95),rgba(255,247,232,.7))}
-.top{display:flex;align-items:center;justify-content:space-between}
-a{color:var(--red);text-decoration:none}
-.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--br);box-shadow:0 6px 24px rgba(0,0,0,.06);padding:18px}
-.vid{position:relative;width:100%;padding-top:56.25%;border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.06)}
-.vid iframe{position:absolute;inset:0;width:100%;height:100%}
-</style></head><body>
-<header><div class="container top"><strong>Video – Vững tin Đảng</strong><a href="index.html">← Trang chủ</a></div></header>
-<main class="container">
-  <div class="card">
-    <h2>Video minh họa (sẽ cập nhật)</h2>
-    <p>Thay <code>VIDEO_ID</code> trong URL YouTube bên dưới để nhúng video của nhóm.</p>
-    <div class="vid">
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Video – Đại đoàn kết dân tộc</title>
+  <meta name="description" content="Video minh họa cho chủ đề Đại đoàn kết dân tộc trong tư tưởng Hồ Chí Minh." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fff7e8; --paper:#fff; --ink:#1a1a1a; --muted:#5c5c5c; --line:rgba(0,0,0,.08);
+      --red:#cf2e2e; --red2:#b71f1f; --yellow:#f4c542; --black:#121212; --br:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:var(--red);text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;z-index:10;background:linear-gradient(180deg,rgba(255,247,232,.95),rgba(255,247,232,.7));border-bottom:3px solid var(--red);backdrop-filter:saturate(1.1) blur(6px)}
+    .topbar{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:10px;align-items:center}
+    .logo{width:38px;height:38px;border-radius:12px;background:var(--red);display:grid;place-items:center;color:#fff;font-weight:800;box-shadow:0 3px 0 var(--red2)}
+    .brand h1{font-size:18px;margin:0;color:#121212}
+    nav a{font-weight:700}
+    .section{margin:24px 0}
+    .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--br);box-shadow:0 10px 28px rgba(0,0,0,.07);padding:20px}
+    .hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .hdr h2{margin:0;font-size:26px;color:#b32525}
+    .lead{margin:4px 0 0;color:#5c5c5c}
+    /* Responsive 16:9 wrapper */
+    .video-wrap{position:relative;width:100%;padding-top:56.25%;background:#000;border-radius:12px;overflow:hidden;border:2px solid var(--red)}
+    .video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    /* Small helper styles */
+    .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .tag{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;color:#333;font-weight:600}
+    footer{padding:26px 0;text-align:center;color:var(--muted);border-top:3px solid var(--red);background:#fffbe9}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media (min-width:900px){.grid{grid-template-columns:7fr 5fr}}
+    .thumb{display:grid;grid-auto-rows:min-content;gap:12px}
+    .thumb a{display:block;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+    .thumb img{display:block;width:100%;height:160px;object-fit:cover}
+    .thumb span{display:block;padding:10px 12px;font-weight:600}
+  </style>
+</head>
+<body>
+<header>
+  <div class="container topbar">
+    <div class="brand"><div class="logo">★</div><h1>Video – Đại đoàn kết dân tộc</h1></div>
+    <nav><a href="index.html">← Trang chủ</a></nav>
   </div>
+</header>
+
+<main class="container">
+  <!-- Video chính -->
+  <section class="section">
+    <div class="hdr">
+      <h2>🎬 Video minh họa</h2>
+    </div>
+
+    <div class="grid">
+      <!-- Player -->
+      <div class="card">
+        <div class="video-wrap">
+          <!-- đổi watch?v=... thành embed/... -->
+          <iframe
+            title="YouTube video"
+            src="https://www.youtube.com/embed/9WziqsYSUgk"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
+        </div>
+        <p class="lead">Nguồn: YouTube. Nếu không phát được, <a href="https://www.youtube.com/watch?v=9WziqsYSUgk" target="_blank" rel="noopener">mở trực tiếp trên YouTube</a>.</p>
+        <div class="meta">
+          <span class="tag">Nền kem</span>
+          <span class="tag">Đỏ • Vàng • Đen</span>
+          <span class="tag">Responsive 16:9</span>
+        </div>
+      </div>
+
+      <!-- Chỗ để thêm video khác (tùy chọn) -->
+      <aside class="thumb">
+        <a href="https://www.youtube.com/watch?v=9WziqsYSUgk" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/9WziqsYSUgk/hqdefault.jpg" alt="Xem trên YouTube">
+          <span>Mở trên YouTube</span>
+        </a>
+        <!-- Bạn có thể nhân bản block <a> này cho các video khác -->
+      </aside>
+    </div>
+  </section>
 </main>
-</body></html>
+
+<footer>© 2025 Nhóm – Trang video đồng bộ giao diện.</footer>
+</body>
+</html>
