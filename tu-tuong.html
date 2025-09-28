@@ -2,26 +2,28 @@
 <html lang="vi">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tư tưởng HCM – Đại đoàn kết (gọn & có timeline)</title>
+<title>Tư tưởng HCM – Đại đoàn kết (gọn & timeline)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#fff7e8; --paper:#fff; --ink:#151515; --muted:#6a6a6a; --line:rgba(0,0,0,.08);
-  --red:#d62828; --red-dark:#ad1f1f; --yellow:#f4c542; --black:#121212; --radius:18px;
+  --red:#d62828; --red-dark:#ad1f1f; --yellow:#f4c542; --black:#121212; --radius:20px;
 }
-*{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
 a{color:var(--red);text-decoration:none}
 .container{max-width:1120px;margin:0 auto;padding:24px}
+
+/* Header */
 header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);
   background:linear-gradient(180deg, rgba(255,247,232,.92), rgba(255,247,232,.65)); border-bottom:3px solid var(--red)}
 .head{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .brand{display:flex;gap:12px;align-items:center}
 .logo{width:40px;height:40px;border-radius:12px;background:var(--red);display:grid;place-items:center;color:#fff;font-weight:800;box-shadow:0 4px 0 var(--red-dark)}
 .brand strong{font-size:18px}
-nav a{font-weight:600}
 
-/* cards & layout */
+/* Cards & layout */
 .section{margin:28px 0}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 28px rgba(0,0,0,.07);padding:20px}
 .hdr{display:flex;align-items:center;justify-content:space-between;margin:0 0 10px}
@@ -34,18 +36,55 @@ nav a{font-weight:600}
 .hero .visual img{height:320px;width:100%;object-fit:cover;filter:saturate(1.03)}
 @media(max-width:960px){.hero{grid-template-columns:1fr}.hero .visual img{height:220px}}
 
-.sm{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-.sm .card{padding:18px}
-.sm .card h3{margin:0 0 6px;color:#222}
-.lite{color:var(--muted);font-size:14px}
+/* ---- Core 5.1 cards (đẹp hơn) ---- */
+.core-grid{
+  display:grid; gap:18px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+}
+.core{
+  --ring: rgba(214,170,19,.35);
+  background:#fff;
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:20px;
+  box-shadow: 0 12px 32px rgba(0,0,0,.08), 0 0 0 6px rgba(255,255,255,.6) inset;
+  padding:18px 16px 16px;
+  transition:transform .25s ease, box-shadow .25s ease;
+  display:flex; flex-direction:column; gap:10px; min-height:240px;
+  position:relative; isolation:isolate;
+}
+.core::before{
+  content:""; position:absolute; inset:0; z-index:-1; border-radius:20px;
+  background:linear-gradient(180deg,#fff7e8,transparent 45%);
+}
+.core:hover{ transform:translateY(-6px);
+  box-shadow:0 18px 40px rgba(0,0,0,.12), 0 0 0 6px rgba(255,255,255,.6) inset;
+}
+.core-head{display:flex; align-items:center; gap:10px}
+.num{
+  width:36px; height:36px; border-radius:12px; display:grid; place-items:center;
+  background:linear-gradient(135deg,#d62828,#ad1f1f); color:#fff; font-weight:800;
+  box-shadow:0 0 0 6px var(--ring);
+}
+.core h3{margin:0; font-size:17px; color:#1f1f1f}
+.core p{margin:0; line-height:1.6}
+.core b{color:#111}
+.core ul{margin:0; padding-left:0; list-style:none; display:grid; gap:6px}
+.core li{display:flex; gap:8px; align-items:flex-start}
+.core li::before{
+  content:""; width:10px; height:10px; margin-top:6px; border-radius:50%;
+  background:linear-gradient(135deg,#f4c542,#ffd86a); box-shadow:0 0 0 2px #fff inset, 0 0 0 1px rgba(0,0,0,.08);
+}
+.section-title{display:flex; align-items:center; gap:10px; margin:0 0 12px; font-size:22px; color:#b61f1f}
+.section-title .flag{width:22px; height:22px; border-radius:6px; background:linear-gradient(135deg,#d62828,#ad1f1f); position:relative}
+.section-title .flag::after{content:""; position:absolute; left:5px; top:5px; width:12px; height:12px; background:#fff; clip-path:polygon(0 0,100% 50%,0 100%)}
 
-/* timeline visual */
+/* Timeline visual */
 .timeline{padding:18px}
 .tbar{position:relative;height:10px;border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:inset 0 1px 0 rgba(0,0,0,.05)}
 .segment{position:absolute;top:-1px;height:12px;border-radius:999px}
 .seg1{left:0%;width:18%;background:linear-gradient(90deg,#f4c542,#ffd86a)}   /* 1941–1946 */
 .seg2{left:18%;width:45%;background:linear-gradient(90deg,#d62828,#b71f1f)} /* 1946–1975 */
-.seg3{left:63%;width:37%;background:linear-gradient(90deg,#222,#444)}       /* 1986–nay (chừa khoảng 1975–1986) */
+.seg3{left:63%;width:37%;background:linear-gradient(90deg,#222,#444)}       /* 1986–nay (chừa 1975–1986) */
 .ticks{display:flex;justify-content:space-between;margin-top:10px;color:#333;font-weight:700}
 .ticks span{display:inline-flex;align-items:center;gap:6px}
 .dot{width:10px;height:10px;border-radius:50%;background:#222;border:2px solid #fff;box-shadow:0 0 0 2px rgba(0,0,0,.1)}
@@ -55,24 +94,19 @@ nav a{font-weight:600}
 .i1{background:linear-gradient(90deg,#f4c542,#ffd86a)}
 .i2{background:linear-gradient(90deg,#d62828,#b71f1f)}
 .i3{background:linear-gradient(90deg,#222,#444)}
-
-/* timeline items */
 .titems{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:14px}
 .titem{grid-column:span 12;border-left:4px solid var(--line);padding:12px 14px;border-radius:12px;background:#fff}
 .titem[data-era="1"]{border-left-color:#f0c23a}
 .titem[data-era="2"]{border-left-color:#c71f1f}
 .titem[data-era="3"]{border-left-color:#2a2a2a}
 
-/* gallery */
+/* Gallery */
 .gallery .card{padding:0;overflow:hidden}
 .fig{display:flex;flex-direction:column}
 .fig img{height:260px;object-fit:cover}
 .fig figcaption{padding:10px 14px;border-top:1px solid var(--line);color:var(--muted)}
 
-/* footer */
-footer{padding:26px 0;text-align:center;color:var(--muted);border-top:3px solid var(--red);background:#fffbe9}
-
-/* reveal */
+/* Reveal */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
 .reveal.show{opacity:1;transform:none}
 .reveal.slideR{transform:translateX(22px)} .reveal.slideL{transform:translateX(-22px)}
@@ -104,29 +138,40 @@ footer{padding:26px 0;text-align:center;color:var(--muted);border-top:3px solid 
     </div>
   </section>
 
-  <!-- Cốt lõi 5.1 (rút gọn) -->
-  <section class="section">
-    <div class="hdr"><h2>⚑ Cốt lõi 5.1 – Đại đoàn kết toàn dân tộc</h2></div>
-    <div class="sm">
-      <div class="card reveal"><h3>Vai trò</h3>
-        <p>Đại đoàn kết là <strong>chiến lược quyết định</strong>: sức mạnh vô địch, then chốt của thành công.</p>
-      </div>
-      <div class="card reveal slideL"><h3>Lực lượng</h3>
-        <p><strong>Chủ thể:</strong> toàn dân tộc. <strong>Nền tảng:</strong> liên minh công–nông–trí thức dưới sự lãnh đạo của Đảng.</p>
-      </div>
-      <div class="card reveal slideR"><h3>Điều kiện</h3>
-        <ul class="lite">
+  <!-- Cốt lõi 5.1 – phiên bản đẹp -->
+  <section id="cotloi" class="section">
+    <h2 class="section-title"><span class="flag"></span>Cốt lõi 5.1 – Đại đoàn kết toàn dân tộc</h2>
+    <div class="core-grid">
+      <article class="core reveal">
+        <div class="core-head"><div class="num">1</div><h3>Vai trò</h3></div>
+        <p>Đại đoàn kết là <b>chiến lược quyết định</b> của cách mạng: <b>sức mạnh vô địch</b>, <b>then chốt của thành công</b>.</p>
+      </article>
+
+      <article class="core reveal slideL">
+        <div class="core-head"><div class="num">2</div><h3>Lực lượng</h3></div>
+        <p><b>Chủ thể:</b> toàn dân tộc Việt Nam.<br>
+           <b>Nền tảng:</b> liên minh <i>công – nông – trí thức</i> dưới sự lãnh đạo của Đảng.</p>
+      </article>
+
+      <article class="core reveal slideR">
+        <div class="core-head"><div class="num">3</div><h3>Điều kiện</h3></div>
+        <ul>
           <li>Đặt lợi ích dân tộc lên trên hết;</li>
           <li>Kế thừa truyền thống yêu nước, nhân nghĩa;</li>
-          <li>Khoan dung, “cầu đồng tồn dị”; xây dựng niềm tin của nhân dân.</li>
+          <li>Khoan dung, “cầu đồng tồn dị”; xây dựng <b>niềm tin của nhân dân</b>.</li>
         </ul>
-      </div>
-      <div class="card reveal"><h3>Mặt trận thống nhất</h3>
-        <p>Hình thức tổ chức khối đoàn kết (Việt Minh → Liên Việt → Mặt trận Tổ quốc); nguyên tắc hiệp thương dân chủ, đoàn kết lâu dài.</p>
-      </div>
-      <div class="card reveal"><h3>Phương thức</h3>
-        <p><strong>Dân vận</strong>: tổ chức, giáo dục, phát huy trí – lực quần chúng; phối hợp các tổ chức quần chúng trong Mặt trận.</p>
-      </div>
+      </article>
+
+      <article class="core reveal">
+        <div class="core-head"><div class="num">4</div><h3>Mặt trận thống nhất</h3></div>
+        <p>Hình thức tổ chức khối đoàn kết: <i>Việt Minh → Liên Việt → Mặt trận Tổ quốc</i>.<br>
+           Nguyên tắc: <b>hiệp thương dân chủ</b>, đoàn kết <b>lâu dài – chân thành</b>.</p>
+      </article>
+
+      <article class="core reveal">
+        <div class="core-head"><div class="num">5</div><h3>Phương thức</h3></div>
+        <p><b>Dân vận</b>: tổ chức, giáo dục, phát huy trí – lực quần chúng; phối hợp các tổ chức quần chúng trong Mặt trận.</p>
+      </article>
     </div>
   </section>
 
@@ -134,7 +179,6 @@ footer{padding:26px 0;text-align:center;color:var(--muted);border-top:3px solid 
   <section class="section">
     <div class="hdr"><h2>🕰️ Dòng thời gian minh chứng</h2></div>
     <div class="card reveal timeline">
-      <!-- Thanh thời gian -->
       <div class="tbar">
         <div class="segment seg1" title="1941–1946"></div>
         <div class="segment seg2" title="1946–1975"></div>
@@ -153,7 +197,6 @@ footer{padding:26px 0;text-align:center;color:var(--muted);border-top:3px solid 
         <span class="tag"><i class="i3"></i> 1986–nay</span>
       </div>
 
-      <!-- Mốc sự kiện rút gọn -->
       <div class="titems">
         <div class="titem" data-era="1">
           <strong>1941–1946:</strong> HCM về nước; TW8 xác định nhiệm vụ giải phóng dân tộc; lập Việt Minh; CMT8 thành công; 2/9/1945 tuyên ngôn độc lập; 19/12/1946 toàn quốc kháng chiến.
@@ -169,7 +212,7 @@ footer{padding:26px 0;text-align:center;color:var(--muted);border-top:3px solid 
   </section>
 
   <!-- Hình ảnh -->
-  <section class="section">
+  <section class="section gallery">
     <div class="hdr"><h2>🖼️ Hình ảnh</h2></div>
     <div class="grid">
       <figure class="card fig reveal" style="grid-column:span 12;">
@@ -181,10 +224,10 @@ footer{padding:26px 0;text-align:center;color:var(--muted);border-top:3px solid 
 
 </main>
 
-<footer>© 2025 Nhóm – Trang nội dung gọn, có timeline trực quan.</footer>
+<footer>© 2025 Nhóm – Trang nội dung gọn, thẻ đẹp & timeline trực quan.</footer>
 
 <script>
-/* Reveal on scroll (tiết chế) */
+/* Reveal on scroll */
 const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
