@@ -1,50 +1,60 @@
-<!DOCTYPE html><html lang="vi"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tư tưởng HCM – Đại đoàn kết toàn dân tộc</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#fff7e8;--paper:#fff;--text:#1a1a1a;--muted:#5c5c5c;--line:rgba(0,0,0,.08);
---red:#cf2e2e;--yellow:#f4c542;--black:#121212;--br:16px}
-*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
-.container{max-width:1100px;margin:0 auto;padding:24px}
-header{position:sticky;top:0;background:linear-gradient(180deg,rgba(255,247,232,.95),rgba(255,247,232,.7));border-bottom:3px solid var(--red)}
-.topbar{display:flex;align-items:center;justify-content:space-between}
-.logo{width:36px;height:36px;border-radius:10px;background:var(--red);display:grid;place-items:center;color:#fff;font-weight:800;margin-right:10px}
-.brand{display:flex;align-items:center}
-a{color:var(--red);text-decoration:none}
-.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--br);box-shadow:0 6px 24px rgba(0,0,0,.06)}
-main{display:grid;grid-template-columns:260px 1fr;gap:24px;margin-top:16px}
-@media(max-width:960px){main{grid-template-columns:1fr}}
-.toc{position:sticky;top:92px;height:calc(100dvh - 112px);overflow:auto;padding:14px}
-.toc h3{margin:8px 0 10px;font-size:14px;color:var(--muted)}
-.toc a{display:block;padding:8px 10px;border-radius:10px}
-.toc a.active{background:rgba(207,46,46,.12);border-left:4px solid var(--red)}
-.paper{padding:18px}
-.paper h2{margin:0 0 8px;color:#b32525}
-section{padding:14px 10px;border-top:2px dashed rgba(207,46,46,.18)}section:first-of-type{border-top:0}
-h3{margin:8px 0}h4{margin:8px 0;color:var(--red)}
-.quote{margin-top:8px;padding:16px;border-left:6px solid var(--yellow);background:linear-gradient(180deg,#fffbe9,#fff0c7);border:1px solid rgba(0,0,0,.06);border-radius:12px}
-.gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:10px}
-.gallery .fig{grid-column:span 12;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.06)}
-.fig img{display:block;width:100%;height:260px;object-fit:cover}
-.fig figcaption{padding:10px 12px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
-.lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:9999}
-.lb.open{display:flex}.lb-inner{max-width:min(1100px,92vw);max-height:88vh}.lb-inner img{width:100%;height:auto;border-radius:12px}
-.lb .close{position:absolute;top:16px;right:16px;background:#0008;border:1px solid #fff3;color:#fff;padding:8px 10px;border-radius:10px;cursor:pointer}
-.lb .caption{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);color:#fff;background:#0008;padding:8px 12px;border-radius:10px;font-size:14px;max-width:80vw}
-.navback{margin-top:8px}
-</style></head><body>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tư tưởng HCM – Đại đoàn kết toàn dân tộc</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#fff7e8;--paper:#fff;--text:#1a1a1a;--muted:#5c5c5c;--line:rgba(0,0,0,.08);
+      --red:#cf2e2e;--yellow:#f4c542;--black:#121212;--br:16px}
+    *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;background:linear-gradient(180deg,rgba(255,247,232,.95),rgba(255,247,232,.7));border-bottom:3px solid var(--red)}
+    .topbar{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo{width:36px;height:36px;border-radius:10px;background:var(--red);display:grid;place-items:center;color:#fff;font-weight:800}
+    a{color:var(--red);text-decoration:none}
+    .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--br);box-shadow:0 6px 24px rgba(0,0,0,.06)}
+    main{display:grid;grid-template-columns:260px 1fr;gap:24px;margin-top:16px}
+    @media(max-width:960px){main{grid-template-columns:1fr}}
+    .toc{position:sticky;top:92px;height:calc(100dvh - 112px);overflow:auto;padding:14px}
+    .toc h3{margin:8px 0 10px;font-size:14px;color:var(--muted)}
+    .toc a{display:block;padding:8px 10px;border-radius:10px}
+    .toc a.active{background:rgba(207,46,46,.12);border-left:4px solid var(--red)}
+    .paper{padding:18px}
+    .paper h2{margin:0 0 8px;color:#b32525}
+    section{padding:14px 10px;border-top:2px dashed rgba(207,46,46,.18)} section:first-of-type{border-top:0}
+    h3{margin:8px 0} h4{margin:8px 0;color:var(--red)}
+    .quote{margin:8px 0 0;padding:16px;border-left:6px solid var(--yellow);background:linear-gradient(180deg,#fffbe9,#fff0c7);border:1px solid rgba(0,0,0,.06);border-radius:12px}
+    .small{font-size:13px;color:var(--muted)}
+    .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:10px}
+    .gallery .fig{grid-column:span 12;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.06)}
+    .fig img{display:block;width:100%;height:260px;object-fit:cover}
+    .fig figcaption{padding:10px 12px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+    /* lightbox */
+    .lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:9999}
+    .lb.open{display:flex}.lb-inner{max-width:min(1100px,92vw);max-height:88vh}.lb-inner img{width:100%;height:auto;border-radius:12px}
+    .lb .close{position:absolute;top:16px;right:16px;background:#0008;border:1px solid #fff3;color:#fff;padding:8px 10px;border-radius:10px;cursor:pointer}
+    .lb .caption{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);color:#fff;background:#0008;padding:8px 12px;border-radius:10px;font-size:14px;max-width:80vw}
+  </style>
+</head>
+<body>
 <header><div class="container topbar">
   <div class="brand"><div class="logo">★</div><strong>Tư tưởng HCM – Đại đoàn kết toàn dân tộc & đoàn kết quốc tế</strong></div>
-  <nav class="navback"><a href="index.html">← Trang chủ</a></nav>
+  <nav><a href="index.html">← Trang chủ</a></nav>
 </div></header>
 
 <div class="container">
   <main>
     <nav class="card toc" id="toc"><h3>Mục lục</h3></nav>
+
     <article class="card paper" id="paper">
       <h2>Chương 5: Tư tưởng HCM về đại đoàn kết toàn dân tộc & đoàn kết quốc tế</h2>
+
+      <p class="quote"><strong>Chủ đề:</strong> Đại đoàn kết dân tộc – chiến lược lâu dài hay chỉ là sách lược nhất thời?</p>
+      <p class="small"><strong>Yêu cầu:</strong> Trình bày tư tưởng Hồ Chí Minh về đại đoàn kết dân tộc, vận dụng để phân tích vì sao đây là đường lối chiến lược, có ý nghĩa quyết định đến mọi thắng lợi của cách mạng Việt Nam.</p>
 
       <section id="5-1">
         <h3>5.1. Đại đoàn kết toàn dân tộc</h3>
@@ -114,13 +124,14 @@ h3{margin:8px 0}h4{margin:8px 0;color:var(--red)}
 
 <script>
 const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));const $=(s,r=document)=>r.querySelector(s);
-// TOC
-(function buildTOC(){const toc=$("#toc");$$('#paper h2,#paper h3,#paper h4').forEach(h=>{const id=h.id||h.textContent.toLowerCase().replace(/[^a-z0-9à-ỹ\s-]/gi,'').trim().replace(/\s+/g,'-');h.id=id;const a=document.createElement('a');a.href=`#${id}`;a.textContent=h.tagName==='H2'?`★ ${h.textContent}`:h.textContent;toc.appendChild(a);});})();
-document.addEventListener('scroll',()=>{const fromTop=scrollY+120;let cur=$$('#paper h2,#paper h3,#paper h4')[0]?.id;for(const h of $$('#paper h2,#paper h3,#paper h4')){if(h.offsetTop<=fromTop)cur=h.id;else break}$$('#toc a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')===`#${cur}`))},{passive:true});
+// Build TOC
+(function(){const toc=$("#toc");$$('#paper h2,#paper h3,#paper h4').forEach(h=>{const id=h.id||h.textContent.toLowerCase().replace(/[^a-z0-9à-ỹ\s-]/gi,'').trim().replace(/\s+/g,'-');h.id=id;const a=document.createElement('a');a.href=`#${id}`;a.textContent=h.tagName==='H2'?`★ ${h.textContent}`:h.textContent;toc.appendChild(a);});})();
+document.addEventListener('scroll',()=>{const y=scrollY+120;let cur=$$('#paper h2,#paper h3,#paper h4')[0]?.id;for(const h of $$('#paper h2,#paper h3,#paper h4')){if(h.offsetTop<=y)cur=h.id;else break}$$('#toc a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')===`#${cur}`))},{passive:true});
 // Lightbox
 const lb=document.createElement('div');lb.className='lb';lb.innerHTML='<button class="close">✕</button><div class="lb-inner"><img alt=""/></div><div class="caption"></div>';document.body.appendChild(lb);
 const lbImg=lb.querySelector('img'),lbCap=lb.querySelector('.caption');lb.addEventListener('click',e=>{if(e.target===lb||e.target.classList.contains('close'))lb.classList.remove('open')});
 function bindLB(){ $$('#gallery img').forEach(img=>{img.style.cursor='zoom-in';img.addEventListener('click',()=>{lbImg.src=img.src;lbImg.alt=img.alt||'';lbCap.textContent=img.closest('figure')?.querySelector('figcaption')?.textContent?.trim()||'';lb.classList.add('open');});});}
 bindLB();
 </script>
-</body></html>
+</body>
+</html>
