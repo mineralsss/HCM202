@@ -1,136 +1,192 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Tư tưởng HCM – Đại đoàn kết toàn dân tộc</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{--bg:#fff7e8;--paper:#fff;--text:#1a1a1a;--muted:#5c5c5c;--line:rgba(0,0,0,.08);
-      --red:#cf2e2e;--yellow:#f4c542;--black:#121212;--br:16px}
-    *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
-    .container{max-width:1100px;margin:0 auto;padding:24px}
-    header{position:sticky;top:0;background:linear-gradient(180deg,rgba(255,247,232,.95),rgba(255,247,232,.7));border-bottom:3px solid var(--red)}
-    .topbar{display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:10px}
-    .logo{width:36px;height:36px;border-radius:10px;background:var(--red);display:grid;place-items:center;color:#fff;font-weight:800}
-    a{color:var(--red);text-decoration:none}
-    .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--br);box-shadow:0 6px 24px rgba(0,0,0,.06)}
-    main{display:grid;grid-template-columns:260px 1fr;gap:24px;margin-top:16px}
-    @media(max-width:960px){main{grid-template-columns:1fr}}
-    .toc{position:sticky;top:92px;height:calc(100dvh - 112px);overflow:auto;padding:14px}
-    .toc h3{margin:8px 0 10px;font-size:14px;color:var(--muted)}
-    .toc a{display:block;padding:8px 10px;border-radius:10px}
-    .toc a.active{background:rgba(207,46,46,.12);border-left:4px solid var(--red)}
-    .paper{padding:18px}
-    .paper h2{margin:0 0 8px;color:#b32525}
-    section{padding:14px 10px;border-top:2px dashed rgba(207,46,46,.18)} section:first-of-type{border-top:0}
-    h3{margin:8px 0} h4{margin:8px 0;color:var(--red)}
-    .quote{margin:8px 0 0;padding:16px;border-left:6px solid var(--yellow);background:linear-gradient(180deg,#fffbe9,#fff0c7);border:1px solid rgba(0,0,0,.06);border-radius:12px}
-    .small{font-size:13px;color:var(--muted)}
-    .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:10px}
-    .gallery .fig{grid-column:span 12;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.06)}
-    .fig img{display:block;width:100%;height:260px;object-fit:cover}
-    .fig figcaption{padding:10px 12px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
-    /* lightbox */
-    .lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:9999}
-    .lb.open{display:flex}.lb-inner{max-width:min(1100px,92vw);max-height:88vh}.lb-inner img{width:100%;height:auto;border-radius:12px}
-    .lb .close{position:absolute;top:16px;right:16px;background:#0008;border:1px solid #fff3;color:#fff;padding:8px 10px;border-radius:10px;cursor:pointer}
-    .lb .caption{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);color:#fff;background:#0008;padding:8px 12px;border-radius:10px;font-size:14px;max-width:80vw}
-  </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tư tưởng HCM – Đại đoàn kết (cards + reveal)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff7e8; --paper:#fff; --ink:#151515; --muted:#6a6a6a; --line:rgba(0,0,0,.08);
+  --red:#d62828; --red-dark:#ad1f1f; --yellow:#f4c542; --black:#121212; --radius:18px;
+}
+*{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+a{color:var(--red);text-decoration:none}
+.container{max-width:1120px;margin:0 auto;padding:24px}
+/* Header */
+header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);
+  background:linear-gradient(180deg, rgba(255,247,232,.92), rgba(255,247,232,.6)); border-bottom:3px solid var(--red);}
+.head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:40px;height:40px;border-radius:12px;background:var(--red);display:grid;place-items:center;color:#fff;font-weight:800;box-shadow:0 4px 0 var(--red-dark)}
+.brand strong{font-size:18px}
+/* Progress */
+.progress{position:fixed;inset:0 0 auto 0;height:4px;background:linear-gradient(90deg,var(--red),#ff6a00);transform-origin:left;transform:scaleX(0);z-index:70}
+/* Grid & cards */
+.section{margin:26px 0}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.card{grid-column:span 12;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 28px rgba(0,0,0,.07);padding:20px}
+.hdr{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px}
+.hdr h2{margin:0;font-size:26px;color:#b61f1f}
+.badge{font-weight:800;letter-spacing:.18em;color:#d6aa13}
+.lead{font-size:18px;margin:6px 0 0}
+/* Small cards grid */
+.sm{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.sm .card{padding:18px}
+.sm .card h3{margin:0 0 6px;color:#222}
+.lite{color:var(--muted);font-size:14px}
+/* Hero banner */
+.hero{grid-template-columns:7fr 5fr}
+.hero .visual{border:2px solid var(--red);border-radius:var(--radius);overflow:hidden}
+.hero .visual img{height:320px;width:100%;object-fit:cover;filter:saturate(1.03)}
+@media(max-width:960px){.hero{grid-template-columns:1fr}.hero .visual img{height:220px}}
+/* Gallery */
+.gallery .card{padding:0;overflow:hidden}
+.fig{display:flex;flex-direction:column}
+.fig img{height:260px;object-fit:cover}
+.fig figcaption{padding:10px 14px;border-top:1px solid var(--line);color:var(--muted)}
+/* Footer + back to top */
+footer{padding:26px 0;text-align:center;color:var(--muted);border-top:3px solid var(--red);background:#fffbe9}
+#up{position:fixed;right:16px;bottom:16px;display:none;z-index:60;padding:12px 16px;border-radius:14px;border:1.5px solid var(--black);background:#fff;color:#000;box-shadow:0 3px 0 var(--black);font-weight:700}
+/* Reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.show{opacity:1;transform:none}
+.reveal.slideL{transform:translateX(-24px)} .reveal.slideR{transform:translateX(24px)} .reveal.scale{transform:scale(.96)}
+</style>
 </head>
 <body>
-<header><div class="container topbar">
-  <div class="brand"><div class="logo">★</div><strong>Tư tưởng HCM – Đại đoàn kết toàn dân tộc & đoàn kết quốc tế</strong></div>
-  <nav><a href="index.html">← Trang chủ</a></nav>
-</div></header>
+<div class="progress" id="progress"></div>
 
-<div class="container">
-  <main>
-    <nav class="card toc" id="toc"><h3>Mục lục</h3></nav>
+<header>
+  <div class="container head">
+    <div class="brand"><div class="logo">★</div><strong>Tư tưởng HCM – Đại đoàn kết</strong></div>
+    <nav><a href="index.html">← Trang chủ</a></nav>
+  </div>
+</header>
 
-    <article class="card paper" id="paper">
-      <h2>Chương 5: Tư tưởng HCM về đại đoàn kết toàn dân tộc & đoàn kết quốc tế</h2>
+<main class="container">
 
-      <p class="quote"><strong>Chủ đề:</strong> Đại đoàn kết dân tộc – chiến lược lâu dài hay chỉ là sách lược nhất thời?</p>
-
-      <section id="5-1">
-        <h3>5.1. Đại đoàn kết toàn dân tộc</h3>
-        <h4 id="5-1-1">5.1.1. Vai trò</h4>
-        <p>Đại đoàn kết là vấn đề mang <em>ý nghĩa chiến lược</em>, quyết định thành công của cách mạng: là <strong>sức mạnh vô địch</strong>, là <strong>chìa khóa then chốt</strong> của mọi thắng lợi, là <strong>mục tiêu & nhiệm vụ hàng đầu</strong> cần quán triệt.</p>
-        <ul>
-          <li>Chân lý: “Đoàn kết, đoàn kết, đại đoàn kết. Thành công, thành công, đại thành công”.</li>
-          <li>Mục tiêu: “Một nước Việt Nam hòa bình, thống nhất, độc lập, dân chủ và giàu mạnh…”.</li>
-        </ul>
-
-        <h4 id="5-1-2">5.1.2. Lực lượng</h4>
-        <p><strong>Chủ thể:</strong> toàn thể dân tộc Việt Nam; không phân biệt giai cấp, tôn giáo, dân tộc, nghề nghiệp… miễn là cùng phụng sự Tổ quốc.</p>
-        <p><strong>Nền tảng:</strong> liên minh <em>công – nông – trí thức</em> dưới sự lãnh đạo của Đảng.</p>
-
-        <h4 id="5-1-3">5.1.3. Điều kiện xây dựng</h4>
-        <ol>
-          <li>Kết hợp lợi ích chung – riêng; đặt lợi ích dân tộc lên trên hết.</li>
-          <li>Kế thừa truyền thống yêu nước, nhân nghĩa, đoàn kết.</li>
-          <li>Khoan dung, độ lượng; “cầu đồng tồn dị”.</li>
-          <li>Xây dựng niềm tin của nhân dân: dân tin – dân yêu – dân kính.</li>
-        </ol>
-
-        <h4 id="5-1-4">5.1.4. Hình thức & nguyên tắc – Mặt trận dân tộc thống nhất</h4>
-        <p><strong>Hình thức:</strong> Mặt trận dân tộc thống nhất – ngôi nhà chung của mọi người Việt Nam (Việt Minh, Liên Việt, Mặt trận Tổ quốc…).</p>
-        <p><strong>Nguyên tắc:</strong> (1) Liên minh công–nông–trí thức dưới sự lãnh đạo của Đảng; (2) Hiệp thương dân chủ; (3) Đoàn kết lâu dài, chân thành, cùng tiến bộ.</p>
-
-        <h4 id="5-1-5">5.1.5. Phương thức</h4>
-        <p><strong>Dân vận</strong> là phương thức cơ bản: tổ chức – giáo dục – phát huy trí tuệ, sức mạnh vật chất & tinh thần của quần chúng; xây dựng hệ thống tổ chức quần chúng phối hợp trong Mặt trận.</p>
-      </section>
-
-      <section id="lich-su-41-46">
-        <h3>I. Chứng minh lịch sử: 1941–1946</h3>
-        <ul>
-          <li><strong>1941:</strong> Hồ Chí Minh về nước, Hội nghị TW 8, thành lập Việt Minh để đoàn kết toàn dân.</li>
-          <li><strong>1945–1946:</strong> CMT8 thành công; 2/9/1945 tuyên ngôn độc lập; 19/12/1946 toàn quốc kháng chiến.</li>
-        </ul>
-      </section>
-
-      <section id="lich-su-46-75">
-        <h3>II. Chứng minh lịch sử: 1946–1975</h3>
-        <ul>
-          <li>Kháng chiến chống Pháp (1946–1954); sau 1954, miền Bắc quá độ lên CNXH.</li>
-          <li>Chống Mỹ cứu nước (1954–1975): “Không có gì quý hơn độc lập, tự do” → thống nhất 1975.</li>
-        </ul>
-      </section>
-
-      <section id="hien-dai-86-nay">
-        <h3>III. Chứng minh hiện đại: 1986 – nay</h3>
-        <ul>
-          <li>Đổi mới (1986); ĐH VII (1991) khẳng định TT HCM + CN Mác–Lênin là nền tảng.</li>
-          <li>Tiếp tục vận dụng: đại đoàn kết là chiến lược xuyên suốt; phát triển văn hóa – con người.</li>
-        </ul>
-      </section>
-
-      <section id="hinh-anh">
-        <h3>Hình ảnh minh họa</h3>
-        <div class="gallery" id="gallery">
-          <figure class="fig">
-            <img loading="lazy" src="images/doan-ket-lehoi.jpeg" alt="Không khí đoàn kết toàn dân – lễ diễu hành">
-            <figcaption>Không khí đoàn kết toàn dân – sắc màu các dân tộc cùng cờ Tổ quốc.</figcaption>
-          </figure>
+  <!-- Banner/Topic -->
+  <section id="top" class="section">
+    <div class="grid hero">
+      <div class="card reveal">
+        <div class="badge">CHỦ ĐỀ</div>
+        <h2 class="lead"><strong>Đại đoàn kết dân tộc</strong> – chiến lược lâu dài hay chỉ là sách lược nhất thời?</h2>
+        <div style="margin-top:10px;padding:14px 16px;border-left:6px solid var(--yellow);background:linear-gradient(180deg,#fffbe9,#fff0c7);border:1px solid rgba(0,0,0,.06);border-radius:12px">
+          <strong>Đặt vấn đề:</strong> Lịch sử có những khối đoàn kết tạm thời; Hồ Chí Minh khẳng định “<em>Đoàn kết là then chốt của thành công</em>”. 
+          Vậy đại đoàn kết là sách lược tình thế hay chiến lược sống còn?
         </div>
-      </section>
-    </article>
-  </main>
-</div>
+      </div>
+      <div class="visual card reveal slideR">
+        <img src="images/doan-ket-lehoi.jpeg" alt="Không khí đại đoàn kết toàn dân">
+      </div>
+    </div>
+  </section>
+
+  <!-- Core 5.1 -->
+  <section id="cotloi" class="section">
+    <div class="hdr"><h2>⚑ Cốt lõi 5.1 – Đại đoàn kết toàn dân tộc</h2></div>
+    <div class="sm">
+      <div class="card reveal"><h3>Vai trò</h3>
+        <p>Đại đoàn kết là <strong>chiến lược</strong> quyết định thắng lợi: <em>sức mạnh vô địch</em>, <em>then chốt của thành công</em>.</p>
+      </div>
+      <div class="card reveal slideL"><h3>Lực lượng</h3>
+        <p><strong>Chủ thể:</strong> toàn dân tộc. <strong>Nền tảng:</strong> liên minh công–nông–trí thức dưới sự lãnh đạo của Đảng.</p>
+      </div>
+      <div class="card reveal slideR"><h3>Điều kiện</h3>
+        <ul class="lite">
+          <li>Đặt lợi ích dân tộc lên trên hết;</li>
+          <li>Kế thừa truyền thống yêu nước, nhân nghĩa;</li>
+          <li>Khoan dung, “cầu đồng tồn dị”; xây dựng niềm tin của nhân dân.</li>
+        </ul>
+      </div>
+      <div class="card reveal"><h3>Mặt trận thống nhất</h3>
+        <p>Hình thức tổ chức khối đoàn kết (Việt Minh → Liên Việt → Mặt trận Tổ quốc). Nguyên tắc: hiệp thương dân chủ, đoàn kết lâu dài, chân thành.</p>
+      </div>
+      <div class="card reveal scale"><h3>Phương thức</h3>
+        <p><strong>Dân vận</strong>: tổ chức, giáo dục, phát huy trí – lực quần chúng; phối hợp các tổ chức quần chúng trong Mặt trận.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- History -->
+  <section id="lichsu" class="section">
+    <div class="hdr"><h2>🕰️ Lịch sử minh chứng (rút gọn)</h2></div>
+    <div class="sm">
+      <div class="card reveal slideL"><h3>1941–1946</h3>
+        <p>HCM về nước; TW8 nêu nhiệm vụ giải phóng dân tộc; lập Việt Minh; CMT8 thành công; 2/9/1945 tuyên ngôn độc lập; 19/12/1946 toàn quốc kháng chiến.</p>
+      </div>
+      <div class="card reveal"><h3>1946–1975</h3>
+        <p>Kháng chiến chống Pháp; sau 1954 miền Bắc quá độ lên CNXH. Chống Mỹ: “Không có gì quý hơn độc lập, tự do” → thống nhất 1975.</p>
+      </div>
+      <div class="card reveal slideR"><h3>1986 – nay</h3>
+        <p>Đổi mới; khẳng định TT HCM + CN Mác–Lênin là nền tảng. Tiếp tục coi <strong>đại đoàn kết</strong> là đường lối chiến lược.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Video + Chatbot -->
+  <section id="cta" class="section">
+    <div class="grid">
+      <div class="card reveal">
+        <div class="hdr"><h2>▶️ Video</h2><span class="lite">Sẽ cập nhật</span></div>
+        <a class="lite" href="video.html"><strong>Mở trang Video</strong></a>
+      </div>
+      <div class="card reveal slideR">
+        <div class="hdr"><h2>💬 Chatbot</h2><span class="lite">Sẽ cập nhật</span></div>
+        <a class="lite" href="chatbot.html"><strong>Mở trang Chatbot</strong></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="hinh-anh" class="section gallery">
+    <div class="hdr"><h2>🖼️ Hình ảnh</h2></div>
+    <div class="grid">
+      <figure class="card fig reveal scale" style="grid-column:span 12;">
+        <img src="images/doan-ket-lehoi.jpeg" alt="Không khí đoàn kết toàn dân – lễ diễu hành">
+        <figcaption>Không khí đoàn kết toàn dân – sắc màu các dân tộc cùng cờ Tổ quốc.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+</main>
+
+<footer>© 2025 Nhóm – Trang nội dung dạng cards, hiệu ứng cuộn.</footer>
+<a id="up" href="#top">⬆ Lên đầu</a>
 
 <script>
-const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));const $=(s,r=document)=>r.querySelector(s);
-// TOC
-(function(){const toc=$("#toc");$$('#paper h2,#paper h3,#paper h4').forEach(h=>{const id=h.id||h.textContent.toLowerCase().replace(/[^a-z0-9à-ỹ\s-]/gi,'').trim().replace(/\s+/g,'-');h.id=id;const a=document.createElement('a');a.href=`#${id}`;a.textContent=h.tagName==='H2'?`★ ${h.textContent}`:h.textContent;toc.appendChild(a);});})();
-document.addEventListener('scroll',()=>{const y=scrollY+120;let cur=$$('#paper h2,#paper h3,#paper h4')[0]?.id;for(const h of $$('#paper h2,#paper h3,#paper h4')){if(h.offsetTop<=y)cur=h.id;else break}$$('#toc a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')===`#${cur}`))},{passive:true});
-// Lightbox
-const lb=document.createElement('div');lb.className='lb';lb.innerHTML='<button class="close">✕</button><div class="lb-inner"><img alt=""/></div><div class="caption"></div>';document.body.appendChild(lb);
-const lbImg=lb.querySelector('img'),lbCap=lb.querySelector('.caption');lb.addEventListener('click',e=>{if(e.target===lb||e.target.classList.contains('close'))lb.classList.remove('open')});
-function bindLB(){ $$('#gallery img').forEach(img=>{img.style.cursor='zoom-in';img.addEventListener('click',()=>{lbImg.src=img.src;lbImg.alt=img.alt||'';lbCap.textContent=img.closest('figure')?.querySelector('figcaption')?.textContent?.trim()||'';lb.classList.add('open');});});}
-bindLB();
+/* Progress bar + back to top */
+const bar=document.getElementById('progress'), up=document.getElementById('up');
+function onScroll(){
+  const s=window.scrollY, h=document.documentElement.scrollHeight-window.innerHeight;
+  bar.style.transform=`scaleX(${Math.max(0,Math.min(1,s/h))})`;
+  up.style.display = s>600?'inline-block':'none';
+}
+document.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+/* Smooth anchors */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{const id=a.getAttribute('href'); if(id.length>1){e.preventDefault();
+    const el=document.querySelector(id); if(!el) return;
+    const y=el.getBoundingClientRect().top+window.pageYOffset-84;
+    window.scrollTo({top:y,behavior:'smooth'});}});
+});
+
+/* Reveal on scroll */
+const io=new IntersectionObserver((ents)=>{ents.forEach(en=>{if(en.isIntersecting){en.target.classList.add('show');io.unobserve(en.target);}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* Lightbox for gallery */
+const lb=document.createElement('div');
+lb.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:80';
+lb.innerHTML='<button style="position:absolute;top:16px;right:16px;background:#0008;border:1px solid #fff3;color:#fff;padding:8px 10px;border-radius:10px;cursor:pointer">✕</button><div style="max-width:min(1100px,92vw);max-height:88vh"><img style="width:100%;height:auto;border-radius:12px"/></div>';
+document.body.appendChild(lb);
+const lbimg=lb.querySelector('img'); lb.addEventListener('click',e=>{ if(e.target===lb||e.target.tagName==='BUTTON') lb.style.display='none'; });
+document.querySelectorAll('#hinh-anh img').forEach(img=>{
+  img.style.cursor='zoom-in';
+  img.addEventListener('click',()=>{ lbimg.src=img.src; lb.style.display='flex'; });
+});
 </script>
 </body>
 </html>
