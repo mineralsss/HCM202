@@ -2,13 +2,13 @@
 <html lang="vi">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tư tưởng HCM – Đại đoàn kết (gọn & timeline)</title>
+<title>Tư tưởng HCM – Đại đoàn kết (cards & timeline)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#fff7e8; --paper:#fff; --ink:#151515; --muted:#6a6a6a; --line:rgba(0,0,0,.08);
-  --red:#d62828; --red-dark:#ad1f1f; --yellow:#f4c542; --black:#121212; --radius:20px;
+  --red:#d62828; --red-dark:#ad1f1f; --yellow:#f4c542; --black:#121212; --radius:22px;
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
@@ -23,9 +23,9 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);
 .logo{width:40px;height:40px;border-radius:12px;background:var(--red);display:grid;place-items:center;color:#fff;font-weight:800;box-shadow:0 4px 0 var(--red-dark)}
 .brand strong{font-size:18px}
 
-/* Cards & layout */
+/* Sections & general cards */
 .section{margin:28px 0}
-.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 28px rgba(0,0,0,.07);padding:20px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 12px 32px rgba(0,0,0,.08);padding:20px}
 .hdr{display:flex;align-items:center;justify-content:space-between;margin:0 0 10px}
 .hdr h2{margin:0;font-size:26px;color:#b61f1f}
 .badge{font-weight:800;letter-spacing:.18em;color:#d6aa13}
@@ -36,49 +36,42 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);
 .hero .visual img{height:320px;width:100%;object-fit:cover;filter:saturate(1.03)}
 @media(max-width:960px){.hero{grid-template-columns:1fr}.hero .visual img{height:220px}}
 
-/* ---- Core 5.1 cards (đẹp hơn) ---- */
-.core-grid{
-  display:grid; gap:18px;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-}
-.core{
-  --ring: rgba(214,170,19,.35);
-  background:#fff;
-  border:1px solid rgba(0,0,0,.06);
-  border-radius:20px;
-  box-shadow: 0 12px 32px rgba(0,0,0,.08), 0 0 0 6px rgba(255,255,255,.6) inset;
-  padding:18px 16px 16px;
+/* ======= CORE 5.1 – deluxe cards ======= */
+.core-wrap{margin-top:10px;display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.core-card{
+  --glow: 0 22px 40px rgba(0,0,0,.14);
+  position:relative; isolation:isolate; overflow:hidden;
+  border-radius:22px; background:#fff; border:1px solid rgba(0,0,0,.06); box-shadow:var(--glow);
   transition:transform .25s ease, box-shadow .25s ease;
-  display:flex; flex-direction:column; gap:10px; min-height:240px;
-  position:relative; isolation:isolate;
 }
-.core::before{
-  content:""; position:absolute; inset:0; z-index:-1; border-radius:20px;
-  background:linear-gradient(180deg,#fff7e8,transparent 45%);
+.core-card:hover{ transform:translateY(-6px); box-shadow:0 30px 60px rgba(0,0,0,.18); }
+.core-head{
+  display:flex; align-items:center; gap:12px; padding:14px 16px;
+  background:linear-gradient(135deg,#ffe6b6,#fff7e8 40%,#ffffff 85%);
+  border-bottom:1px solid rgba(0,0,0,.06);
 }
-.core:hover{ transform:translateY(-6px);
-  box-shadow:0 18px 40px rgba(0,0,0,.12), 0 0 0 6px rgba(255,255,255,.6) inset;
+.core-badge{
+  width:40px;height:40px;border-radius:12px;flex:0 0 40px;display:grid;place-items:center;color:#fff;font-weight:800;
+  background:linear-gradient(135deg,#d62828,#ad1f1f); box-shadow:0 0 0 6px rgba(214,170,19,.35);
 }
-.core-head{display:flex; align-items:center; gap:10px}
-.num{
-  width:36px; height:36px; border-radius:12px; display:grid; place-items:center;
-  background:linear-gradient(135deg,#d62828,#ad1f1f); color:#fff; font-weight:800;
-  box-shadow:0 0 0 6px var(--ring);
+.core-title{margin:0;font-size:18px;color:#191919}
+.core-body{padding:16px 18px 18px}
+.core-body p{margin:0;line-height:1.65}
+.core-body b{color:#111}
+.core-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.core-li{display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start}
+.core-dot{
+  width:10px;height:10px;margin-top:7px;border-radius:50%;
+  background:linear-gradient(135deg,#f4c542,#ffd86a);
+  box-shadow:0 0 0 2px #fff inset, 0 0 0 1px rgba(0,0,0,.12);
 }
-.core h3{margin:0; font-size:17px; color:#1f1f1f}
-.core p{margin:0; line-height:1.6}
-.core b{color:#111}
-.core ul{margin:0; padding-left:0; list-style:none; display:grid; gap:6px}
-.core li{display:flex; gap:8px; align-items:flex-start}
-.core li::before{
-  content:""; width:10px; height:10px; margin-top:6px; border-radius:50%;
-  background:linear-gradient(135deg,#f4c542,#ffd86a); box-shadow:0 0 0 2px #fff inset, 0 0 0 1px rgba(0,0,0,.08);
-}
-.section-title{display:flex; align-items:center; gap:10px; margin:0 0 12px; font-size:22px; color:#b61f1f}
-.section-title .flag{width:22px; height:22px; border-radius:6px; background:linear-gradient(135deg,#d62828,#ad1f1f); position:relative}
-.section-title .flag::after{content:""; position:absolute; left:5px; top:5px; width:12px; height:12px; background:#fff; clip-path:polygon(0 0,100% 50%,0 100%)}
 
-/* Timeline visual */
+/* Section title */
+.section-title{display:flex;align-items:center;gap:10px;margin:0 0 8px;font-size:24px;color:#b61f1f}
+.section-title .flag{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,#d62828,#ad1f1f);position:relative}
+.section-title .flag::after{content:"";position:absolute;left:6px;top:6px;width:14px;height:14px;background:#fff;clip-path:polygon(0 0,100% 50%,0 100%)}
+
+/* ======= Timeline visual ======= */
 .timeline{padding:18px}
 .tbar{position:relative;height:10px;border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:inset 0 1px 0 rgba(0,0,0,.05)}
 .segment{position:absolute;top:-1px;height:12px;border-radius:999px}
@@ -138,39 +131,39 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);
     </div>
   </section>
 
-  <!-- Cốt lõi 5.1 – phiên bản đẹp -->
+  <!-- Cốt lõi 5.1 – deluxe cards -->
   <section id="cotloi" class="section">
     <h2 class="section-title"><span class="flag"></span>Cốt lõi 5.1 – Đại đoàn kết toàn dân tộc</h2>
-    <div class="core-grid">
-      <article class="core reveal">
-        <div class="core-head"><div class="num">1</div><h3>Vai trò</h3></div>
-        <p>Đại đoàn kết là <b>chiến lược quyết định</b> của cách mạng: <b>sức mạnh vô địch</b>, <b>then chốt của thành công</b>.</p>
+    <div class="core-wrap">
+      <article class="core-card reveal">
+        <header class="core-head"><div class="core-badge">1</div><h3 class="core-title">Vai trò</h3></header>
+        <div class="core-body"><p>Đại đoàn kết là <b>chiến lược quyết định</b> của cách mạng: <b>sức mạnh vô địch</b>, <b>then chốt của thành công</b>.</p></div>
       </article>
 
-      <article class="core reveal slideL">
-        <div class="core-head"><div class="num">2</div><h3>Lực lượng</h3></div>
-        <p><b>Chủ thể:</b> toàn dân tộc Việt Nam.<br>
-           <b>Nền tảng:</b> liên minh <i>công – nông – trí thức</i> dưới sự lãnh đạo của Đảng.</p>
+      <article class="core-card reveal slideL">
+        <header class="core-head"><div class="core-badge">2</div><h3 class="core-title">Lực lượng</h3></header>
+        <div class="core-body"><p><b>Chủ thể:</b> toàn dân tộc Việt Nam.<br><b>Nền tảng:</b> liên minh <i>công – nông – trí thức</i> dưới sự lãnh đạo của Đảng.</p></div>
       </article>
 
-      <article class="core reveal slideR">
-        <div class="core-head"><div class="num">3</div><h3>Điều kiện</h3></div>
-        <ul>
-          <li>Đặt lợi ích dân tộc lên trên hết;</li>
-          <li>Kế thừa truyền thống yêu nước, nhân nghĩa;</li>
-          <li>Khoan dung, “cầu đồng tồn dị”; xây dựng <b>niềm tin của nhân dân</b>.</li>
-        </ul>
+      <article class="core-card reveal slideR">
+        <header class="core-head"><div class="core-badge">3</div><h3 class="core-title">Điều kiện</h3></header>
+        <div class="core-body">
+          <ul class="core-list">
+            <li class="core-li"><span class="core-dot"></span><span>Đặt lợi ích dân tộc lên trên hết.</span></li>
+            <li class="core-li"><span class="core-dot"></span><span>Kế thừa truyền thống yêu nước, nhân nghĩa.</span></li>
+            <li class="core-li"><span class="core-dot"></span><span>Khoan dung, “cầu đồng tồn dị”; xây dựng <b>niềm tin của nhân dân</b>.</span></li>
+          </ul>
+        </div>
       </article>
 
-      <article class="core reveal">
-        <div class="core-head"><div class="num">4</div><h3>Mặt trận thống nhất</h3></div>
-        <p>Hình thức tổ chức khối đoàn kết: <i>Việt Minh → Liên Việt → Mặt trận Tổ quốc</i>.<br>
-           Nguyên tắc: <b>hiệp thương dân chủ</b>, đoàn kết <b>lâu dài – chân thành</b>.</p>
+      <article class="core-card reveal">
+        <header class="core-head"><div class="core-badge">4</div><h3 class="core-title">Mặt trận thống nhất</h3></header>
+        <div class="core-body"><p>Hình thức tổ chức khối đoàn kết: <i>Việt Minh → Liên Việt → Mặt trận Tổ quốc</i>.<br>Nguyên tắc: <b>hiệp thương dân chủ</b>, đoàn kết <b>lâu dài – chân thành</b>.</p></div>
       </article>
 
-      <article class="core reveal">
-        <div class="core-head"><div class="num">5</div><h3>Phương thức</h3></div>
-        <p><b>Dân vận</b>: tổ chức, giáo dục, phát huy trí – lực quần chúng; phối hợp các tổ chức quần chúng trong Mặt trận.</p>
+      <article class="core-card reveal">
+        <header class="core-head"><div class="core-badge">5</div><h3 class="core-title">Phương thức</h3></header>
+        <div class="core-body"><p><b>Dân vận</b>: tổ chức, giáo dục, phát huy trí – lực quần chúng; phối hợp các tổ chức quần chúng trong Mặt trận.</p></div>
       </article>
     </div>
   </section>
@@ -224,7 +217,9 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);
 
 </main>
 
-<footer>© 2025 Nhóm – Trang nội dung gọn, thẻ đẹp & timeline trực quan.</footer>
+<footer style="padding:26px 0;text-align:center;color:#6a6a6a;border-top:3px solid var(--red);background:#fffbe9">
+  © 2025 Nhóm – Trang nội dung gọn, thẻ đẹp & timeline trực quan.
+</footer>
 
 <script>
 /* Reveal on scroll */
