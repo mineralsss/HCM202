@@ -54,7 +54,6 @@
       <h2>Chương 5: Tư tưởng HCM về đại đoàn kết toàn dân tộc & đoàn kết quốc tế</h2>
 
       <p class="quote"><strong>Chủ đề:</strong> Đại đoàn kết dân tộc – chiến lược lâu dài hay chỉ là sách lược nhất thời?</p>
-      <p class="small"><strong>Yêu cầu:</strong> Trình bày tư tưởng Hồ Chí Minh về đại đoàn kết dân tộc, vận dụng để phân tích vì sao đây là đường lối chiến lược, có ý nghĩa quyết định đến mọi thắng lợi của cách mạng Việt Nam.</p>
 
       <section id="5-1">
         <h3>5.1. Đại đoàn kết toàn dân tộc</h3>
@@ -124,7 +123,7 @@
 
 <script>
 const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));const $=(s,r=document)=>r.querySelector(s);
-// Build TOC
+// TOC
 (function(){const toc=$("#toc");$$('#paper h2,#paper h3,#paper h4').forEach(h=>{const id=h.id||h.textContent.toLowerCase().replace(/[^a-z0-9à-ỹ\s-]/gi,'').trim().replace(/\s+/g,'-');h.id=id;const a=document.createElement('a');a.href=`#${id}`;a.textContent=h.tagName==='H2'?`★ ${h.textContent}`:h.textContent;toc.appendChild(a);});})();
 document.addEventListener('scroll',()=>{const y=scrollY+120;let cur=$$('#paper h2,#paper h3,#paper h4')[0]?.id;for(const h of $$('#paper h2,#paper h3,#paper h4')){if(h.offsetTop<=y)cur=h.id;else break}$$('#toc a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')===`#${cur}`))},{passive:true});
 // Lightbox
