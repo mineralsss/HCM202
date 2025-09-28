@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tư tưởng HCM – Đại đoàn kết (fix overlap & overflow)</title>
+<title>Tư tưởng HCM – Đại đoàn kết (grid 12 cột & timeline chuẩn)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -36,21 +36,23 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);
 .hero .visual img{height:320px;width:100%;object-fit:cover;filter:saturate(1.03)}
 @media(max-width:960px){.hero{grid-template-columns:1fr}.hero .visual img{height:220px}}
 
-/* ===== CORE 5.1 – safe grid (no overlap) ===== */
+/* ===== Titles ===== */
 .section-title{display:flex;align-items:center;gap:10px;margin:0 0 10px;font-size:24px;color:#b61f1f}
 .section-title .flag{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,#d62828,#ad1f1f);position:relative}
 .section-title .flag::after{content:"";position:absolute;left:6px;top:6px;width:14px;height:14px;background:#fff;clip-path:polygon(0 0,100% 50%,0 100%)}
 
+/* ===== CORE 5.1 – grid 12 cột: KHÔNG chèn/ tràn ===== */
 .core-wrap{
-  display:grid; gap:32px;        /* gap lớn hơn để tránh “đụng” bóng đổ */
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  align-items:stretch;            /* cột cao đều */
+  display:grid;
+  grid-template-columns:repeat(12, 1fr);
+  gap:24px;
+  align-items:stretch;         /* cao đều theo cột */
 }
 .core-card{
   position:relative; isolation:isolate; overflow:hidden;
   border-radius:22px; background:#fff; border:1px solid rgba(0,0,0,.06);
   box-shadow:0 18px 40px rgba(0,0,0,.12);
-  /* KHÔNG dịch chuyển khi hover để khỏi chèn */
+  display:flex; flex-direction:column; min-height:220px;
 }
 .core-head{
   display:flex; align-items:center; gap:12px; padding:14px 16px;
@@ -58,18 +60,27 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);
   border-bottom:1px solid rgba(0,0,0,.06);
 }
 .core-badge{
-  width:40px;height:40px;border-radius:12px;flex:0 0 40px;display:grid;place-items:center;color:#fff;font-weight:800;
-  background:linear-gradient(135deg,#d62828,#ad1f1f); box-shadow:0 0 0 6px rgba(214,170,19,.35);
+  width:40px;height:40px;border-radius:12px;flex:0 0 40px;display:grid;place-items:center;
+  color:#fff;font-weight:800;background:linear-gradient(135deg,#d62828,#ad1f1f);
+  box-shadow:0 0 0 6px rgba(214,170,19,.35);
 }
 .core-title{margin:0;font-size:18px;color:#191919}
 .core-body{padding:16px 18px 18px}
 .core-body p{margin:0;line-height:1.7}
-.core-body b{color:#111}
 .core-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
 .core-li{display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:start}
-.core-dot{width:10px;height:10px;margin-top:8px;border-radius:50%;background:linear-gradient(135deg,#f4c542,#ffd86a);box-shadow:0 0 0 2px #fff inset,0 0 0 1px rgba(0,0,0,.12)}
+.core-dot{width:10px;height:10px;margin-top:8px;border-radius:50%;
+  background:linear-gradient(135deg,#f4c542,#ffd86a);box-shadow:0 0 0 2px #fff inset,0 0 0 1px rgba(0,0,0,.12)}
 
-/* ===== Timeline – columns don’t overflow ===== */
+/* span tiện ích */
+.col-12{grid-column:span 12}
+@media (min-width:700px){ .md-6{grid-column:span 6} }
+@media (min-width:1024px){
+  .lg-4{grid-column:span 4}
+  .lg-6{grid-column:span 6}
+}
+
+/* ===== Timeline – không tràn; mobile xếp dọc ===== */
 .timeline{padding:18px;overflow:hidden}
 .tbar{position:relative;height:12px;border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:inset 0 1px 0 rgba(0,0,0,.05)}
 .segment{position:absolute;top:-1px;height:14px;border-radius:999px}
@@ -87,12 +98,12 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);
 .i2{background:linear-gradient(90deg,#d62828,#b71f1f)}
 .i3{background:linear-gradient(90deg,#222,#444)}
 
-/* 3 cột theo đúng tỉ lệ nhưng KHÔNG tràn (minmax(0, fr)) */
+/* 3 cột theo tỉ lệ minmax(0, fr) – không tràn */
 .event-grid{
   display:grid; gap:16px; margin-top:16px;
   grid-template-columns:minmax(0,18fr) minmax(0,45fr) minmax(0,37fr);
 }
-.col{display:grid;gap:12px; min-width:0}     /* min-width:0 để fr chịu thu hẹp */
+.col{display:grid;gap:12px; min-width:0}
 .event{
   position:relative; background:#fff; border:1px solid var(--line); border-radius:14px;
   padding:12px 14px; box-shadow:0 10px 24px rgba(0,0,0,.08);
@@ -108,14 +119,14 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);
 .gallery .card{padding:0;overflow:hidden}
 .fig{display:flex;flex-direction:column}
 .fig img{height:260px;object-fit:cover}
-.fig figcaption{padding:10px 14px;border-top:1px solid var(--line);color:var(--muted)}
+.fig figcaption{padding:10px 14px;border-top:1px solid var(--line);color:#6a6a6a}
 
 /* Reveal */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
 .reveal.show{opacity:1;transform:none}
 .reveal.slideR{transform:translateX(22px)} .reveal.slideL{transform:translateX(-22px)}
 
-/* Responsive: dưới 920px, timeline xếp dọc 1 cột – hết tràn */
+/* Responsive: dưới 920px timeline xếp dọc */
 @media (max-width:920px){
   .event-grid{grid-template-columns:1fr}
   .event::before{left:20px}
@@ -148,19 +159,28 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);
     </div>
   </section>
 
-  <!-- Cốt lõi 5.1 -->
+  <!-- Cốt lõi 5.1 – lưới 12 cột, span rõ ràng -->
   <section id="cotloi" class="section">
     <h2 class="section-title"><span class="flag"></span>Cốt lõi 5.1 – Đại đoàn kết toàn dân tộc</h2>
+
     <div class="core-wrap">
-      <article class="core-card reveal">
+      <!-- Hàng 1: 3 thẻ (4 cột) -->
+      <article class="core-card col-12 md-6 lg-4">
         <header class="core-head"><div class="core-badge">1</div><h3 class="core-title">Vai trò</h3></header>
-        <div class="core-body"><p>Đại đoàn kết là <b>chiến lược quyết định</b> của cách mạng: <b>sức mạnh vô địch</b>, <b>then chốt của thành công</b>.</p></div>
+        <div class="core-body">
+          <p>Đại đoàn kết là <b>chiến lược quyết định</b> của cách mạng: <b>sức mạnh vô địch</b>, <b>then chốt của thành công</b>.</p>
+        </div>
       </article>
-      <article class="core-card reveal slideL">
+
+      <article class="core-card col-12 md-6 lg-4">
         <header class="core-head"><div class="core-badge">2</div><h3 class="core-title">Lực lượng</h3></header>
-        <div class="core-body"><p><b>Chủ thể:</b> toàn dân tộc Việt Nam.<br><b>Nền tảng:</b> liên minh <i>công – nông – trí thức</i> dưới sự lãnh đạo của Đảng.</p></div>
+        <div class="core-body">
+          <p><b>Chủ thể:</b> toàn dân tộc Việt Nam.<br>
+             <b>Nền tảng:</b> liên minh <i>công – nông – trí thức</i> dưới sự lãnh đạo của Đảng.</p>
+        </div>
       </article>
-      <article class="core-card reveal slideR">
+
+      <article class="core-card col-12 md-6 lg-4">
         <header class="core-head"><div class="core-badge">3</div><h3 class="core-title">Điều kiện</h3></header>
         <div class="core-body">
           <ul class="core-list">
@@ -170,13 +190,21 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);
           </ul>
         </div>
       </article>
-      <article class="core-card reveal">
+
+      <!-- Hàng 2: 2 thẻ (6 cột) -->
+      <article class="core-card col-12 md-6 lg-6">
         <header class="core-head"><div class="core-badge">4</div><h3 class="core-title">Mặt trận thống nhất</h3></header>
-        <div class="core-body"><p>Hình thức tổ chức khối đoàn kết: <i>Việt Minh → Liên Việt → Mặt trận Tổ quốc</i>.<br>Nguyên tắc: <b>hiệp thương dân chủ</b>, đoàn kết <b>lâu dài – chân thành</b>.</p></div>
+        <div class="core-body">
+          <p>Hình thức tổ chức khối đoàn kết: <i>Việt Minh → Liên Việt → Mặt trận Tổ quốc</i>.<br>
+             Nguyên tắc: <b>hiệp thương dân chủ</b>, đoàn kết <b>lâu dài – chân thành</b>.</p>
+        </div>
       </article>
-      <article class="core-card reveal">
+
+      <article class="core-card col-12 md-6 lg-6">
         <header class="core-head"><div class="core-badge">5</div><h3 class="core-title">Phương thức</h3></header>
-        <div class="core-body"><p><b>Dân vận</b>: tổ chức, giáo dục, phát huy trí – lực quần chúng; phối hợp các tổ chức quần chúng trong Mặt trận.</p></div>
+        <div class="core-body">
+          <p><b>Dân vận</b>: tổ chức, giáo dục, phát huy trí – lực quần chúng; phối hợp các tổ chức quần chúng trong Mặt trận.</p>
+        </div>
       </article>
     </div>
   </section>
