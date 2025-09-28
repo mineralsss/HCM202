@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chuyên đề: Đại đoàn kết dân tộc – HCM</title>
-  <meta name="description" content="Trang tổng hợp nội dung học phần Tư tưởng Hồ Chí Minh – Chương 5: Đại đoàn kết toàn dân tộc và đoàn kết quốc tế." />
+  <title>Chuyên đề: Đại đoàn kết dân tộc – Tư tưởng Hồ Chí Minh</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -30,12 +29,13 @@
     .btn.primary{background:linear-gradient(180deg,var(--acc),var(--brand));color:#0b1020;border:0}
 
     main{display:grid;grid-template-columns:280px 1fr;gap:24px;margin-top:16px}
-    @media (max-width: 960px){ main{grid-template-columns:1fr} .toc{position:static; top:auto; } }
+    @media (max-width:960px){ main{grid-template-columns:1fr} .toc{position:static; top:auto; } }
 
     .card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid var(--line);border-radius:var(--br)}
     .hero{padding:18px}
     .hero h2{margin:0 0 6px;font-size:22px}
     .hero p{margin:0;color:var(--muted)}
+    .meta{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:14px}
 
     .toc{position:sticky;top:76px;height:calc(100dvh - 96px);overflow:auto;padding:14px}
     .toc h3{margin:8px 0 10px;font-size:14px;color:var(--muted)}
@@ -49,17 +49,36 @@
     h3{margin:8px 0}
     h4{margin:8px 0;color:#c7d2fe}
     .quote{padding:14px 16px;border-left:4px solid var(--brand);background:rgba(110,168,254,.08);border-radius:8px}
-    .meta{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:14px}
-
     .toolbar{display:flex;gap:10px;flex-wrap:wrap;padding:12px}
     .search{flex:1;min-width:240px;display:flex;gap:8px}
     .search input{flex:1;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--text)}
     .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-size:12px}
-
     mark{background:rgba(110,168,254,.35);padding:2px 4px;border-radius:6px}
-
     .foot{margin-top:24px;padding:18px;color:var(--muted);border-top:1px solid var(--line)}
     .small{font-size:13px;color:var(--muted)}
+
+    /* --- Banner --- */
+    .banner{position:relative;margin:16px 0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 18px 40px rgba(0,0,0,.25)}
+    .banner img{display:block;width:100%;height:320px;object-fit:cover;filter:saturate(1.05)}
+    .banner::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.55))}
+    .banner .cap{position:absolute;left:20px;bottom:16px;color:#fff;font-weight:600;letter-spacing:.2px}
+    .banner .cap .sub{display:block;font-weight:500;opacity:.9;font-size:14px}
+
+    /* --- Gallery --- */
+    .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:10px}
+    .gallery .fig{grid-column:span 12;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    @media(min-width:700px){.gallery .fig{grid-column:span 6}}
+    @media(min-width:1040px){.gallery .fig{grid-column:span 4}}
+    .fig img{display:block;width:100%;height:220px;object-fit:cover}
+    .fig figcaption{padding:10px 12px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+
+    /* --- Lightbox --- */
+    .lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:9999}
+    .lb.open{display:flex}
+    .lb-inner{max-width:min(1100px,92vw);max-height:88vh}
+    .lb-inner img{width:100%;height:auto;border-radius:12px}
+    .lb .close{position:absolute;top:16px;right:16px;background:#0008;border:1px solid #fff3;color:#fff;padding:8px 10px;border-radius:10px;cursor:pointer}
+    .lb .caption{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);color:#fff;background:#0008;padding:8px 12px;border-radius:10px;font-size:14px;max-width:80vw}
   </style>
 </head>
 <body>
@@ -86,17 +105,25 @@
       </div>
       <h2>Đặt vấn đề / câu hỏi kiến tạo</h2>
       <p id="problem">
-        Trong lịch sử, nhiều phong trào cách mạng từng kêu gọi đoàn kết nhưng chỉ dừng lại ở mức tạm thời, khi đạt mục tiêu thì khối đoàn kết tan rã. Hồ Chí Minh khẳng định: “Đoàn kết là then chốt của thành công” và coi đó là chiến lược xuyên suốt. <strong>Vậy đoàn kết dân tộc</strong> trong tư tưởng Hồ Chí Minh là <em>sách lược tình thế</em> hay là <em>chiến lược mang tính sống còn</em>?
+        Trong lịch sử, nhiều phong trào cách mạng từng kêu gọi đoàn kết nhưng chỉ dừng lại ở mức tạm thời, khi đạt mục tiêu thì khối đoàn kết tan rã.
+        Hồ Chí Minh khẳng định: “Đoàn kết là then chốt của thành công” và coi đó là chiến lược xuyên suốt.
+        <strong>Vậy đoàn kết dân tộc</strong> trong tư tưởng Hồ Chí Minh là <em>sách lược tình thế</em> hay là <em>chiến lược mang tính sống còn</em>?
       </p>
       <div class="quote small">💡 Gợi ý: Trả lời bằng cách trình bày hệ thống luận điểm – luận cứ – dẫn chứng lịch sử – vận dụng hiện nay.</div>
       <div class="toolbar">
         <div class="search">
-          <input id="searchBox" placeholder="Tìm nhanh trong trang (ví dụ: \"Mặt trận\")"/>
+          <input id="searchBox" placeholder="Tìm nhanh trong trang (ví dụ: 'Mặt trận')" />
           <button class="btn" id="btnFind">🔍 Tìm</button>
         </div>
         <span class="chip">⌘/Ctrl + F: tìm trình duyệt</span>
         <span class="chip">S: bật chỉnh sửa</span>
       </div>
+    </div>
+
+    <!-- Hero banner -->
+    <div class="banner">
+      <img src="images/doan-ket-lehoi.jpeg" alt="Không khí đoàn kết toàn dân trong ngày hội lớn"/>
+      <div class="cap">Khối đại đoàn kết toàn dân tộc<span class="sub">Sức mạnh vô địch – chìa khóa của mọi thắng lợi</span></div>
     </div>
 
     <main>
@@ -161,18 +188,37 @@
           </ul>
           <p class="small">Tổng kết: Tư tưởng HCM về đại đoàn kết là <strong>đường lối chiến lược</strong> xuyên suốt – động lực & nguồn lực để giành và giữ độc lập, xây dựng & bảo vệ Tổ quốc trong mọi thời kỳ.</p>
         </section>
+
+        <section id="hinh-anh">
+          <h3>Hình ảnh minh họa</h3>
+          <p class="small">Ảnh minh họa cho nội dung Chương 5. Bấm ảnh để phóng to. Thay ảnh bằng cách đặt file trong thư mục <code>/images</code> đúng tên phía dưới.</p>
+          <div class="gallery" id="gallery">
+            <figure class="fig">
+              <img loading="lazy" src="images/doan-ket-lehoi.jpeg" alt="Không khí đoàn kết toàn dân – lễ diễu hành">
+              <figcaption>Không khí đoàn kết toàn dân – sắc màu các dân tộc cùng cờ Tổ quốc.</figcaption>
+            </figure>
+            <figure class="fig">
+              <img loading="lazy" src="images/bac-ho-dan-toc.jpg" alt="Chủ tịch Hồ Chí Minh với đồng bào các dân tộc">
+              <figcaption>Chủ tịch Hồ Chí Minh với đồng bào các dân tộc – biểu tượng của khối đại đoàn kết.</figcaption>
+            </figure>
+            <figure class="fig">
+              <img loading="lazy" src="images/bac-ho-giua-nhan-dan.jpg" alt="Bác Hồ giữa biển người">
+              <figcaption>Bác Hồ giữa biển người: “Dân là gốc” – niềm tin là nền tảng của đoàn kết.</figcaption>
+            </figure>
+          </div>
+        </section>
       </article>
     </main>
 
     <footer class="foot small">
-      © 2025 Nhóm Học phần HCM – Template single‑file. Có thể deploy lên Vercel/Netlify/GitHub Pages.
+      © 2025 Nhóm Học phần HCM – Single-file template. Có thể deploy lên Vercel/Netlify/GitHub Pages.
     </footer>
   </div>
 
   <script>
-    // ====== Helpers ======
+    // Helpers
     const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
-    const $ = (sel, root=document) => root.querySelector(sel);
+    const $  = (sel, root=document) => root.querySelector(sel);
 
     // Cập nhật thời gian
     const fmt = new Intl.DateTimeFormat('vi-VN', { dateStyle: 'medium', timeStyle: 'short' });
@@ -194,35 +240,28 @@
     buildTOC();
 
     // Scrollspy
-    const tocLinks = () => $$('#toc a');
     function onScrollSpy(){
       const fromTop = window.scrollY + 120;
       const heads = $$('#paper h2, #paper h3, #paper h4');
       let currentId = heads[0]?.id;
       for(const h of heads){ if(h.offsetTop <= fromTop) currentId = h.id; else break; }
-      tocLinks().forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${currentId}`));
+      $$('#toc a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${currentId}`));
     }
     document.addEventListener('scroll', onScrollSpy, {passive:true});
 
-    // In / PDF
+    // Print & Copy deep link
     $('#btnPrint').addEventListener('click', () => window.print());
-
-    // Copy deep link
     $('#btnCopyLink').addEventListener('click', () => {
       const active = $('#toc a.active') || $('#toc a');
       const url = new URL(location.href);
       if(active){ url.hash = active.getAttribute('href'); }
-      navigator.clipboard.writeText(url.toString()).then(()=>{
-        toast('Đã sao chép liên kết mục hiện tại.');
-      });
+      navigator.clipboard.writeText(url.toString()).then(()=> toast('Đã sao chép liên kết mục hiện tại.'));
     });
 
-    // Tìm kiếm trong trang (highlight tạm thời)
+    // Tìm kiếm highlight
     $('#btnFind').addEventListener('click', () => highlight($('#searchBox').value.trim()));
     $('#searchBox').addEventListener('keydown', e=>{ if(e.key==='Enter') highlight(e.target.value.trim()); });
-
     function highlight(q){
-      // clear
       $$('#paper mark').forEach(m => { const t = document.createTextNode(m.textContent); m.replaceWith(t); });
       if(!q) return;
       const walker = document.createTreeWalker($('#paper'), NodeFilter.SHOW_TEXT, null);
@@ -243,44 +282,58 @@
       toast('Đã đánh dấu kết quả tìm kiếm.');
     }
 
-    // Chỉnh sửa inline (toggle contenteditable + lưu LocalStorage)
+    // Inline edit + LocalStorage
     const KEY = 'hcm-page-content';
     const article = $('#paper');
     const btnEdit = $('#btnEdit');
     const setEditable = (v) => { article.contentEditable = v; btnEdit.textContent = v ? '💾 Lưu & Tắt sửa' : '✍️ Chỉnh sửa'; };
-
-    // Khởi tạo từ LocalStorage nếu có
     const saved = localStorage.getItem(KEY);
     if(saved){ article.innerHTML = saved; buildTOC(); }
-
-    function toast(msg){
-      const t = document.createElement('div');
-      t.textContent = msg; t.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0b1020;padding:10px 14px;border:1px solid var(--line);border-radius:10px;z-index:9999';
-      document.body.appendChild(t); setTimeout(()=>t.remove(), 1800);
-    }
-
     btnEdit.addEventListener('click', () => {
       const editing = article.isContentEditable;
       if(editing){
-        // Save
         localStorage.setItem(KEY, article.innerHTML);
         toast('Đã lưu nội dung (LocalStorage).');
         setEditable(false);
         buildTOC();
       } else {
-        setEditable(true);
-        article.focus();
+        setEditable(true); article.focus();
       }
     });
+    document.addEventListener('keydown', (e)=>{ if(e.key.toLowerCase()==='s' && !e.metaKey && !e.ctrlKey){ e.preventDefault(); btnEdit.click(); }});
 
-    // Phím tắt: S để bật/tắt sửa
-    document.addEventListener('keydown', (e)=>{
-      if(e.key.toLowerCase()==='s' && !e.metaKey && !e.ctrlKey){ e.preventDefault(); btnEdit.click(); }
-    });
+    function toast(msg){
+      const t = document.createElement('div');
+      t.textContent = msg;
+      t.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0b1020;padding:10px 14px;border:1px solid var(--line);border-radius:10px;z-index:9999';
+      document.body.appendChild(t); setTimeout(()=>t.remove(), 1800);
+    }
+
+    // Lightbox
+    const lb = document.createElement('div');
+    lb.className = 'lb';
+    lb.innerHTML = '<button class="close">✕</button><div class="lb-inner"><img alt=""/></div><div class="caption"></div>';
+    document.body.appendChild(lb);
+    const lbImg = lb.querySelector('img');
+    const lbCap = lb.querySelector('.caption');
+    lb.addEventListener('click', (e)=>{ if(e.target===lb || e.target.classList.contains('close')) lb.classList.remove('open'); });
+
+    function enableLightbox(){
+      $$('#gallery img').forEach(img=>{
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', ()=>{
+          lbImg.src = img.src; lbImg.alt = img.alt || '';
+          const cap = img.closest('figure')?.querySelector('figcaption')?.textContent?.trim() || '';
+          lbCap.textContent = cap; lb.classList.add('open');
+        });
+      });
+    }
+    enableLightbox();
+    new MutationObserver(()=> enableLightbox()).observe(document.getElementById('paper'), { subtree:true, childList:true });
   </script>
 
   <style media="print">
-    header, .toc .btn, .toolbar, .foot, #btnPrint, #btnEdit, #btnCopyLink{ display:none !important }
+    header, .toc, .btn, .toolbar, .foot, #btnPrint, #btnEdit, #btnCopyLink { display: none !important; }
     main{ grid-template-columns:1fr; }
     body{ background:#fff; color:#000 }
     .card{ border:0; background:#fff }
