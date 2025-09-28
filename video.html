@@ -10,8 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#fff7e8; --paper:#fff; --ink:#1a1a1a; --muted:#5c5c5c; --line:rgba(0,0,0,.08);
-      --red:#cf2e2e; --red2:#b71f1f; --yellow:#f4c542; --black:#121212; --br:16px;
+      --bg:#fff7e8; --paper:#fff; --ink:#1a1a1a; --line:rgba(0,0,0,.08);
+      --red:#cf2e2e; --red2:#b71f1f; --br:16px;
     }
     *{box-sizing:border-box}
     html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
@@ -27,20 +27,14 @@
     .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--br);box-shadow:0 10px 28px rgba(0,0,0,.07);padding:20px}
     .hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
     .hdr h2{margin:0;font-size:26px;color:#b32525}
-    .lead{margin:4px 0 0;color:#5c5c5c}
     /* Responsive 16:9 wrapper */
     .video-wrap{position:relative;width:100%;padding-top:56.25%;background:#000;border-radius:12px;overflow:hidden;border:2px solid var(--red)}
     .video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-    /* Small helper styles */
-    .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .tag{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;color:#333;font-weight:600}
-    footer{padding:26px 0;text-align:center;color:var(--muted);border-top:3px solid var(--red);background:#fffbe9}
-    .grid{display:grid;grid-template-columns:1fr;gap:16px}
-    @media (min-width:900px){.grid{grid-template-columns:7fr 5fr}}
-    .thumb{display:grid;grid-auto-rows:min-content;gap:12px}
-    .thumb a{display:block;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
-    .thumb img{display:block;width:100%;height:160px;object-fit:cover}
-    .thumb span{display:block;padding:10px 12px;font-weight:600}
+    /* credit + article */
+    .credit{margin-top:10px;font-size:14px;color:#555}
+    .credit b{color:#111}
+    .article h3{margin:0 0 8px;font-size:20px;color:#b32525}
+    .article p{margin:10px 0;line-height:1.75}
   </style>
 </head>
 <body>
@@ -52,46 +46,38 @@
 </header>
 
 <main class="container">
-  <!-- Video chính -->
+  <!-- Video -->
   <section class="section">
-    <div class="hdr">
-      <h2>🎬 Video minh họa</h2>
-    </div>
-
-    <div class="grid">
-      <!-- Player -->
-      <div class="card">
-        <div class="video-wrap">
-          <!-- đổi watch?v=... thành embed/... -->
-          <iframe
-            title="YouTube video"
-            src="https://www.youtube.com/embed/9WziqsYSUgk"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-            referrerpolicy="strict-origin-when-cross-origin">
-          </iframe>
-        </div>
-        <p class="lead">Nguồn: YouTube. Nếu không phát được, <a href="https://www.youtube.com/watch?v=9WziqsYSUgk" target="_blank" rel="noopener">mở trực tiếp trên YouTube</a>.</p>
-        <div class="meta">
-          <span class="tag">Nền kem</span>
-          <span class="tag">Đỏ • Vàng • Đen</span>
-          <span class="tag">Responsive 16:9</span>
-        </div>
+    <div class="hdr"><h2>🎬 VTV - Đại đoàn kết toàn dân - Cội nguồn sức mạnh Việt Nam</h2></div>
+    <div class="card">
+      <div class="video-wrap">
+        <iframe
+          title="YouTube video"
+          src="https://www.youtube.com/embed/9WziqsYSUgk"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
       </div>
+      <div class="credit">Nguồn: <b>VTV</b></div>
+    </div>
+  </section>
 
-      <!-- Chỗ để thêm video khác (tùy chọn) -->
-      <aside class="thumb">
-        <a href="https://www.youtube.com/watch?v=9WziqsYSUgk" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/9WziqsYSUgk/hqdefault.jpg" alt="Xem trên YouTube">
-          <span>Mở trên YouTube</span>
-        </a>
-        <!-- Bạn có thể nhân bản block <a> này cho các video khác -->
-      </aside>
+  <!-- Khung nội dung từ VTV -->
+  <section class="section">
+    <div class="card article">
+      <h3>VTV.vn – Đại đoàn kết toàn dân</h3>
+      <p>Đây được xem là cội nguồn sức mạnh của dân tộc Việt Nam chúng ta trong suốt chiều dài lịch sử dựng nước và giữ nước. Bức thư Kính cáo đồng bào của Chủ tịch Hồ Chí Minh năm 1941 như lời hiệu triệu của non sông, nhân dân Việt Nam đã nhất tề đứng lên đánh đuổi Pháp, Nhật, làm nên Cách mạng Tháng Tám. Trong cuộc kháng chiến chống Mỹ, cuộc đối đầu được ví như "châu chấu đá voi", lớp lớp thế hệ người Việt đã vượt qua mọi khó khăn, gian khổ, sẵn sàng đi bất cứ nơi đâu, làm bất cứ việc gì Tổ quốc cần. Sức mạnh "dời non lấp biển" của khối đại đoàn kết toàn dân đã tạo nên một dòng thác, một làn sóng vĩ đại đánh tan kẻ thù, giành lại hòa bình thống nhất đất nước.</p>
+      <p>Bước vào thời bình, cả nước bắt tay vào sự nghiệp xây dựng chủ nghĩa xã hội trong điều kiện một nền kinh tế bị kiệt quệ sau hơn 30 năm chiến tranh. Đặc biệt, hệ thống xã hội chủ nghĩa thế giới suy yếu và sụp đổ năm 1991 đã đặt Việt Nam vào hoàn cảnh vô cùng khắc nghiệt. Khủng hoảng kinh tế – xã hội ở mức độ trầm trọng nhất. Đổi mới là bắt buộc, nhưng đổi mới thế nào, cách thức ra sao? Nếu không có tinh thần đoàn kết, đặt lợi ích dân tộc lên trên hết, chúng ta đã không có chặng đường đổi mới thành công như ngày hôm nay.</p>
+      <p>Bài học về tinh thần đoàn kết một lần nữa được khẳng định trong cuộc chiến chống COVID-19 của Việt Nam. Trong khi không ít cường quốc chao đảo vì dịch bệnh, ở Việt Nam có những cây ATM gạo không thể tìm thấy ở nơi nào trên thế giới. Cũng chưa có quốc gia nào căng mình bảo hộ công dân trong dịch như Việt Nam. Một điều tra quốc tế hồi tháng 3 tại 45 quốc gia đã cho thấy, chỉ số niềm tin của nhân dân Việt Nam vào chính phủ cao nhất thế giới. Bạn bè quốc tế đã và đang thấy một Việt Nam quả cảm và trên hết là sống có nghĩa có tình.</p>
+      <p>Tạp chí The Economist công bố một nghiên cứu cho thấy Việt Nam lọt top 16 nền kinh tế mới nổi thành công nhất thế giới. Và với dự báo tăng trưởng 2,8%, Việt Nam cũng sẽ có triển vọng là 1 trong 5 quốc gia có mức tăng trưởng GDP cao nhất thế giới. Lịch sử đã và đang chứng minh tinh thần đại đoàn kết toàn dân tộc là nhân tố quyết định mọi thắng lợi của sự nghiệp bảo vệ và xây dựng Tổ quốc.</p>
     </div>
   </section>
 </main>
 
-<footer>© 2025 Nhóm – Trang video đồng bộ giao diện.</footer>
+<footer style="padding:26px 0;text-align:center;color:#5c5c5c;border-top:3px solid var(--red);background:#fffbe9">
+  © 2025 Nhóm 8.
+</footer>
 </body>
 </html>
