@@ -4,76 +4,89 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Chuyên đề: Đại đoàn kết dân tộc – Tư tưởng Hồ Chí Minh</title>
-  <meta name="description" content="Trang học liệu Chương 5: Đại đoàn kết toàn dân tộc & đoàn kết quốc tế – Tư tưởng Hồ Chí Minh. Có mục lục tự động, tìm kiếm, chỉnh sửa inline, in PDF." />
+  <meta name="description" content="Trang học liệu Chương 5: Đại đoàn kết toàn dân tộc & đoàn kết quốc tế – Tư tưởng Hồ Chí Minh. Có menu cuộn nhanh, mục lục, tìm kiếm, chỉnh sửa inline, in PDF." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- ======= Theme: Cream + Red/Yellow/Black ======= -->
   <style>
     :root{
-      --bg:#0b1020; --panel:#121936; --card:#0e1330; --muted:#94a3b8; --text:#e6eaf2;
-      --brand:#6ea8fe; --acc:#8bafff; --ok:#22c55e; --warn:#f59e0b; --err:#ef4444;
-      --br:16px; --line:rgba(148,163,184,.2);
+      --bg:#fff7e8; --paper:#ffffff; --text:#1a1a1a; --muted:#5c5c5c; --line:rgba(0,0,0,.08);
+      --red:#cf2e2e; --red-dark:#b71f1f; --yellow:#f4c542; --black:#121212; --br:16px;
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
-    a{color:var(--brand);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{max-width:1100px;margin:0 auto;padding:24px}
-    header{position:sticky;top:0;background:linear-gradient(180deg,var(--bg),rgba(11,16,32,.6));backdrop-filter:blur(8px);z-index:50;border-bottom:1px solid var(--line)}
-    .topbar{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:14px 0}
+    body::before{
+      content:""; position:fixed; inset:0; z-index:-1;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(244,197,66,.25) 0 2px, transparent 3px) 0 0/180px 140px,
+        radial-gradient(circle at 80% 40%, rgba(244,197,66,.18) 0 2px, transparent 3px) 0 0/220px 160px;
+      opacity:.7;
+    }
+    a{color:var(--red);text-decoration:none} a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:20px 24px}
+
+    /* Header + nav */
+    header{position:sticky; top:0; z-index:50; background:linear-gradient(180deg, rgba(255,247,232,.95), rgba(255,247,232,.7)); border-bottom:3px solid var(--red); backdrop-filter:saturate(1.1) blur(6px)}
+    .topbar{display:flex;gap:12px;align-items:center;justify-content:space-between}
     .brand{display:flex;gap:10px;align-items:center}
-    .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--acc));display:grid;place-items:center;color:#0b1020;font-weight:800}
-    .brand h1{font-size:18px;margin:0}
+    .logo{width:36px;height:36px;border-radius:10px;background:var(--red);display:grid;place-items:center;color:#fff;font-weight:800}
+    .brand h1{font-size:18px;margin:0;color:var(--black);letter-spacing:.2px}
     .actions{display:flex;gap:10px;align-items:center}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--text);cursor:pointer}
-    .btn:hover{border-color:var(--brand)}
-    .btn.primary{background:linear-gradient(180deg,var(--acc),var(--brand));color:#0b1020;border:0}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;cursor:pointer;border:1.5px solid var(--black);background:var(--paper);color:var(--black);box-shadow:0 2px 0 var(--black)}
+    .btn:hover{transform:translateY(-1px)} .btn.primary{background:var(--red);border-color:var(--red-dark);color:#fff;box-shadow:0 2px 0 var(--red-dark)}
+    .mainnav{margin-top:10px;display:flex;gap:14px;flex-wrap:wrap}
+    .navlink{padding:8px 12px;border-radius:999px;border:1.5px solid var(--black);background:#fff;color:var(--black);box-shadow:0 2px 0 var(--black);font-weight:600}
+    .navlink.active{background:var(--red);border-color:var(--red-dark);color:#fff;box-shadow:0 2px 0 var(--red-dark)}
 
-    main{display:grid;grid-template-columns:280px 1fr;gap:24px;margin-top:16px}
-    @media (max-width:960px){ main{grid-template-columns:1fr} .toc{position:static; top:auto; } }
+    /* Layout */
+    main{display:grid;grid-template-columns:260px 1fr;gap:24px;margin-top:16px}
+    @media (max-width:960px){ main{grid-template-columns:1fr} .toc{position:static;top:auto} }
 
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid var(--line);border-radius:var(--br)}
+    .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--br);box-shadow:0 6px 24px rgba(0,0,0,.06)}
     .hero{padding:18px}
-    .hero h2{margin:0 0 6px;font-size:22px}
-    .hero p{margin:0;color:var(--muted)}
+    .hero h2{margin:0 0 6px;font-size:26px;color:var(--red)}
+    .hero p{margin:6px 0}
     .meta{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+    .quote{margin-top:8px;padding:16px;border-left:6px solid var(--yellow);background:linear-gradient(180deg, #fffbe9, #fff0c7);border:1px solid rgba(0,0,0,.06);border-radius:12px}
 
-    .toc{position:sticky;top:76px;height:calc(100dvh - 96px);overflow:auto;padding:14px}
+    .toc{position:sticky;top:116px;height:calc(100dvh - 136px);overflow:auto;padding:14px}
     .toc h3{margin:8px 0 10px;font-size:14px;color:var(--muted)}
     .toc a{display:block;padding:8px 10px;border-radius:10px}
-    .toc a.active{background:rgba(110,168,254,.12)}
+    .toc a.active{background:rgba(207,46,46,.12);border-left:4px solid var(--red)}
 
     .paper{padding:18px}
-    .paper h2{margin-top:0}
-    section{padding:14px 10px;border-top:1px dashed var(--line)}
-    section:first-of-type{border-top:0}
-    h3{margin:8px 0}
-    h4{margin:8px 0;color:#c7d2fe}
-    .quote{padding:14px 16px;border-left:4px solid var(--brand);background:rgba(110,168,254,.08);border-radius:8px}
+    .paper h2{margin-top:0;color:var(--black)}
+    section{padding:14px 10px;border-top:2px dashed rgba(207,46,46,.18)} section:first-of-type{border-top:0}
+    h3{margin:8px 0;color:var(--black)} h4{margin:8px 0;color:var(--red)}
     .toolbar{display:flex;gap:10px;flex-wrap:wrap;padding:12px}
     .search{flex:1;min-width:240px;display:flex;gap:8px}
-    .search input{flex:1;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--text)}
-    .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-size:12px}
-    mark{background:rgba(110,168,254,.35);padding:2px 4px;border-radius:6px}
-    .foot{margin-top:24px;padding:18px;color:var(--muted);border-top:1px solid var(--line)}
+    .search input{flex:1;padding:10px 12px;border-radius:12px;border:1.5px solid var(--black);background:#fff;color:var(--text);box-shadow:inset 0 2px 0 rgba(0,0,0,.05)}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:12px}
+    mark{background:#ffe08a;padding:2px 4px;border-radius:6px}
+
+    .foot{margin-top:24px;padding:18px;color:var(--muted);border-top:3px solid var(--red);background:#fffbe9}
     .small{font-size:13px;color:var(--muted)}
 
-    /* --- Banner --- */
-    .banner{position:relative;margin:16px 0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 18px 40px rgba(0,0,0,.25)}
-    .banner img{display:block;width:100%;height:320px;object-fit:cover;filter:saturate(1.05)}
-    .banner::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.55))}
-    .banner .cap{position:absolute;left:20px;bottom:16px;color:#fff;font-weight:600;letter-spacing:.2px}
-    .banner .cap .sub{display:block;font-weight:500;opacity:.9;font-size:14px}
+    /* Banner */
+    .banner{position:relative;margin:16px 0;border-radius:16px;overflow:hidden;border:2px solid var(--red);box-shadow:0 16px 36px rgba(207,46,46,.08)}
+    .banner img{display:block;width:100%;height:320px;object-fit:cover;filter:saturate(1.03)}
+    .banner::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(255,255,255,.0), rgba(255,255,255,.15))}
+    .banner .cap{position:absolute;left:20px;bottom:16px;color:var(--black);font-weight:700;text-shadow:0 1px 0 #fff}
+    .banner .cap .sub{display:block;font-weight:600;color:var(--red)}
 
-    /* --- Gallery --- */
+    /* Gallery (1 ảnh) */
     .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:10px}
-    .gallery .fig{grid-column:span 12;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.25)}
-    @media(min-width:700px){.gallery .fig{grid-column:span 6}}
-    @media(min-width:1040px){.gallery .fig{grid-column:span 4}}
-    .fig img{display:block;width:100%;height:220px;object-fit:cover}
+    .gallery .fig{grid-column:span 12;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.06)}
+    .fig img{display:block;width:100%;height:260px;object-fit:cover}
     .fig figcaption{padding:10px 12px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
 
-    /* --- Lightbox --- */
+    /* Responsive video wrapper */
+    .vid{position:relative;width:100%;padding-top:56.25%;border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.06)}
+    .vid iframe,.vid video{position:absolute;inset:0;width:100%;height:100%}
+
+    /* Lightbox */
     .lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:9999}
     .lb.open{display:flex}
     .lb-inner{max-width:min(1100px,92vw);max-height:88vh}
@@ -86,8 +99,8 @@
   <header>
     <div class="container topbar">
       <div class="brand">
-        <div class="logo">H5</div>
-        <h1>Tư tưởng HCM – Chương 5</h1>
+        <div class="logo">★</div>
+        <h1>Vững tin Đảng • Tư tưởng HCM</h1>
       </div>
       <div class="actions">
         <button class="btn" id="btnPrint" title="In / Xuất PDF">🖨️ In</button>
@@ -95,8 +108,19 @@
         <button class="btn primary" id="btnEdit" title="Bật chỉnh sửa inline">✍️ Chỉnh sửa</button>
       </div>
     </div>
+    <div class="container mainnav" id="mainnav">
+      <a class="navlink" href="#top">Trang chủ</a>
+      <a class="navlink" href="#problem">Câu hỏi</a>
+      <a class="navlink" href="#5-1">Nội dung 5.1</a>
+      <a class="navlink" href="#lich-su-41-46">1941–1946</a>
+      <a class="navlink" href="#lich-su-46-75">1946–1975</a>
+      <a class="navlink" href="#hien-dai-86-nay">1986–nay</a>
+      <a class="navlink" href="#hinh-anh">Hình ảnh</a>
+      <a class="navlink" href="#video">Video</a>
+    </div>
   </header>
 
+  <a id="top"></a>
   <div class="container">
     <div class="card hero">
       <div class="meta">
@@ -130,7 +154,6 @@
     <main>
       <nav class="card toc" id="toc">
         <h3>Mục lục</h3>
-        <!-- TOC items will be injected -->
       </nav>
 
       <article class="card paper" id="paper" contenteditable="false">
@@ -192,27 +215,31 @@
 
         <section id="hinh-anh">
           <h3>Hình ảnh minh họa</h3>
-          <p class="small">Ảnh minh họa cho nội dung Chương 5. Bấm ảnh để phóng to. Thay ảnh bằng cách đặt file trong thư mục <code>/images</code> đúng tên phía dưới.</p>
           <div class="gallery" id="gallery">
             <figure class="fig">
               <img loading="lazy" src="images/doan-ket-lehoi.jpeg" alt="Không khí đoàn kết toàn dân – lễ diễu hành">
               <figcaption>Không khí đoàn kết toàn dân – sắc màu các dân tộc cùng cờ Tổ quốc.</figcaption>
             </figure>
-            <figure class="fig">
-              <img loading="lazy" src="images/bac-ho-dan-toc.jpg" alt="Chủ tịch Hồ Chí Minh với đồng bào các dân tộc">
-              <figcaption>Chủ tịch Hồ Chí Minh với đồng bào các dân tộc – biểu tượng của khối đại đoàn kết.</figcaption>
-            </figure>
-            <figure class="fig">
-              <img loading="lazy" src="images/bac-ho-giua-nhan-dan.jpg" alt="Bác Hồ giữa biển người">
-              <figcaption>Bác Hồ giữa biển người: “Dân là gốc” – niềm tin là nền tảng của đoàn kết.</figcaption>
-            </figure>
           </div>
+        </section>
+
+        <section id="video">
+          <h3>Video</h3>
+          <p class="small">Bạn có thể thay iframe bên dưới bằng link YouTube của nhóm (chỉ cần thay <code>VIDEO_ID</code>), hoặc dùng thẻ <code>&lt;video&gt;</code> phát file mp4.</p>
+          <!-- YouTube embed (responsive) -->
+          <div class="vid">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Video minh họa" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+          <!-- Ví dụ dùng file mp4 tự lưu hosting:
+          <div class="vid"><video controls src="videos/nhom18.mp4" poster="images/poster.jpg"></video></div> -->
         </section>
       </article>
     </main>
 
     <footer class="foot small">
-      © 2025 Nhóm Học phần HCM – Single-file template. Có thể deploy lên Vercel/Netlify/GitHub Pages.
+      © 2025 Nhóm Học phần HCM – Single-file template. Menu cuộn nhanh, video, hình ảnh, in ấn.
     </footer>
   </div>
 
@@ -227,22 +254,17 @@
 
     // TOC auto-build
     function buildTOC(){
-      const toc = $('#toc');
-      toc.querySelectorAll('a').forEach(a=>a.remove());
+      const toc = $('#toc'); toc.querySelectorAll('a').forEach(a=>a.remove());
       $$('#paper h2, #paper h3, #paper h4').forEach(h => {
         const id = h.id || h.textContent.toLowerCase().replace(/[^a-z0-9à-ỹ\s-]/gi,'').trim().replace(/\s+/g,'-');
-        h.id = id;
-        const a = document.createElement('a');
-        a.href = `#${id}`;
-        a.textContent = h.tagName === 'H2' ? `★ ${h.textContent}` : h.textContent;
-        toc.appendChild(a);
+        h.id = id; const a = document.createElement('a'); a.href = `#${id}`; a.textContent = h.tagName==='H2'?`★ ${h.textContent}`:h.textContent; toc.appendChild(a);
       });
     }
     buildTOC();
 
-    // Scrollspy
+    // Scrollspy (TOC)
     function onScrollSpy(){
-      const fromTop = window.scrollY + 120;
+      const fromTop = window.scrollY + 140;
       const heads = $$('#paper h2, #paper h3, #paper h4');
       let currentId = heads[0]?.id;
       for(const h of heads){ if(h.offsetTop <= fromTop) currentId = h.id; else break; }
@@ -250,12 +272,11 @@
     }
     document.addEventListener('scroll', onScrollSpy, {passive:true});
 
-    // Print & Copy deep link
+    // In & Copy link
     $('#btnPrint').addEventListener('click', () => window.print());
     $('#btnCopyLink').addEventListener('click', () => {
       const active = $('#toc a.active') || $('#toc a');
-      const url = new URL(location.href);
-      if(active){ url.hash = active.getAttribute('href'); }
+      const url = new URL(location.href); if(active){ url.hash = active.getAttribute('href'); }
       navigator.clipboard.writeText(url.toString()).then(()=> toast('Đã sao chép liên kết mục hiện tại.'));
     });
 
@@ -266,75 +287,62 @@
       $$('#paper mark').forEach(m => { const t = document.createTextNode(m.textContent); m.replaceWith(t); });
       if(!q) return;
       const walker = document.createTreeWalker($('#paper'), NodeFilter.SHOW_TEXT, null);
-      const re = new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'), 'gi');
-      const nodes = [];
+      const re = new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'), 'gi'); const nodes = [];
       while(walker.nextNode()) nodes.push(walker.currentNode);
       nodes.forEach(node => {
-        const frag = document.createDocumentFragment();
-        let lastIdx = 0; const text = node.nodeValue;
-        text.replace(re, (match, idx) => {
-          frag.appendChild(document.createTextNode(text.slice(lastIdx, idx)));
-          const m = document.createElement('mark'); m.textContent = match; frag.appendChild(m);
-          lastIdx = idx + match.length;
-        });
-        frag.appendChild(document.createTextNode(text.slice(lastIdx)));
-        if(re.test(text)) node.parentNode.replaceChild(frag, node);
+        const frag = document.createDocumentFragment(); let lastIdx = 0; const text = node.nodeValue;
+        text.replace(re, (match, idx) => { frag.appendChild(document.createTextNode(text.slice(lastIdx, idx)));
+          const m = document.createElement('mark'); m.textContent = match; frag.appendChild(m); lastIdx = idx + match.length; });
+        frag.appendChild(document.createTextNode(text.slice(lastIdx))); if(re.test(text)) node.parentNode.replaceChild(frag, node);
       });
       toast('Đã đánh dấu kết quả tìm kiếm.');
     }
 
     // Inline edit + LocalStorage
-    const KEY = 'hcm-page-content';
-    const article = $('#paper');
-    const btnEdit = $('#btnEdit');
+    const KEY = 'hcm-page-content'; const article = $('#paper'); const btnEdit = $('#btnEdit');
     const setEditable = (v) => { article.contentEditable = v; btnEdit.textContent = v ? '💾 Lưu & Tắt sửa' : '✍️ Chỉnh sửa'; };
-    const saved = localStorage.getItem(KEY);
-    if(saved){ article.innerHTML = saved; buildTOC(); }
-    btnEdit.addEventListener('click', () => {
-      const editing = article.isContentEditable;
-      if(editing){
-        localStorage.setItem(KEY, article.innerHTML);
-        toast('Đã lưu nội dung (LocalStorage).');
-        setEditable(false);
-        buildTOC();
-      } else {
-        setEditable(true); article.focus();
-      }
+    const saved = localStorage.getItem(KEY); if(saved){ article.innerHTML = saved; buildTOC(); }
+    btnEdit.addEventListener('click', () => { const editing = article.isContentEditable;
+      if(editing){ localStorage.setItem(KEY, article.innerHTML); toast('Đã lưu nội dung (LocalStorage).'); setEditable(false); buildTOC(); }
+      else { setEditable(true); article.focus(); }
     });
     document.addEventListener('keydown', (e)=>{ if(e.key.toLowerCase()==='s' && !e.metaKey && !e.ctrlKey){ e.preventDefault(); btnEdit.click(); }});
-
-    function toast(msg){
-      const t = document.createElement('div');
-      t.textContent = msg;
-      t.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0b1020;padding:10px 14px;border:1px solid var(--line);border-radius:10px;z-index:9999';
-      document.body.appendChild(t); setTimeout(()=>t.remove(), 1800);
-    }
+    function toast(msg){ const t = document.createElement('div'); t.textContent = msg; t.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0b1020;color:#fff;padding:10px 14px;border-radius:10px;z-index:9999'; document.body.appendChild(t); setTimeout(()=>t.remove(), 1800); }
 
     // Lightbox
-    const lb = document.createElement('div');
-    lb.className = 'lb';
-    lb.innerHTML = '<button class="close">✕</button><div class="lb-inner"><img alt=""/></div><div class="caption"></div>';
-    document.body.appendChild(lb);
-    const lbImg = lb.querySelector('img');
-    const lbCap = lb.querySelector('.caption');
+    const lb = document.createElement('div'); lb.className = 'lb';
+    lb.innerHTML = '<button class="close">✕</button><div class="lb-inner"><img alt=""/></div><div class="caption"></div>'; document.body.appendChild(lb);
+    const lbImg = lb.querySelector('img'); const lbCap = lb.querySelector('.caption');
     lb.addEventListener('click', (e)=>{ if(e.target===lb || e.target.classList.contains('close')) lb.classList.remove('open'); });
+    function enableLightbox(){ $$('#gallery img').forEach(img=>{ img.style.cursor='zoom-in'; img.addEventListener('click', ()=>{
+      lbImg.src = img.src; lbImg.alt = img.alt || ''; const cap = img.closest('figure')?.querySelector('figcaption')?.textContent?.trim() || ''; lbCap.textContent = cap; lb.classList.add('open'); }); }); }
+    enableLightbox(); new MutationObserver(()=> enableLightbox()).observe(document.getElementById('paper'), { subtree:true, childList:true });
 
-    function enableLightbox(){
-      $$('#gallery img').forEach(img=>{
-        img.style.cursor = 'zoom-in';
-        img.addEventListener('click', ()=>{
-          lbImg.src = img.src; lbImg.alt = img.alt || '';
-          const cap = img.closest('figure')?.querySelector('figcaption')?.textContent?.trim() || '';
-          lbCap.textContent = cap; lb.classList.add('open');
-        });
-      });
+    // ===== Smooth scroll + active highlight cho thanh menu =====
+    // Smooth scroll with header offset
+    function smoothTo(id){
+      const el = document.querySelector(id); if(!el) return;
+      const y = el.getBoundingClientRect().top + window.pageYOffset - 110; // offset dưới header
+      window.scrollTo({top:y, behavior:'smooth'});
     }
-    enableLightbox();
-    new MutationObserver(()=> enableLightbox()).observe(document.getElementById('paper'), { subtree:true, childList:true });
+    $$('#mainnav a.navlink').forEach(a=>{
+      a.addEventListener('click', (e)=>{ e.preventDefault(); smoothTo(a.getAttribute('href')); });
+    });
+    // Active highlight theo vị trí cuộn
+    function onNavSpy(){
+      const ids = ['#top','#problem','#5-1','#lich-su-41-46','#lich-su-46-75','#hien-dai-86-nay','#hinh-anh','#video'];
+      const y = window.scrollY + 130;
+      let cur = '#top';
+      for(const id of ids){
+        const el = document.querySelector(id); if(el && el.offsetTop <= y) cur = id; else break;
+      }
+      $$('#mainnav a.navlink').forEach(a=> a.classList.toggle('active', a.getAttribute('href')===cur));
+    }
+    document.addEventListener('scroll', onNavSpy, {passive:true}); onNavSpy();
   </script>
 
   <style media="print">
-    header, .toc, .btn, .toolbar, .foot, #btnPrint, #btnEdit, #btnCopyLink { display: none !important; }
+    header, .mainnav, .toc, .btn, .toolbar, .foot, #btnPrint, #btnEdit, #btnCopyLink { display: none !important; }
     main{ grid-template-columns:1fr; }
     body{ background:#fff; color:#000 }
     .card{ border:0; background:#fff }
