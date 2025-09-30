@@ -12,14 +12,262 @@ header{border-bottom:3px solid var(--red);background:linear-gradient(180deg,rgba
 a{color:var(--red);text-decoration:none}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--br);box-shadow:0 6px 24px rgba(0,0,0,.06);padding:18px}
 .placeholder{padding:14px;border-left:6px solid #f4c542;background:#fffbe9;border:1px solid rgba(0,0,0,.06);border-radius:12px}
+
+/* Chatbot Styles */
+#chatbot-container{max-width:100%;margin:0 auto}
+#chat-messages{height:400px;overflow-y:auto;border:1px solid var(--line);border-radius:var(--br);padding:16px;margin-bottom:16px;background:#fafafa}
+.message{margin-bottom:16px;display:flex;align-items:flex-start;gap:12px}
+.message.user{flex-direction:row-reverse}
+.message-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px}
+.message.user .message-avatar{background:var(--red);color:white}
+.message.bot .message-avatar{background:#4a90e2;color:white}
+.message-content{max-width:70%;padding:12px 16px;border-radius:18px;line-height:1.5}
+.message.user .message-content{background:var(--red);color:white;border-bottom-right-radius:6px}
+.message.bot .message-content{background:white;border:1px solid var(--line);border-bottom-left-radius:6px}
+#chat-input-container{display:flex;gap:12px}
+#chat-input{flex:1;padding:12px 16px;border:1px solid var(--line);border-radius:24px;font-size:14px;outline:none}
+#chat-input:focus{border-color:var(--red)}
+#send-btn{padding:12px 24px;background:var(--red);color:white;border:none;border-radius:24px;cursor:pointer;font-weight:600}
+#send-btn:hover{background:#b22929}
+#send-btn:disabled{background:#ccc;cursor:not-allowed}
+.typing-indicator{display:flex;align-items:center;gap:4px;padding:12px 16px;background:white;border:1px solid var(--line);border-radius:18px;border-bottom-left-radius:6px}
+.typing-dot{width:8px;height:8px;background:#999;border-radius:50%;animation:typing 1.4s infinite ease-in-out}
+.typing-dot:nth-child(1){animation-delay:-0.32s}
+.typing-dot:nth-child(2){animation-delay:-0.16s}
+@keyframes typing{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
 </style></head><body>
 <header><div class="container top"><strong>Chatbot – Vững tin Đảng</strong><a href="index.html">← Trang chủ</a></div></header>
 <main class="container">
   <div class="card">
-    <h2>Chatbot (đang cập nhật)</h2>
-    <div class="placeholder">
-      
+    <h2>Trợ lý AI - Tìm hiểu về Chủ tịch Hồ Chí Minh</h2>
+    <div id="chatbot-container">
+      <div id="chat-messages"></div>
+      <div id="chat-input-container">
+        <input type="text" id="chat-input" placeholder="Hãy hỏi tôi về Chủ tịch Hồ Chí Minh..." />
+        <button id="send-btn">Gửi</button>
+      </div>
     </div>
   </div>
 </main>
+
+<script>
+// ===== CONFIGURATION =====
+// Add your Gemini API key here:
+const GEMINI_API_KEY = 'AIzaSyA1o7BOSkTMQzaz3HqMLVE6hxn4Pqv1_q4';
+// Get your free API key at: https://aistudio.google.com/app/apikey
+// ========================
+
+class HCMChatbot {
+  constructor() {
+    this.messages = document.getElementById('chat-messages');
+    this.input = document.getElementById('chat-input');
+    this.sendBtn = document.getElementById('send-btn');
+    this.init();
+  }
+
+  init() {
+    this.sendBtn.addEventListener('click', () => this.sendMessage());
+    this.input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') this.sendMessage();
+    });
+    
+    // Welcome message
+    setTimeout(() => {
+      this.addBotMessage('Xin chào! Tôi là trợ lý AI về Chủ tịch Hồ Chí Minh. Bạn có thể hỏi tôi về cuộc đời, sự nghiệp, tư tưởng của Bác Hồ.');
+    }, 500);
+  }
+
+  async sendMessage() {
+    const text = this.input.value.trim();
+    if (!text) return;
+    
+    this.addUserMessage(text);
+    this.input.value = '';
+    this.sendBtn.disabled = true;
+    this.sendBtn.textContent = 'Đang xử lý...';
+    
+    this.showTyping();
+    
+    try {
+      await this.generateResponse(text);
+    } catch (error) {
+      console.error('Message sending failed:', error);
+      this.addBotMessage('Xin lỗi, đã xảy ra lỗi khi xử lý tin nhắn của bạn. Vui lòng thử lại.');
+    } finally {
+      this.hideTyping();
+      this.sendBtn.disabled = false;
+      this.sendBtn.textContent = 'Gửi';
+    }
+  }
+
+  addUserMessage(text) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message user';
+    messageDiv.innerHTML = `
+      <div class="message-avatar">B</div>
+      <div class="message-content">${text}</div>
+    `;
+    this.messages.appendChild(messageDiv);
+    this.scrollToBottom();
+  }
+
+  addBotMessage(text) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message bot';
+    messageDiv.innerHTML = `
+      <div class="message-avatar">AI</div>
+      <div class="message-content">${text}</div>
+    `;
+    this.messages.appendChild(messageDiv);
+    this.scrollToBottom();
+  }
+
+  showTyping() {
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'message bot';
+    typingDiv.id = 'typing-indicator';
+    typingDiv.innerHTML = `
+      <div class="message-avatar">AI</div>
+      <div class="typing-indicator">
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+      </div>
+    `;
+    this.messages.appendChild(typingDiv);
+    this.scrollToBottom();
+  }
+
+  hideTyping() {
+    const typing = document.getElementById('typing-indicator');
+    if (typing) typing.remove();
+  }
+
+  async generateResponse(userMessage) {
+    try {
+      // Create context-aware prompt for Gemini API
+      const contextPrompt = `Bạn là một trợ lý AI chuyên về Chủ tịch Hồ Chí Minh và lịch sử Việt Nam. 
+      Hãy trả lời câu hỏi sau một cách chính xác, ngắn gọn bằng tiếng Việt (không quá 150 từ): "${userMessage}"
+      
+      Nếu câu hỏi không liên quan đến Hồ Chí Minh hoặc lịch sử Việt Nam, hãy lịch sự từ chối và hướng dẫn người dùng hỏi về chủ đề phù hợp.`;
+
+      const response = await this.callGeminiAPI(contextPrompt);
+      this.addBotMessage(response);
+    } catch (error) {
+      console.error('API Error:', error);
+      // Fallback to static responses if API fails
+      this.generateStaticResponse(userMessage);
+    }
+  }
+
+  async callGeminiAPI(prompt) {
+    if (!GEMINI_API_KEY || GEMINI_API_KEY === 'YOUR_GEMINI_API_KEY_HERE') {
+      throw new Error('API key not configured');
+    }
+
+    const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-goog-api-key': GEMINI_API_KEY
+      },
+      body: JSON.stringify({
+        contents: [{
+          parts: [{
+            text: prompt
+          }]
+        }],
+        generationConfig: {
+          maxOutputTokens: 200,
+          temperature: 0.7
+        }
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`API request failed: ${response.status}`);
+    }
+
+    const data = await response.json();
+    
+    if (data.candidates && data.candidates[0] && data.candidates[0].content) {
+      return data.candidates[0].content.parts[0].text;
+    } else {
+      throw new Error('Invalid API response format');
+    }
+  }
+
+  generateStaticResponse(userMessage) {
+    const responses = this.getResponseDatabase();
+    const message = userMessage.toLowerCase();
+    
+    let response = "Xin lỗi, tôi chưa hiểu câu hỏi của bạn. Bạn có thể hỏi tôi về cuộc đời, sự nghiệp, tư tưởng của Chủ tịch Hồ Chí Minh.";
+    
+    for (const [keywords, answer] of responses) {
+      if (keywords.some(keyword => message.includes(keyword))) {
+        response = answer;
+        break;
+      }
+    }
+    
+    this.addBotMessage(response);
+  }
+
+  getResponseDatabase() {
+    return [
+      [['tên thật', 'tên thật của bác hồ', 'tên khai sinh'], 
+       'Tên thật của Chủ tịch Hồ Chí Minh là Nguyễn Sinh Cung, sinh ngày 19 tháng 5 năm 1890 tại Làng Sen, Nam Đàn, Nghệ An.'],
+      
+      [['sinh năm', 'năm sinh', 'sinh khi nào'], 
+       'Chủ tịch Hồ Chí Minh sinh năm 1890 tại Làng Sen, Nam Đàn, Nghệ An.'],
+      
+      [['mất năm', 'qua đời', 'wáy'], 
+       'Chủ tịch Hồ Chí Minh qua đời vào ngày 2 tháng 9 năm 1969 tại Hà Nội, hưởng thọ 79 tuổi.'],
+      
+      [['bút danh', 'biệt danh', 'tên khác'], 
+       'Người có nhiều bút danh như: Nguyễn Ái Quốc, Lý Thụy, Tống Văn Sơ, Nguyễn Ô Phập... và cuối cùng là Hồ Chí Minh từ năm 1942.'],
+      
+      [['du học', 'ra nước ngoài', 'đi pháp'], 
+       'Năm 1911, Người lên tàu Đô đốc Latouche Tréville ra nước ngoài tìm đường cứu nước, bắt đầu cuộc hành trình 30 năm lưu lạc.'],
+      
+      [['tư tưởng', 'tư tưởng hồ chí minh', 'chủ nghĩa'], 
+       'Tư tưởng Hồ Chí Minh là hệ thống quan điểm toàn diện về những vấn đề cơ bản của cách mạng Việt Nam, kết hợp chủ nghĩa Marx-Lenin với thực tiễn Việt Nam.'],
+      
+      [['độc lập', 'tuyên ngôn độc lập', '2/9'], 
+       'Ngày 2/9/1945, tại Quảng trường Ba Đình, Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập, khai sinh nước Việt Nam Dân chủ Cộng hòa.'],
+      
+      [['đảng cộng sản', 'thành lập đảng', 'đảng'], 
+       'Ngày 3/2/1930, Người chủ trì Hội nghị thành lập Đảng Cộng sản Việt Nam tại Hồng Kông, Trung Quốc.'],
+      
+      [['kháng chiến', 'chống pháp', 'chiến tranh'], 
+       'Sau Cách mạng Tháng Tám 1945, Người lãnh đạo cuộc kháng chiến chống thực dân Pháp (1946-1954) và sau đó chống đế quốc Mỹ.'],
+      
+      [['di chúc', 'di bút'], 
+       'Di chúc của Chủ tịch Hồ Chí Minh thể hiện tấm lòng yêu nước, yêu dân sâu sắc và những dặn dò quý báu cho hậu thế.'],
+      
+      [['phong cách', 'đạo đức', 'giản dị'], 
+       'Bác Hồ sống giản dị, gần gũi với nhân dân, luôn đặt lợi ích của dân tộc lên trên hết. Người là tấm gương sáng về đạo đức cách mạng.'],
+      
+      [['pac bó', 'pác bó', 'về nước'], 
+       'Tháng 1/1941, sau 30 năm xa Tổ quốc, Người về nước qua đường Pác Bó (Cao Bằng) để trực tiếp lãnh đạo cách mạng.'],
+      
+      [['chào', 'xin chào', 'hello'], 
+       'Xin chào! Tôi rất vui được trò chuyện với bạn về Chủ tịch Hồ Chí Minh - vị lãnh tụ vĩ đại của dân tộc Việt Nam.'],
+      
+      [['cảm ơn', 'thank you', 'thanks'], 
+       'Cảm ơn bạn! Hy vọng những thông tin về Bác Hồ sẽ hữu ích cho bạn.']
+    ];
+  }
+
+  scrollToBottom() {
+    this.messages.scrollTop = this.messages.scrollHeight;
+  }
+}
+
+// Initialize chatbot when page loads
+document.addEventListener('DOMContentLoaded', () => {
+  new HCMChatbot();
+});
+</script>
+
 </body></html>
