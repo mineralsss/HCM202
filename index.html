@@ -45,7 +45,6 @@
       border:0;box-shadow:0 4px 0 var(--red2);transition:transform .05s ease, box-shadow .2s ease;
     }
     .btn:hover{transform:translateY(-1px);box-shadow:0 6px 0 var(--red2)}
-    /* đồng bộ 1 kiểu nút duy nhất (không còn outline/ghost) */
 
     /* Members */
     .mwrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
@@ -86,7 +85,6 @@
 
 <main id="home" class="container">
 
-  <!-- Hero: câu hỏi chủ đạo + dãy NÚT đồng bộ màu -->
   <section class="section">
     <div class="hero">
       <div class="card reveal">
@@ -96,13 +94,11 @@
           Trong lịch sử, nhiều phong trào cách mạng từng kêu gọi đoàn kết nhưng chỉ dừng lại ở mức tạm thời, khi đạt mục tiêu thì khối đoàn kết tan rã. Hồ Chí Minh khẳng định: “Đoàn kết là then chốt của thành công”. Vậy đoàn kết dân tộc là sách lược tình thế hay chiến lược mang tính sống còn?
         </div>
 
-        <!-- Các nút .btn: đồng 1 màu -->
         <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
           <a class="btn" href="tu-tuong.html">Tư tưởng HCM</a>
           <a class="btn" href="video.html">Video</a>
           <a class="btn" href="chatbox.html">Chatbox</a>
           <a class="btn" href="minh-bach-ai.html">Minh bạch AI</a>
-          <!-- NEW: Q&A -->
           <a class="btn" href="https://padlet.com/nhilttse172759/q-a-13nx9imd0zjavv23"
             target="_blank" rel="noopener noreferrer">Q&amp;A</a>
         </div>
@@ -112,7 +108,6 @@
     </div>
   </section>
 
-  <!-- Bộ sưu tập 4 hình ảnh -->
   <section class="section">
     <div class="hdr"><h2>Bộ sưu tập</h2></div>
     <div class="gallery">
@@ -163,7 +158,6 @@
 </footer>
 
 <script>
-  // Hiệu ứng xuất hiện khi cuộn tới
   const io = new IntersectionObserver((entries)=>{
     for (const e of entries){
       if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
