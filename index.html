@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Vững Tin Đảng</title>
-  <meta name="description" content="Tư Tưởng Hồ Chí Minh - Đoàn kết dân tộc">
+  <title>Vững Tin Đảng – Nhóm 18</title>
+  <meta name="description" content="Tư Tưởng Hồ Chí Minh - Đại đoàn kết dân tộc">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -17,6 +17,7 @@
     html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
     a{color:var(--red);text-decoration:none}
     .container{max-width:1120px;margin:0 auto;padding:22px 18px}
+
     /* Header */
     header{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,rgba(255,247,232,.95),rgba(255,247,232,.75));border-bottom:3px solid var(--red);backdrop-filter:blur(6px) saturate(1.05)}
     .bar{display:flex;align-items:center;justify-content:space-between;gap:14px}
@@ -25,30 +26,40 @@
     nav{display:flex;gap:14px;flex-wrap:wrap}
     nav a{font-weight:700;padding:8px 10px;border-radius:12px}
     nav a:hover{background:#fff;border:1px solid var(--line)}
+
     /* Sections / cards */
     .section{margin:26px 0}
     .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--br);box-shadow:0 12px 28px rgba(0,0,0,.08);padding:18px}
     .hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
     .hdr h2{margin:0;font-size:28px;color:#b32020}
-    .grid{display:grid;gap:18px}
-    .grid.cols-12{grid-template-columns:repeat(12,1fr)}
-    .grid.cols-4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
     .lead{font-size:18px;margin:6px 0 0}
+
+    /* Hero */
     .hero{display:grid;grid-template-columns:7fr 5fr;gap:18px}
     .hero img{width:100%;height:290px;object-fit:cover;border-radius:14px;border:2px solid var(--red)}
     @media(max-width:960px){.hero{grid-template-columns:1fr}.hero img{height:200px}}
-
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:700}
+    .kicker{font-weight:800;letter-spacing:.18em;color:#d3a818}
     .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--red);color:#fff;font-weight:800;border:0;box-shadow:0 4px 0 var(--red2)}
     .btn.outline{background:#fff;color:var(--red);border:2px solid var(--red)}
-    .kicker{font-weight:800;letter-spacing:.18em;color:#d3a818}
 
-    /* Shortcut cards */
+    /* Section heading phía trên 4 khung */
+    .section-head{text-align:center;margin:6px 0 18px}
+    .section-head .ico{
+      width:56px;height:56px;border-radius:50%;
+      display:inline-grid;place-items:center;margin:0 auto 8px;color:#fff;
+      background:linear-gradient(135deg,#d62828,#ad1f1f);box-shadow:0 6px 0 rgba(173,31,31,.35);
+      font-size:26px;font-weight:800;
+    }
+    .section-head h2{margin:0;font-size:30px;line-height:1.15;color:#b32020}
+    .section-head .sub{margin:6px 0 0;color:#6a6a6a;font-weight:600}
+
+    /* Shortcuts */
     .shortcut{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
     .s-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 10px 22px rgba(0,0,0,.07);display:flex;flex-direction:column;gap:10px}
     .s-card h3{margin:0;font-size:18px}
     .s-card p{margin:0;color:var(--muted)}
     .s-card .actions{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:700}
 
     /* Members */
     .mwrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
@@ -60,7 +71,6 @@
     /* Footer */
     footer{padding:26px 0;text-align:center;color:#6a6a6a;border-top:3px solid var(--red);background:#fffbe9}
 
-    /* Smooth scroll */
     html{scroll-behavior:smooth}
   </style>
 </head>
@@ -69,11 +79,11 @@
 <header>
   <div class="container bar">
     <div class="brand">
-      <strong>Vững Tin Đảng - Tư Tưởng Hồ Chí Minh</strong>
+      <strong>Vững Tin Đảng</strong>
     </div>
     <nav>
       <a href="#home">Trang chủ</a>
-      <a href="#members">Thành viên nhóm thực hiện</a>
+      <a href="#members">Thành viên nhóm</a>
       <a href="video.html">Video</a>
       <a href="chatbox.html">Chatbox</a>
     </nav>
@@ -82,7 +92,7 @@
 
 <main id="home" class="container">
 
-  <!-- Hero question -->
+  <!-- Hero: câu hỏi chủ đạo -->
   <section class="section">
     <div class="hero">
       <div class="card">
@@ -100,13 +110,17 @@
     </div>
   </section>
 
-  <!-- Shortcuts: Video / Chatbox / Tư tưởng / Minh bạch AI -->
+  <!-- Mục chính -->
   <section id="shortcuts" class="section">
-    <div class="hdr"><h2>Mục chính</h2></div>
+    <div class="section-head">
+      <div class="ico">★</div>
+      <h2>Mục chính</h2>
+    </div>
+
+    <!-- 4 khung nhỏ -->
     <div class="shortcut">
       <div class="s-card">
-        <div class="pill">🎬 Video – Đại đoàn kết dân tộc</div>
-        <h3>VTV - Đại đoàn kết toàn dân - Cội nguồn sức mạnh Việt Nam</h3>
+        <div class="pill">🎬 Video</div>
         <div class="actions"><a class="btn" href="video.html">Mở video</a></div>
       </div>
 
@@ -117,7 +131,6 @@
 
       <div class="s-card">
         <div class="pill">📚 Tư tưởng</div>
-        <h3>Tư Tưởng Hồ Chí Minh</h3>
         <div class="actions"><a class="btn" href="tu-tuong.html">Xem tư tưởng</a></div>
       </div>
 
@@ -128,7 +141,7 @@
     </div>
   </section>
 
-  <!-- Members -->
+  <!-- Nhóm thực hiện -->
   <section id="members" class="section">
     <div class="hdr">
       <h2>Thành viên nhóm thực hiện</h2>
