@@ -39,10 +39,13 @@
     .hero img{width:100%;height:290px;object-fit:cover;border-radius:14px;border:2px solid var(--red)}
     @media(max-width:960px){.hero{grid-template-columns:1fr}.hero img{height:200px}}
     .kicker{font-weight:800;letter-spacing:.18em;color:#d3a818}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--red);color:#fff;font-weight:800;border:0;box-shadow:0 4px 0 var(--red2);transition:transform .05s ease}
-    .btn:hover{transform:translateY(-1px)}
-    .btn.outline{background:#fff;color:var(--red);border:2px solid var(--red)}
-    .btn.ghost{background:#fff;border:1px solid var(--line);color:#b32020;box-shadow:none}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;padding:10px 16px;
+      border-radius:14px;background:var(--red);color:#fff;font-weight:800;
+      border:0;box-shadow:0 4px 0 var(--red2);transition:transform .05s ease, box-shadow .2s ease;
+    }
+    .btn:hover{transform:translateY(-1px);box-shadow:0 6px 0 var(--red2)}
+    /* đồng bộ 1 kiểu nút duy nhất (không còn outline/ghost) */
 
     /* Members */
     .mwrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
@@ -50,6 +53,16 @@
     .avatar{width:86px;height:86px;border-radius:50%;background:#fff;border:2px solid var(--red);display:grid;place-items:center;font-size:34px}
     .member h4{margin:0;font-size:20px;color:#b32020}
     .role{font-weight:700;color:#7a7a7a}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .fig{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 22px rgba(0,0,0,.07);overflow:hidden}
+    .fig img{display:block;width:100%;height:180px;object-fit:cover}
+    .figcap{padding:10px 12px;color:#555;font-size:14px;border-top:1px solid var(--line)}
+
+    /* Reveal on scroll */
+    .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.in{opacity:1;transform:none}
 
     footer{padding:26px 0;text-align:center;color:#6a6a6a;border-top:3px solid var(--red);background:#fffbe9}
     html{scroll-behavior:smooth}
@@ -73,26 +86,49 @@
 
 <main id="home" class="container">
 
-  <!-- Hero: câu hỏi chủ đạo + NÚT .btn thay cho phần 'Mục chính' -->
+  <!-- Hero: câu hỏi chủ đạo + dãy NÚT đồng bộ màu -->
   <section class="section">
     <div class="hero">
-      <div class="card">
+      <div class="card reveal">
         <div class="kicker">CHỦ ĐỀ</div>
         <h1 class="lead"><strong>Đại đoàn kết dân tộc</strong> – chiến lược lâu dài hay chỉ là sách lược nhất thời?</h1>
         <div style="margin-top:12px;padding:14px 16px;border-left:6px solid var(--yellow);background:linear-gradient(180deg,#fffbe9,#fff0c7);border:1px solid rgba(0,0,0,.06);border-radius:12px">
           Trong lịch sử, nhiều phong trào cách mạng từng kêu gọi đoàn kết nhưng chỉ dừng lại ở mức tạm thời, khi đạt mục tiêu thì khối đoàn kết tan rã. Hồ Chí Minh khẳng định: “Đoàn kết là then chốt của thành công”. Vậy đoàn kết dân tộc là sách lược tình thế hay chiến lược mang tính sống còn?
         </div>
 
-        <!-- Các nút .btn giống phong cách 'Tư tưởng HCM' -->
+        <!-- Các nút .btn: đồng 1 màu -->
         <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
           <a class="btn" href="tu-tuong.html">📚 Tư tưởng HCM</a>
-          <a class="btn outline" href="video.html">🎬 Video</a>
-          <a class="btn ghost" href="chatbox.html">💬 Chatbox</a>
-          <a class="btn ghost" href="minh-bach-ai.html">🧭 Minh bạch AI</a>
+          <a class="btn" href="video.html">🎬 Video</a>
+          <a class="btn" href="chatbox.html">💬 Chatbox</a>
+          <a class="btn" href="minh-bach-ai.html">🧭 Minh bạch AI</a>
         </div>
       </div>
 
-      <img src="images/doan-ket-lehoi.jpeg" alt="Không khí đoàn kết toàn dân">
+      <img class="reveal" src="images/doan-ket-lehoi.jpeg" alt="Không khí đoàn kết toàn dân">
+    </div>
+  </section>
+
+  <!-- Bộ sưu tập 4 hình ảnh -->
+  <section class="section">
+    <div class="hdr"><h2>Bộ sưu tập</h2></div>
+    <div class="gallery">
+      <figure class="fig reveal">
+        <img src="images/ttxvn_1608doanket3.jpg" alt="Quyết dành độc lập – đại đoàn kết">
+        <figcaption class="figcap">Khí thế đại đoàn kết: Quyết dành độc lập.</figcaption>
+      </figure>
+      <figure class="fig reveal">
+        <img src="images/image.png" alt="Diễu hành 30/4">
+        <figcaption class="figcap">Kỷ niệm 30/4 – sức mạnh đoàn kết dân tộc.</figcaption>
+      </figure>
+      <figure class="fig reveal">
+        <img src="images/anh-2-9-.jpg" alt="Toàn dân đoàn kết">
+        <figcaption class="figcap">Không khí hội nghị: “Toàn dân đoàn kết”.</figcaption>
+      </figure>
+      <figure class="fig reveal">
+        <img src="images/thongtincodong.png" alt="Áp phích đoàn kết các tầng lớp nhân dân">
+        <figcaption class="figcap">Đoàn kết các tầng lớp nhân dân vì mục tiêu chung.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -100,21 +136,21 @@
   <section id="members" class="section">
     <div class="hdr">
       <h2>Nhóm thực hiện</h2>
-      <span style="display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:700">Nhóm 18 – FPTU TP.HCM</span>
+      <span style="display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:700">Nhóm 8 – FPTU TP.HCM</span>
     </div>
 
     <div class="mwrap">
-      <article class="member">
+      <article class="member reveal">
         <div class="avatar">👤</div>
         <h4>Lê Thanh Thảo Nhi</h4>
       </article>
 
-      <article class="member">
+      <article class="member reveal">
         <div class="avatar">👤</div>
         <h4>Nguyễn Phan Tuấn Anh</h4>
       </article>
 
-      <article class="member">
+      <article class="member reveal">
         <div class="avatar">👤</div>
         <h4>Vương Trần Quang Thắng</h4>
       </article>
@@ -126,6 +162,16 @@
 <footer>
   © 2025 Nhóm 8
 </footer>
+
+<script>
+  // Hiệu ứng xuất hiện khi cuộn tới
+  const io = new IntersectionObserver((entries)=>{
+    for (const e of entries){
+      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    }
+  }, {threshold: 0.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
 
 </body>
 </html>
