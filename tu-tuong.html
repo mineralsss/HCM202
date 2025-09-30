@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tư tưởng HCM – Đại đoàn kết (timeline có preview)</title>
+<title>Tư tưởng HCM – Đại đoàn kết (4 giai đoạn, timeline preview)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -17,7 +17,6 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,syste
 a{color:var(--red);text-decoration:none}
 .container{max-width:1120px;margin:0 auto;padding:24px 18px}
 
-/* Header */
 header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);
   background:linear-gradient(180deg, rgba(255,247,232,.92), rgba(255,247,232,.65));
   border-bottom:3px solid var(--red)}
@@ -25,13 +24,12 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);
 .brand{display:flex;gap:12px;align-items:center}
 .logo{width:40px;height:40px;border-radius:12px;background:var(--red);display:grid;place-items:center;color:#fff;font-weight:800;box-shadow:0 4px 0 var(--red-dark)}
 .brand strong{font-size:18px}
+nav a{font-weight:700}
 
-/* Sections */
 .section{margin:28px 0}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 12px 28px rgba(0,0,0,.08);padding:20px}
 .hdr{display:flex;align-items:center;justify-content:space-between;margin:0 0 10px}
 .hdr h2{margin:0;font-size:26px;color:#b61f1f}
-.badge{font-weight:800;letter-spacing:.18em;color:#d6aa13}
 .lead{font-size:18px;margin:6px 0 0}
 .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
 .hero{grid-template-columns:7fr 5fr}
@@ -39,55 +37,41 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);
 .hero .visual img{height:320px;width:100%;object-fit:cover;filter:saturate(1.03)}
 @media(max-width:960px){.hero{grid-template-columns:1fr}.hero .visual img{height:220px}}
 
-/* Titles */
 .section-title{display:flex;align-items:center;gap:10px;margin:0 0 10px;font-size:24px;color:#b61f1f}
 .section-title .flag{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,#d62828,#ad1f1f);position:relative}
 .section-title .flag::after{content:"";position:absolute;left:6px;top:6px;width:14px;height:14px;background:#fff;clip-path:polygon(0 0,100% 50%,0 100%)}
 
-/* CORE 5.1 */
 .core-wrap{display:grid;grid-template-columns:repeat(12, 1fr);gap:24px;align-items:stretch}
-.core-card{position:relative;isolation:isolate;overflow:hidden;border-radius:22px;background:#fff;border:1px solid rgba(0,0,0,.06);box-shadow:0 18px 40px rgba(0,0,0,.12);display:flex;flex-direction:column;min-height:220px}
+.core-card{position:relative;overflow:hidden;border-radius:22px;background:#fff;border:1px solid rgba(0,0,0,.06);box-shadow:0 18px 40px rgba(0,0,0,.12);display:flex;flex-direction:column;min-height:220px}
 .core-head{display:flex;align-items:center;gap:12px;padding:14px 16px;background:linear-gradient(135deg,#ffe6b6,#fff7e8 40%,#ffffff 85%);border-bottom:1px solid rgba(0,0,0,.06)}
-.core-badge{width:40px;height:40px;border-radius:12px;flex:0 0 40px;display:grid;place-items:center;color:#fff;font-weight:800;background:linear-gradient(135deg,#d62828,#ad1f1f);box-shadow:0 0 0 6px rgba(214,170,19,.35)}
+.core-badge{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:#fff;font-weight:800;background:linear-gradient(135deg,#d62828,#ad1f1f);box-shadow:0 0 0 6px rgba(214,170,19,.35)}
 .core-title{margin:0;font-size:18px;color:#191919}
 .core-body{padding:16px 18px 18px}
 .core-body p{margin:0;line-height:1.7}
-.core-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.core-li{display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:start}
-.core-dot{width:10px;height:10px;margin-top:8px;border-radius:50%;background:linear-gradient(135deg,#f4c542,#ffd86a);box-shadow:0 0 0 2px #fff inset,0 0 0 1px rgba(0,0,0,.12)}
 .col-12{grid-column:span 12}
 @media (min-width:700px){ .md-6{grid-column:span 6} }
 @media (min-width:1024px){ .lg-4{grid-column:span 4} .lg-6{grid-column:span 6} }
 
-/* TIMELINE */
 .timeline{padding:18px;overflow:hidden}
-.tbar{position:relative;height:12px;border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:inset 0 1px 0 rgba(0,0,0,.05)}
-.segment{position:absolute;top:-1px;height:14px;border-radius:999px}
-.seg1{left:0%;width:18%;background:linear-gradient(90deg,#f4c542,#ffd86a)}
-.seg2{left:18%;width:45%;background:linear-gradient(90deg,#d62828,#b71f1f)}
-.seg3{left:63%;width:37%;background:linear-gradient(90deg,#222,#444)}
-.ticks{display:flex;justify-content:space-between;margin-top:10px;color:#333;font-weight:700}
-.ticks span{display:inline-flex;align-items:center;gap:6px}
-.dot{width:10px;height:10px;border-radius:50%;background:#222;border:2px solid #fff;box-shadow:0 0 0 2px rgba(0,0,0,.1)}
-.legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
-.tag{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line);border-radius:10px;background:#fff}
-.tag i{display:inline-block;width:14px;height:8px;border-radius:6px}
-.i1{background:linear-gradient(90deg,#f4c542,#ffd86a)}
-.i2{background:linear-gradient(90deg,#d62828,#b71f1f)}
-.i3{background:linear-gradient(90deg,#222,#444)}
-.event-grid{display:grid;gap:16px;margin-top:16px;grid-template-columns:minmax(0,18fr) minmax(0,45fr) minmax(0,37fr)}
-.col{display:grid;gap:12px;min-width:0}
-.event{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;box-shadow:0 10px 24px rgba(0,0,0,.08);max-width:100%;word-wrap:break-word;overflow-wrap:break-word;cursor:pointer}
-.event::before{content:"";position:absolute;top:-18px;left:28px;width:2px;height:18px;background:rgba(0,0,0,.35);border-radius:2px}
-.date{display:inline-block;font-weight:800;font-size:12px;padding:4px 8px;border-radius:999px;background:#fff0c7;border:1px solid rgba(0,0,0,.08);margin-bottom:6px}
-.era1 .event{border-left:4px solid #f0c23a}
-.era2 .event{border-left:4px solid #c71f1f}
-.era3 .event{border-left:4px solid #2a2a2a}
+.tbar{position:relative;height:14px;border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:inset 0 1px 0 rgba(0,0,0,.05)}
+.seg{position:absolute;top:-1px;height:16px;border-radius:999px}
+.s1{left:0%;  width:20%; background:linear-gradient(90deg,#f4c542,#ffd86a)}
+.s2{left:20%; width:28%; background:linear-gradient(90deg,#d62828,#b71f1f)}
+.s3{left:48%; width:32%; background:linear-gradient(90deg,#8e1b1b,#2a2a2a)}
+.s4{left:80%; width:20%; background:linear-gradient(90deg,#222,#444)}
+.periods{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:12px}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);
+  font-weight:700;color:#b32020;cursor:pointer;user-select:none;
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.pill:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.08)}
 
 .tl-flex{display:grid;grid-template-columns:2fr 1fr;gap:18px}
 .tl-preview{
   background:#fff;border:1px solid var(--line);border-radius:14px;
-  box-shadow:0 10px 24px rgba(0,0,0,.08);padding:14px;min-height:220px;
+  box-shadow:0 10px 24px rgba(0,0,0,.08);padding:14px;min-height:260px;
   display:flex;flex-direction:column;gap:10px;
   opacity:0;visibility:hidden;transform:translateY(8px);
   transition:opacity .22s ease, transform .22s ease, visibility .22s ease;
@@ -96,8 +80,8 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);
 .tl-preview.show{opacity:1;visibility:visible;transform:none;pointer-events:auto}
 .tl-prev-img{width:100%;height:180px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
 .tl-prev-title{margin:0;font-size:16px;color:#b61f1f}
-.tl-prev-text{margin:0;color:#444;line-height:1.6;font-size:14px}
-@media(max-width:920px){.event-grid{grid-template-columns:1fr}.event::before{left:20px}.tl-flex{grid-template-columns:1fr}}
+.tl-prev-text{margin:0;color:#444;line-height:1.65;font-size:14px;white-space:pre-line}
+@media(max-width:920px){.tl-flex{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -111,14 +95,12 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);
 
 <main class="container">
 
-  <!-- Chủ đề -->
   <section class="section">
     <div class="grid hero">
       <div class="card">
-        <div class="badge">CHỦ ĐỀ</div>
-        <h2 class="lead"><strong>Đại đoàn kết dân tộc</strong> – chiến lược lâu dài hay chỉ là sách lược nhất thời?</h2>
+        <h2 class="lead"><strong>Đại đoàn kết dân tộc</strong> – chiến lược lâu dài hay sách lược nhất thời?</h2>
         <div style="margin-top:12px;padding:14px 16px;border-left:6px solid var(--yellow);background:linear-gradient(180deg,#fffbe9,#fff0c7);border:1px solid rgba(0,0,0,.06);border-radius:12px">
-          Trong lịch sử, nhiều phong trào cách mạng từng kêu gọi đoàn kết nhưng chỉ dừng lại ở mức tạm thời, khi đạt mục tiêu thì khối đoàn kết tan rã. Hồ Chí Minh khẳng định: “Đoàn kết là then chốt của thành công”. Vậy đoàn kết dân tộc là sách lược tình thế hay chiến lược mang tính sống còn?
+          Trong lịch sử, nhiều phong trào cách mạng từng kêu gọi đoàn kết nhưng chỉ dừng ở mức tạm thời. Hồ Chí Minh khẳng định: “Đoàn kết là then chốt của thành công”. Vậy đại đoàn kết là sách lược nhất thời hay chiến lược sống còn?
         </div>
       </div>
       <div class="visual card">
@@ -129,97 +111,53 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);
 
   <section class="section" id="cotloi">
     <h2 class="section-title"><span class="flag"></span>Tư tưởng Hồ Chí Minh về đại đoàn kết toàn dân tộc</h2>
-
     <div class="core-wrap">
       <article class="core-card col-12 md-6 lg-4">
         <header class="core-head"><div class="core-badge">1</div><h3 class="core-title">Vai trò</h3></header>
-        <div class="core-body">
-          <p>Đại đoàn kết là <b>chiến lược quyết định</b> của cách mạng: <b>sức mạnh vô địch</b>, <b>then chốt của thành công</b>.</p>
-        </div>
+        <div class="core-body"><p>Đại đoàn kết là <b>chiến lược quyết định</b> của cách mạng: <b>sức mạnh vô địch</b>, <b>then chốt của thành công</b>.</p></div>
       </article>
-
       <article class="core-card col-12 md-6 lg-4">
         <header class="core-head"><div class="core-badge">2</div><h3 class="core-title">Lực lượng</h3></header>
-        <div class="core-body">
-          <p><b>Chủ thể:</b> toàn dân tộc Việt Nam.<br>
-             <b>Nền tảng:</b> liên minh <i>công – nông – trí thức</i> dưới sự lãnh đạo của Đảng.</p>
-        </div>
+        <div class="core-body"><p><b>Chủ thể:</b> toàn dân tộc. <b>Nền tảng:</b> liên minh <i>công – nông – trí thức</i> dưới sự lãnh đạo của Đảng.</p></div>
       </article>
-
       <article class="core-card col-12 md-6 lg-4">
         <header class="core-head"><div class="core-badge">3</div><h3 class="core-title">Điều kiện</h3></header>
-        <div class="core-body">
-          <ul class="core-list">
-            <li class="core-li"><span class="core-dot"></span><span>Đặt lợi ích dân tộc lên trên hết.</span></li>
-            <li class="core-li"><span class="core-dot"></span><span>Kế thừa truyền thống yêu nước, nhân nghĩa.</span></li>
-            <li class="core-li"><span class="core-dot"></span><span>Khoan dung, “cầu đồng tồn dị”; xây dựng <b>niềm tin của nhân dân</b>.</span></li>
-          </ul>
-        </div>
+        <div class="core-body"><p>Đặt lợi ích dân tộc lên trên hết; kế thừa truyền thống yêu nước – nhân nghĩa; khoan dung, “cầu đồng tồn dị”; xây dựng <b>niềm tin của nhân dân</b>.</p></div>
       </article>
-
       <article class="core-card col-12 md-6 lg-6">
         <header class="core-head"><div class="core-badge">4</div><h3 class="core-title">Mặt trận thống nhất</h3></header>
-        <div class="core-body">
-          <p>Hình thức tổ chức khối đoàn kết: <i>Việt Minh → Liên Việt → Mặt trận Tổ quốc</i>. Nguyên tắc: <b>hiệp thương dân chủ</b>, đoàn kết <b>lâu dài – chân thành</b>.</p>
-        </div>
+        <div class="core-body"><p><i>Việt Minh → Liên Việt → Mặt trận Tổ quốc</i>; nguyên tắc <b>hiệp thương dân chủ</b>, đoàn kết <b>lâu dài – chân thành</b>.</p></div>
       </article>
-
       <article class="core-card col-12 md-6 lg-6">
         <header class="core-head"><div class="core-badge">5</div><h3 class="core-title">Phương thức</h3></header>
-        <div class="core-body">
-          <p><b>Dân vận</b>: tổ chức, giáo dục, phát huy trí – lực quần chúng; phối hợp các tổ chức quần chúng trong Mặt trận.</p>
-        </div>
+        <div class="core-body"><p><b>Dân vận</b>: tổ chức, giáo dục, phát huy trí – lực quần chúng; phối hợp các tổ chức quần chúng trong Mặt trận.</p></div>
       </article>
     </div>
   </section>
 
-  <!-- Timeline + Preview -->
   <section class="section">
-    <div class="hdr"><h2>🕰️ Dòng thời gian minh chứng</h2></div>
+    <div class="hdr"><h2>🕰️ Dòng thời gian minh chứng (4 giai đoạn)</h2></div>
 
-    <div class="tl-flex" id="tlZone">
-      <div class="card timeline" id="timelineBox">
+    <div class="tl-flex">
+      <div class="card timeline" id="tlBox">
         <div class="tbar">
-          <div class="segment seg1" title="1941–1946"></div>
-          <div class="segment seg2" title="1946–1975"></div>
-          <div class="segment seg3" title="1986–nay"></div>
+          <div class="seg s1" title="1941–1946"></div>
+          <div class="seg s2" title="1946–1954"></div>
+          <div class="seg s3" title="1954–1975"></div>
+          <div class="seg s4" title="1986–nay"></div>
         </div>
-        <div class="ticks">
-          <span><span class="dot"></span>1941</span><span>1946</span><span>1975</span><span>1986</span><span>Hiện nay</span>
-        </div>
-
-        <div class="legend">
-          <span class="tag"><i class="i1"></i> 1941–1946</span>
-          <span class="tag"><i class="i2"></i> 1946–1975</span>
-          <span class="tag"><i class="i3"></i> 1986–nay</span>
-        </div>
-
-        <div class="event-grid">
-          <div class="col era1">
-            <div class="event" data-key="1941"><span class="date">05/1941</span><div><b>HCM về nước</b> (Pác Bó)…</div></div>
-            <div class="event" data-key="0845"><span class="date">08/1945</span><div><b>Cách mạng Tháng Tám</b>…</div></div>
-            <div class="event" data-key="020945"><span class="date">02/09/1945</span><div><b>Tuyên ngôn Độc lập</b>…</div></div>
-            <div class="event" data-key="191246"><span class="date">19/12/1946</span><div><b>Lời kêu gọi toàn quốc kháng chiến</b>.</div></div>
-          </div>
-
-          <div class="col era2">
-            <div class="event" data-key="071954"><span class="date">07/1954</span><div><b>Hiệp định Genève</b>…</div></div>
-            <div class="event" data-key="17071966"><span class="date">17/07/1966</span><div>“<b>Không có gì quý hơn độc lập, tự do.</b>”</div></div>
-            <div class="event" data-key="30041975"><span class="date">30/04/1975</span><div><b>Giải phóng, thống nhất</b>…</div></div>
-          </div>
-
-          <div class="col era3">
-            <div class="event" data-key="121986"><span class="date">12/1986</span><div><b>Đổi mới</b> (Đại hội VI).</div></div>
-            <div class="event" data-key="1991"><span class="date">1991</span><div>Đại hội VII khẳng định <b>Tư tưởng HCM</b>…</div></div>
-            <div class="event" data-key="2016"><span class="date">2016</span><div>Đại hội XII nhấn mạnh <b>đại đoàn kết</b>…</div></div>
-          </div>
+        <div class="periods">
+          <div class="pill" data-key="p1">1941–1946 · Khởi nghĩa & lập quốc</div>
+          <div class="pill" data-key="p2">1946–1954 · Kháng chiến chống Pháp</div>
+          <div class="pill" data-key="p3">1954–1975 · Kháng chiến chống Mỹ</div>
+          <div class="pill" data-key="p4">1986–nay · Đổi mới & phát triển</div>
         </div>
       </div>
 
-      <aside class="tl-preview" id="tlPreview" aria-live="polite">
-        <img class="tl-prev-img" id="tlPrevImg" src="" alt="" style="display:none">
-        <h4 class="tl-prev-title" id="tlPrevTitle"></h4>
-        <p class="tl-prev-text" id="tlPrevText"></p>
+      <aside class="tl-preview" id="preview" aria-live="polite">
+        <img class="tl-prev-img" id="prevImg" src="" alt="" style="display:none">
+        <h4 class="tl-prev-title" id="prevTitle"></h4>
+        <p class="tl-prev-text" id="prevText"></p>
       </aside>
     </div>
   </section>
@@ -231,72 +169,54 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);
 </footer>
 
 <script>
-const TL_DATA = {
-  // 1941–1946
-  "1941": {
-    title: "05/1941 – HCM về nước (Pác Bó)",
-    text:  "Chủ trì TW8, xác định đường lối giải phóng dân tộc; xây dựng Mặt trận Việt Minh.",
-    img:   "images/pac-bo.jpg"                 // nếu bạn để tên có dấu: 'p%C3%A1c%20b%C3%B3.jpeg'
-  },
-  "0845": {
-    title: "08/1945 – Cách mạng Tháng Tám",
-    text:  "Nhân dân nhất tề vùng lên, giành chính quyền về tay nhân dân.",
-    img:   ""
-  },
-  "020945": {
-    title: "02/09/1945 – Chủ tịch HCM đọc Tuyên ngôn Độc lập",
-    text:  "Khai sinh nước Việt Nam Dân chủ Cộng hòa tại quảng trường Ba Đình.",
-    img:   "images/bac-doc-tuyen-ngon.jpg"     // nếu đang là 'hình bác đọc bản tuyên ngôn.jpg' thì đổi cho khớp
-  },
-  "191246": {
-    title: "19/12/1946 – Lời kêu gọi toàn quốc kháng chiến",
-    text:  "“Thà hi sinh tất cả chứ nhất định không chịu mất nước, không chịu làm nô lệ”.",
-    img:   "images/toan-quoc-khang-chien.jpg"  // nếu tên khác, cập nhật lại
-  },
+const PERIODS = {
+  p1: {
+    title: "1941–1946 – Khởi nghĩa & lập quốc",
+    img:  "images/pac-bo.jpg",
+    text: `Giai đoạn 1941–1946 đánh dấu những bước ngoặt lịch sử quan trọng nhất của cách mạng Việt Nam, trực tiếp đưa đến sự ra đời của nước Việt Nam Dân chủ Cộng hòa.
 
-  // 1946–1975
-  "071954": {
-    title: "07/1954 – Hiệp định Genève",
-    text:  "Miền Bắc quá độ lên CNXH; tiếp tục đấu tranh giải phóng miền Nam.",
-    img:   ""
-  },
-  "17071966": {
-    title: "17/07/1966 – Chân lý thời đại",
-    text:  "“Không có gì quý hơn độc lập, tự do.”",
-    img:   ""
-  },
-  "30041975": {
-    title: "30/04/1975 – Giải phóng, thống nhất",
-    text:  "Kết thúc thắng lợi kháng chiến chống Mỹ, non sông thu về một mối.",
-    img:   ""
-  },
+1) Sự trở về và xác định đường lối (1941)
+• Tháng 5/1941, Hồ Chí Minh trở về nước tại Pác Bó (Cao Bằng).
+• Chủ trì Hội nghị Trung ương 8 (5/1941), hoàn thành chuyển hướng chiến lược – giương cao ngọn cờ GIẢI PHÓNG DÂN TỘC.
+• Quyết định thành lập Mặt trận Việt Minh để đoàn kết toàn dân.
 
-  // 1986–nay
-  "121986": {
-    title: "12/1986 – Công cuộc Đổi mới",
-    text:  "Đại hội VI mở ra thời kì đổi mới toàn diện đất nước.",
-    img:   ""
+2) Cách mạng Tháng Tám và lập quốc (1945–1946)
+• Cách mạng Tháng Tám 1945 thành công trong cả nước.
+• Ngày 02/09/1945, đọc Tuyên ngôn Độc lập, khai sinh nước VNDCCH.
+• Mục tiêu độc lập gắn với hạnh phúc nhân dân: “làm cho dân có ăn, có mặc, có ở, có học”.
+• 19/12/1946, ra Lời kêu gọi Toàn quốc kháng chiến khi Pháp tái xâm lược.`
   },
-  "1991": {
-    title: "1991 – Cương lĩnh đầu tiên thời kỳ đổi mới",
-    text:  "Khẳng định Tư tưởng HCM cùng CN Mác–Lênin là nền tảng tư tưởng.",
-    img:   ""
+  p2: {
+    title: "1946–1954 – Kháng chiến chống Pháp & xây dựng miền Bắc",
+    img:  "images/geneve.jpg",
+    text: `• Lãnh đạo toàn dân kháng chiến toàn diện, lâu dài, dựa vào sức mình là chính.
+• Sau 1954, miền Bắc bước vào thời kỳ quá độ lên CNXH; miền Nam tiếp tục sự nghiệp giải phóng.
+• Định hình quan điểm về CNXH ở Việt Nam: xã hội do nhân dân lao động làm chủ, không còn áp bức bóc lột.`
   },
-  "2016": {
-    title: "2016 – Đại hội XII",
-    text:  "Tiếp tục nhấn mạnh đại đoàn kết toàn dân tộc là đường lối chiến lược.",
-    img:   ""
+  p3: {
+    title: "1954–1975 – Kháng chiến chống Mỹ & thống nhất đất nước",
+    img:  "images/image.png", 
+    text: `• Lãnh đạo sự nghiệp chống Mỹ cứu nước, kết hợp sức mạnh dân tộc với sức mạnh thời đại.
+• Chân lý thời đại nêu ngày 17/07/1966: “Không có gì quý hơn độc lập, tự do.”
+• 30/04/1975: Giải phóng hoàn toàn miền Nam, đất nước thống nhất; bước vào thời kỳ xây dựng CNXH.`
+  },
+  p4: {
+    title: "1986–nay – Đổi mới & phát triển",
+    img:  "images/daihoidangXii.jpg", 
+    text: `• Đại hội VI (1986) mở ra công cuộc Đổi mới, đưa đất nước vượt qua khủng hoảng.
+• Đại hội VII (1991) khẳng định: Tư tưởng Hồ Chí Minh cùng CN Mác–Lênin là nền tảng tư tưởng, kim chỉ nam cho hành động.
+• Tiếp tục kiên định mục tiêu “Dân giàu, nước mạnh, dân chủ, công bằng, văn minh”.`
   }
 };
 
-const prev   = document.getElementById('tlPreview');
-const pImg   = document.getElementById('tlPrevImg');
-const pTit   = document.getElementById('tlPrevTitle');
-const pText  = document.getElementById('tlPrevText');
-const box    = document.getElementById('timelineBox');
+const box   = document.getElementById('tlBox');
+const prev  = document.getElementById('preview');
+const pImg  = document.getElementById('prevImg');
+const pTit  = document.getElementById('prevTitle');
+const pText = document.getElementById('prevText');
 
-function showPrev(key){
-  const d = TL_DATA[key];
+function showPeriod(key){
+  const d = PERIODS[key];
   if(!d) return;
   pTit.textContent  = d.title || "";
   pText.textContent = d.text  || "";
@@ -309,21 +229,20 @@ function showPrev(key){
   }
   prev.classList.add('show');
 }
-function hidePrev(){
+function hidePeriod(){
   prev.classList.remove('show');
   pImg.style.display = 'none';
   pTit.textContent = "";
   pText.textContent = "";
 }
 
-document.querySelectorAll('.event[data-key]').forEach(ev=>{
-  const k = ev.getAttribute('data-key');
-  ev.addEventListener('mouseenter', ()=>showPrev(k));
-  ev.addEventListener('focus',     ()=>showPrev(k));
+document.querySelectorAll('.pill[data-key]').forEach(el=>{
+  const k = el.getAttribute('data-key');
+  el.addEventListener('mouseenter', ()=>showPeriod(k));
+  el.addEventListener('focus', ()=>showPeriod(k));
 });
-
-box.addEventListener('mouseleave', hidePrev);
-box.addEventListener('blur', hidePrev, true);
+box.addEventListener('mouseleave', hidePeriod);
+box.addEventListener('blur', hidePeriod, true);
 </script>
 </body>
 </html>
