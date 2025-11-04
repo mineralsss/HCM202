@@ -36,14 +36,14 @@ a{color:var(--red);text-decoration:none}
 .typing-dot:nth-child(2){animation-delay:-0.16s}
 @keyframes typing{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
 </style></head><body>
-<header><div class="container top"><strong>Chatbot – Vững tin Đảng</strong><a href="index.html">← Trang chủ</a></div></header>
+<header><div class="container top"><strong>Chatbot – Thời kỳ bao cấp</strong><a href="index.html">← Trang chủ</a></div></header>
 <main class="container">
   <div class="card">
-    <h2>Trợ lý AI - Tìm hiểu về Chủ tịch Hồ Chí Minh</h2>
+    <h2>Trợ lý AI - Tìm hiểu về giai đoạn bao cấp</h2>
     <div id="chatbot-container">
       <div id="chat-messages"></div>
       <div id="chat-input-container">
-        <input type="text" id="chat-input" placeholder="Hãy hỏi tôi về Chủ tịch Hồ Chí Minh..." />
+        <input type="text" id="chat-input" placeholder="Hãy hỏi tôi về giai đoạn bao cấp..." />
         <button id="send-btn">Gửi</button>
       </div>
     </div>
@@ -73,7 +73,7 @@ class HCMChatbot {
     
     // Welcome message
     setTimeout(() => {
-      this.addBotMessage('Xin chào! Tôi là trợ lý AI về Chủ tịch Hồ Chí Minh. Bạn có thể hỏi tôi về cuộc đời, sự nghiệp, tư tưởng của Bác Hồ.');
+      this.addBotMessage('Xin chào! Tôi là trợ lý AI về giai đoạn bao cấp. Bạn có thể hỏi tôi về giai đoạn bao cấp.');
     }, 500);
   }
 
@@ -146,10 +146,10 @@ class HCMChatbot {
   async generateResponse(userMessage) {
     try {
       // Create context-aware prompt for Gemini API
-      const contextPrompt = `Bạn là một trợ lý AI chuyên về Chủ tịch Hồ Chí Minh và lịch sử Việt Nam. 
+      const contextPrompt = `Bạn là một trợ lý AI chuyên về giai đoạn bao cấp lịch sử Việt Nam. 
       Hãy trả lời câu hỏi sau một cách chính xác, ngắn gọn bằng tiếng Việt (không quá 150 từ): "${userMessage}"
       
-      Nếu câu hỏi không liên quan đến Hồ Chí Minh hoặc lịch sử Việt Nam, hãy lịch sự từ chối và hướng dẫn người dùng hỏi về chủ đề phù hợp.`;
+      Nếu câu hỏi không liên quan đến giai đoạn bao cấp lịch sử Việt Nam, hãy lịch sự từ chối và hướng dẫn người dùng hỏi về chủ đề phù hợp.`;
 
       const response = await this.callGeminiAPI(contextPrompt);
       this.addBotMessage(response);
@@ -201,7 +201,7 @@ class HCMChatbot {
     const responses = this.getResponseDatabase();
     const message = userMessage.toLowerCase();
     
-    let response = "Xin lỗi, tôi chưa hiểu câu hỏi của bạn. Bạn có thể hỏi tôi về cuộc đời, sự nghiệp, tư tưởng của Chủ tịch Hồ Chí Minh.";
+    let response = "Xin lỗi, tôi chưa hiểu câu hỏi của bạn. Bạn có thể hỏi tôi về giai đoạn bao cấp.";
     
     for (const [keywords, answer] of responses) {
       if (keywords.some(keyword => message.includes(keyword))) {
@@ -215,47 +215,12 @@ class HCMChatbot {
 
   getResponseDatabase() {
     return [
-      [['tên thật', 'tên thật của bác hồ', 'tên khai sinh'], 
-       'Tên thật của Chủ tịch Hồ Chí Minh là Nguyễn Sinh Cung, sinh ngày 19 tháng 5 năm 1890 tại Làng Sen, Nam Đàn, Nghệ An.'],
-      
-      [['sinh năm', 'năm sinh', 'sinh khi nào'], 
-       'Chủ tịch Hồ Chí Minh sinh năm 1890 tại Làng Sen, Nam Đàn, Nghệ An.'],
-      
-      [['mất năm', 'qua đời', 'wáy'], 
-       'Chủ tịch Hồ Chí Minh qua đời vào ngày 2 tháng 9 năm 1969 tại Hà Nội, hưởng thọ 79 tuổi.'],
-      
-      [['bút danh', 'biệt danh', 'tên khác'], 
-       'Người có nhiều bút danh như: Nguyễn Ái Quốc, Lý Thụy, Tống Văn Sơ, Nguyễn Ô Phập... và cuối cùng là Hồ Chí Minh từ năm 1942.'],
-      
-      [['du học', 'ra nước ngoài', 'đi pháp'], 
-       'Năm 1911, Người lên tàu Đô đốc Latouche Tréville ra nước ngoài tìm đường cứu nước, bắt đầu cuộc hành trình 30 năm lưu lạc.'],
-      
-      [['tư tưởng', 'tư tưởng hồ chí minh', 'chủ nghĩa'], 
-       'Tư tưởng Hồ Chí Minh là hệ thống quan điểm toàn diện về những vấn đề cơ bản của cách mạng Việt Nam, kết hợp chủ nghĩa Marx-Lenin với thực tiễn Việt Nam.'],
-      
-      [['độc lập', 'tuyên ngôn độc lập', '2/9'], 
-       'Ngày 2/9/1945, tại Quảng trường Ba Đình, Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập, khai sinh nước Việt Nam Dân chủ Cộng hòa.'],
-      
-      [['đảng cộng sản', 'thành lập đảng', 'đảng'], 
-       'Ngày 3/2/1930, Người chủ trì Hội nghị thành lập Đảng Cộng sản Việt Nam tại Hồng Kông, Trung Quốc.'],
-      
-      [['kháng chiến', 'chống pháp', 'chiến tranh'], 
-       'Sau Cách mạng Tháng Tám 1945, Người lãnh đạo cuộc kháng chiến chống thực dân Pháp (1946-1954) và sau đó chống đế quốc Mỹ.'],
-      
-      [['di chúc', 'di bút'], 
-       'Di chúc của Chủ tịch Hồ Chí Minh thể hiện tấm lòng yêu nước, yêu dân sâu sắc và những dặn dò quý báu cho hậu thế.'],
-      
-      [['phong cách', 'đạo đức', 'giản dị'], 
-       'Bác Hồ sống giản dị, gần gũi với nhân dân, luôn đặt lợi ích của dân tộc lên trên hết. Người là tấm gương sáng về đạo đức cách mạng.'],
-      
-      [['pac bó', 'pác bó', 'về nước'], 
-       'Tháng 1/1941, sau 30 năm xa Tổ quốc, Người về nước qua đường Pác Bó (Cao Bằng) để trực tiếp lãnh đạo cách mạng.'],
       
       [['chào', 'xin chào', 'hello'], 
-       'Xin chào! Tôi rất vui được trò chuyện với bạn về Chủ tịch Hồ Chí Minh - vị lãnh tụ vĩ đại của dân tộc Việt Nam.'],
+       'Xin chào! Tôi rất vui được trò chuyện với bạn về giai đoạn bao cấp.'],
       
       [['cảm ơn', 'thank you', 'thanks'], 
-       'Cảm ơn bạn! Hy vọng những thông tin về Bác Hồ sẽ hữu ích cho bạn.']
+       'Cảm ơn bạn! Hy vọng những thông tin về giai đoạn bao cấp sẽ hữu ích cho bạn.']
     ];
   }
 
