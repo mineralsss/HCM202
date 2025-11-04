@@ -4,13 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Việt Nam thời kỳ bao cấp – Nhóm 10</title>
-  <meta name="description" content="Tư Tưởng Hồ Chí Minh - Đại đoàn kết dân tộc">
+  <meta name="description" content="Tìm hiểu về Việt Nam thời kỳ bao cấp (1975–1986) – Sai lầm hay lựa chọn tất yếu?">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      /* slightly muted / vintage palette to match historical theme */
       --bg:#f7efe0; --paper:#fbf6ee; --ink:#141414; --muted:#6a6a6a; --line:rgba(0,0,0,.06);
       --red:#8b2b2b; --red2:#5f1a1a; --yellow:#d6b45a; --br:18px;
     }
@@ -37,7 +36,7 @@
 
     /* Hero */
     .hero{display:grid;grid-template-columns:7fr 5fr;gap:18px}
-  .hero img{width:100%;height:290px;object-fit:cover;border-radius:14px;border:2px solid var(--red);filter:sepia(.15) contrast(.95)}
+    .hero img{width:100%;height:290px;object-fit:cover;border-radius:14px;border:2px solid var(--red);filter:sepia(.15) contrast(.95)}
     @media(max-width:960px){.hero{grid-template-columns:1fr}.hero img{height:200px}}
     .kicker{font-weight:800;letter-spacing:.18em;color:#d3a818}
     .btn{
@@ -54,11 +53,41 @@
     .member h4{margin:0;font-size:20px;color:#b32020}
     .role{font-weight:700;color:#7a7a7a}
 
-    /* Gallery */
-    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-    .fig{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 22px rgba(0,0,0,.07);overflow:hidden}
-    .fig img{display:block;width:100%;height:180px;object-fit:cover}
-    .figcap{padding:10px 12px;color:#555;font-size:14px;border-top:1px solid var(--line)}
+    /* Gallery (3 ảnh trên, 3 ảnh dưới) */
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:20px;
+      justify-items:center;
+    }
+    .fig{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:16px;
+      box-shadow:0 10px 22px rgba(0,0,0,.07);
+      overflow:hidden;
+      max-width:320px;
+    }
+    .fig img{
+      display:block;
+      width:100%;
+      height:180px;
+      object-fit:cover;
+    }
+    .figcap{
+      padding:10px 12px;
+      color:#555;
+      font-size:14px;
+      border-top:1px solid var(--line);
+    }
+
+    /* Responsive */
+    @media(max-width:900px){
+      .gallery{grid-template-columns:repeat(2,1fr);}
+    }
+    @media(max-width:600px){
+      .gallery{grid-template-columns:1fr;}
+    }
 
     /* Reveal on scroll */
     .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
@@ -89,7 +118,7 @@
   <section class="section">
     <div class="hero">
       <div class="card reveal">
-  <div class="kicker">CHỦ ĐỀ: Việt Nam thời kỳ bao cấp (1975–1986)</div>
+        <div class="kicker">CHỦ ĐỀ: Việt Nam thời kỳ bao cấp (1975–1986)</div>
         <h1 class="lead"><strong>Việt Nam thời kỳ bao cấp (1975–1986)</strong> – Sai lầm hay lựa chọn tất yếu?</h1>
         <div style="margin-top:12px;padding:14px 16px;border-left:6px solid var(--yellow);background:linear-gradient(180deg,#fffbe9,#fff0c7);border:1px solid rgba(0,0,0,.06);border-radius:12px">
           Sau năm 1975, Việt Nam bước vào thời kỳ xây dựng và phát triển đất nước trong hoàn cảnh vừa thống nhất, vừa bị tàn phá nặng nề bởi chiến tranh. Giai đoạn bao cấp (1975–1986) ra đời như một lựa chọn phù hợp với bối cảnh lịch sử đặc thù lúc bấy giờ, nhưng cũng để lại nhiều hệ quả đáng suy ngẫm. Vậy, bao cấp là một sai lầm trong quản lý kinh tế – xã hội, hay là lựa chọn tất yếu của lịch sử?
@@ -105,28 +134,43 @@
         </div>
       </div>
 
-  <img class="reveal" src="images/photo-10-15413203930351670735384.webp" alt="Những cửa hàng phân phát nhu yếu phẩm hàng ngày cho người dân. (Nguồn: Báo Dân Trí)">
-  <div class="figcap" style="margin-top:10px;font-size:13px;color:#666">Nguồn: Báo Dân Trí — Hình ảnh minh họa phân phát nhu yếu phẩm trong giai đoạn bao cấp (1975–1986).</div>
+      <img class="reveal" src="images/photo-10-15413203930351670735384.webp" alt="Những cửa hàng phân phát nhu yếu phẩm hàng ngày cho người dân. (Nguồn: Báo Dân Trí)">
+      <div class="figcap" style="margin-top:10px;font-size:13px;color:#666">Nguồn: Báo Dân Trí — Hình ảnh minh họa phân phát nhu yếu phẩm trong giai đoạn bao cấp (1975–1986).</div>
     </div>
   </section>
 
+  <!-- Bộ sưu tập -->
   <section class="section">
     <div class="hdr"><h2>Bộ sưu tập</h2></div>
     <div class="gallery">
       <figure class="fig reveal">
-        <img src="images\photo-1-15413203930142127986118.webp" alt="Phiếu mua thịt thời bao cấp">
-        <figcaption class="figcap">Phiếu mua thịt thời bao cấp. Mỗi một phiếu như thế này người dân được đổi lấy 1kg thịt.
-</figcaption>
+        <img src="images/photo-1-15413203930142127986118.webp" alt="Phiếu mua thịt thời bao cấp">
+        <figcaption class="figcap">Phiếu mua thịt thời bao cấp. Mỗi một phiếu như thế này người dân được đổi lấy 1kg thịt.</figcaption>
       </figure>
+
       <figure class="fig reveal">
-        <img src="images\photo-13-1541320393039988600353.webp" alt="Người dân cân lúa để nộp cho hợp tác xã.">
+        <img src="images/photo-13-1541320393039988600353.webp" alt="Người dân cân lúa để nộp cho hợp tác xã.">
         <figcaption class="figcap">Người dân cân lúa để nộp cho hợp tác xã.</figcaption>
       </figure>
+
       <figure class="fig reveal">
-        <img src="images\120428kpbaocap19_5bc79.webp" alt="Mua vải thời bao cấp.
-">
-        <figcaption class="figcap">Mua vải thời bao cấp.
-</figcaption>
+        <img src="images/120428kpbaocap19_5bc79.webp" alt="Mua vải thời bao cấp.">
+        <figcaption class="figcap">Mua vải thời bao cấp.</figcaption>
+      </figure>
+
+      <figure class="fig reveal">
+        <img src="images/5-suu-tam-tem-phieu-1616868823419.jpg" alt="Sổ gạo thời bao cấp">
+        <figcaption class="figcap">Sổ gạo thời bao cấp, mỗi gia đình có 1 cuốn sổ này.</figcaption>
+      </figure>
+
+      <figure class="fig reveal">
+        <img src="images/20230209_hat-bo-bo-2.jpg" alt="Hạt bo bo">
+        <figcaption class="figcap">Hạt bo bo, một loại thực phẩm phổ biến trong thời kỳ bao cấp.</figcaption>
+      </figure>
+
+      <figure class="fig reveal">
+        <img src="images/90900587_90d5d95264-1118.jpg" alt="Cơm độn khoai">
+        <figcaption class="figcap">Cơm độn khoai, một món ăn phổ biến trong thời kỳ bao cấp.</figcaption>
       </figure>
     </div>
   </section>
