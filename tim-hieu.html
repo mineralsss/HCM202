@@ -1,248 +1,706 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tư tưởng HCM – Đại đoàn kết (4 giai đoạn, timeline preview)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#fff7e8; --paper:#fff; --ink:#151515; --muted:#6a6a6a; --line:rgba(0,0,0,.08);
-  --red:#d62828; --red-dark:#ad1f1f; --yellow:#f4c542; --radius:22px;
-}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
-a{color:var(--red);text-decoration:none}
-.container{max-width:1120px;margin:0 auto;padding:24px 18px}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Tìm hiểu - Việt Nam thời kỳ bao cấp (1975–1986)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box
+        }
 
-header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);
-  background:linear-gradient(180deg, rgba(255,247,232,.92), rgba(255,247,232,.65));
-  border-bottom:3px solid var(--red)}
-.head{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.brand{display:flex;gap:12px;align-items:center}
-.logo{width:40px;height:40px;border-radius:12px;background:var(--red);display:grid;place-items:center;color:#fff;font-weight:800;box-shadow:0 4px 0 var(--red-dark)}
-.brand strong{font-size:18px}
-nav a{font-weight:700}
+        :root {
+            --bg: #f7efe0;
+            --red: #8b2b2b;
+            --yellow: #d6b45a;
+        }
 
-.section{margin:28px 0}
-.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 12px 28px rgba(0,0,0,.08);padding:20px}
-.hdr{display:flex;align-items:center;justify-content:space-between;margin:0 0 10px}
-.hdr h2{margin:0;font-size:26px;color:#b61f1f}
-.lead{font-size:18px;margin:6px 0 0}
-.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
-.hero{grid-template-columns:7fr 5fr}
-.hero .visual{border:2px solid var(--red);border-radius:var(--radius);overflow:hidden}
-.hero .visual img{height:320px;width:100%;object-fit:cover;filter:saturate(1.03)}
-@media(max-width:960px){.hero{grid-template-columns:1fr}.hero .visual img{height:220px}}
+        html {
+            scroll-behavior: smooth
+        }
 
-.section-title{display:flex;align-items:center;gap:10px;margin:0 0 10px;font-size:24px;color:#b61f1f}
-.section-title .flag{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,#d62828,#ad1f1f);position:relative}
-.section-title .flag::after{content:"";position:absolute;left:6px;top:6px;width:14px;height:14px;background:#fff;clip-path:polygon(0 0,100% 50%,0 100%)}
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            margin: 0;
+            color: #333;
+            background: var(--bg);
+            overflow-x: hidden;
+        }
 
-.core-wrap{display:grid;grid-template-columns:repeat(12, 1fr);gap:24px;align-items:stretch}
-.core-card{position:relative;overflow:hidden;border-radius:22px;background:#fff;border:1px solid rgba(0,0,0,.06);box-shadow:0 18px 40px rgba(0,0,0,.12);display:flex;flex-direction:column;min-height:220px}
-.core-head{display:flex;align-items:center;gap:12px;padding:14px 16px;background:linear-gradient(135deg,#ffe6b6,#fff7e8 40%,#ffffff 85%);border-bottom:1px solid rgba(0,0,0,.06)}
-.core-badge{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:#fff;font-weight:800;background:linear-gradient(135deg,#d62828,#ad1f1f);box-shadow:0 0 0 6px rgba(214,170,19,.35)}
-.core-title{margin:0;font-size:18px;color:#191919}
-.core-body{padding:16px 18px 18px}
-.core-body p{margin:0;line-height:1.7}
-.col-12{grid-column:span 12}
-@media (min-width:700px){ .md-6{grid-column:span 6} }
-@media (min-width:1024px){ .lg-4{grid-column:span 4} .lg-6{grid-column:span 6} }
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: linear-gradient(135deg, var(--red), #5a1818);
+            backdrop-filter: blur(10px);
+            border-bottom: 4px solid var(--yellow);
+        }
 
-.timeline{padding:18px;overflow:hidden}
-.tbar{position:relative;height:14px;border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:inset 0 1px 0 rgba(0,0,0,.05)}
-.seg{position:absolute;top:-1px;height:16px;border-radius:999px}
-.s1{left:0%;  width:20%; background:linear-gradient(90deg,#f4c542,#ffd86a)}
-.s2{left:20%; width:28%; background:linear-gradient(90deg,#d62828,#b71f1f)}
-.s3{left:48%; width:32%; background:linear-gradient(90deg,#8e1b1b,#2a2a2a)}
-.s4{left:80%; width:20%; background:linear-gradient(90deg,#222,#444)}
-.periods{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:12px}
-.pill{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:8px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);
-  font-weight:700;color:#b32020;cursor:pointer;user-select:none;
-  transition:transform .12s ease, box-shadow .12s ease;
-}
-.pill:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.08)}
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
 
-.tl-flex{display:grid;grid-template-columns:2fr 1fr;gap:18px}
-.tl-preview{
-  background:#fff;border:1px solid var(--line);border-radius:14px;
-  box-shadow:0 10px 24px rgba(0,0,0,.08);padding:14px;min-height:260px;
-  display:flex;flex-direction:column;gap:10px;
-  opacity:0;visibility:hidden;transform:translateY(8px);
-  transition:opacity .22s ease, transform .22s ease, visibility .22s ease;
-  pointer-events:none;
-}
-.tl-preview.show{opacity:1;visibility:visible;transform:none;pointer-events:auto}
-.tl-prev-img{width:100%;height:180px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
-.tl-prev-title{margin:0;font-size:16px;color:#b61f1f}
-.tl-prev-text{margin:0;color:#444;line-height:1.65;font-size:14px;white-space:pre-line}
-@media(max-width:920px){.tl-flex{grid-template-columns:1fr}}
-</style>
+        .brand {
+            font-size: 23px;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .brand .flag {
+            display: inline-block;
+            margin-right: 6px;
+            font-size: 28px;
+            filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, .2));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 22px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color .2s, border-color .2s;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: var(--yellow);
+            border-bottom-color: var(--yellow);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 24px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            margin: 0 0 26px;
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--red);
+        }
+
+        .flag {
+            display: inline-block;
+            margin-right: 8px;
+            font-size: 32px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .05), 0 0 0 1px rgba(0, 0, 0, .04);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 22px;
+            align-items: center;
+        }
+
+        .hero .card {
+            background: linear-gradient(135deg, #fff, #fffdf4);
+            border-left: 6px solid var(--red);
+        }
+
+        .hero .lead {
+            margin: 0 0 14px;
+            font-size: 26px;
+            font-weight: 800;
+            color: #222;
+        }
+
+        .hero .visual img {
+            width: 100%;
+            border-radius: 10px;
+            filter: sepia(.10) contrast(.98);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
+        }
+
+        .core-wrap {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .core-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+            overflow: hidden;
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .core-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .1);
+        }
+
+        .core-head {
+            background: linear-gradient(135deg, var(--red), #5a1818);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+        }
+
+        .core-badge {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--yellow);
+            color: #000;
+            font-weight: 800;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+        }
+
+        .core-title {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .core-body {
+            padding: 18px 20px;
+            line-height: 1.7;
+        }
+
+        .core-body p {
+            margin: 0;
+        }
+
+        /* Timeline */
+        .tl-flex {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        @media(max-width:900px) {
+            .tl-flex {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .timeline {
+            position: relative;
+            padding: 24px 20px 16px;
+        }
+
+        .tbar {
+            position: relative;
+            height: 12px;
+            background: linear-gradient(90deg, #ccc, #ddd);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .seg {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            transition: background .3s;
+        }
+
+        .s1 {
+            background: linear-gradient(90deg, #d6b45a, #c9a65a)
+        }
+
+        .s2 {
+            background: linear-gradient(90deg, #c9a65a, #b89550)
+        }
+
+        .s3 {
+            background: linear-gradient(90deg, #b89550, #a78446)
+        }
+
+        .s4 {
+            background: linear-gradient(90deg, #a78446, #96733c)
+        }
+
+        .periods {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .pill {
+            padding: 10px 16px;
+            background: linear-gradient(135deg, #f9f9f9, #fff);
+            border: 1px solid rgba(0, 0, 0, .06);
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #444;
+            cursor: pointer;
+            transition: all .2s;
+        }
+
+        .pill:hover {
+            background: linear-gradient(135deg, var(--yellow), #e6c56c);
+            color: #000;
+            border-color: var(--yellow);
+            transform: translateX(4px);
+        }
+
+        .tl-preview {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+            min-height: 200px;
+        }
+
+        .tl-prev-img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .tl-prev-title {
+            margin: 0 0 10px;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--red);
+        }
+
+        .tl-prev-text {
+            margin: 0;
+            line-height: 1.7;
+            font-size: 14px;
+            white-space: pre-line;
+        }
+
+        footer {
+            padding: 26px 0;
+            text-align: center;
+            color: #6a6a6a;
+            border-top: 3px solid var(--red);
+            background: #fffbe9;
+        }
+    </style>
 </head>
+
 <body>
-
-<header>
-  <div class="container head">
-    <div class="brand"><div class="logo">★</div><strong>Tư tưởng HCM – Đại đoàn kết</strong></div>
-    <nav><a href="index.html">← Trang chủ</a></nav>
-  </div>
-</header>
-
-<main class="container">
-
-  <section class="section">
-    <div class="grid hero">
-      <div class="card">
-        <h2 class="lead"><strong>Đại đoàn kết dân tộc</strong> – chiến lược lâu dài hay sách lược nhất thời?</h2>
-        <div style="margin-top:12px;padding:14px 16px;border-left:6px solid var(--yellow);background:linear-gradient(180deg,#fffbe9,#fff0c7);border:1px solid rgba(0,0,0,.06);border-radius:12px">
-          Trong lịch sử, nhiều phong trào cách mạng từng kêu gọi đoàn kết nhưng chỉ dừng ở mức tạm thời. Hồ Chí Minh khẳng định: “Đoàn kết là then chốt của thành công”. Vậy đại đoàn kết là sách lược nhất thời hay chiến lược sống còn?
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="brand"><span class="flag"></span>Việt Nam thời kỳ bao cấp (1975–1986)</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="tim-hieu.html">Tìm hiểu</a></li>
+                <li><a href="video.html">Video</a></li>
+                <li><a href="chatbot.html">Chatbot</a></li>
+            </ul>
         </div>
-      </div>
-      <div class="visual card">
-        <img src="images/doan-ket-lehoi.jpeg" alt="Không khí đại đoàn kết">
-      </div>
+    </nav>
+
+    <main>
+        <section class="section">
+            <h2 class="section-title"><span class="flag"></span>Việt Nam thời kỳ bao cấp (1975–1986)</h2>
+            <div class="grid hero">
+                <div class="card">
+                    <h2 class="lead"><strong>Bối cảnh sau thống nhất (1975)</strong></h2>
+                    <div
+                        style="margin-top:12px;padding:14px 16px;border-left:6px solid var(--yellow);background:linear-gradient(180deg,#fffbe9,#fff0c7);border:1px solid rgba(0,0,0,.06);border-radius:12px">
+                        Sau 1975, đất nước thống nhất nhưng kinh tế kiệt quệ, hai miền có nhiều khác biệt về cơ chế và đời
+                        sống.
+                        Việt Nam bị bao vây, cấm vận quốc tế và buộc phải lựa chọn mô hình kế hoạch hóa tập trung theo
+                        Liên Xô -
+                        một quyết định mang tính lịch sử nhưng cũng để lại nhiều hậu quả.
+                    </div>
+                </div>
+                <div class="visual card">
+                    <img src="images/photo-10-15413203930351670735384.webp"
+                        alt="Phân phát nhu yếu phẩm thời bao cấp">
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="flag"></span>🕰️ Dòng thời gian 1975–1986</h2>
+            <div class="tl-flex">
+                <div class="card timeline" id="tlBox">
+                    <div class="tbar">
+                        <div class="seg s1" style="left:0%;width:25%;"></div>
+                        <div class="seg s2" style="left:25%;width:25%;"></div>
+                        <div class="seg s3" style="left:50%;width:25%;"></div>
+                        <div class="seg s4" style="left:75%;width:25%;"></div>
+                    </div>
+                    <div class="periods">
+                        <div class="pill" data-key="p1">1976 · Đại hội IV</div>
+                        <div class="pill" data-key="p2">1982 · Đại hội V</div>
+                        <div class="pill" data-key="p3">1985 · Cải cách giá–lương–tiền</div>
+                        <div class="pill" data-key="p4">1986 · Đại hội VI – Đổi mới</div>
+                    </div>
+                </div>
+
+                <aside class="tl-preview" id="preview" aria-live="polite">
+                    <img class="tl-prev-img" id="prevImg" src="" alt="" style="display:none">
+                    <h4 class="tl-prev-title" id="prevTitle"></h4>
+                    <p class="tl-prev-text" id="prevText">Di chuột qua từng mốc để xem chi tiết</p>
+                </aside>
+            </div>
+        </section>
+
+        <section class="section" id="cotloi">
+            <h2 class="section-title"><span class="flag"></span>Cơ chế bao cấp – Cách vận hành</h2>
+
+            <div class="card" style="margin-bottom:20px;padding:24px">
+                <div style="text-align:center;font-size:16px;line-height:2">
+                    <strong style="color:#b61f1f">Nhà nước giao chỉ tiêu</strong>
+                    → <strong style="color:#b61f1f">Phân phối vật tư</strong>
+                    → <strong style="color:#b61f1f">Tem phiếu</strong>
+                    → <strong style="color:#b61f1f">Ngăn sông cấm chợ</strong>
+                </div>
+            </div>
+
+            <div class="core-wrap">
+                <article class="core-card col-12 md-6 lg-4">
+                    <header class="core-head">
+                        <div class="core-badge">1</div>
+                        <h3 class="core-title">Mục tiêu</h3>
+                    </header>
+                    <div class="core-body">
+                        <p>Thống nhất thể chế hai miền, huy động nguồn lực tập trung để khôi phục kinh tế sau chiến tranh
+                            và xây dựng Chủ nghĩa xã hội.</p>
+                    </div>
+                </article>
+
+                <article class="core-card col-12 md-6 lg-4">
+                    <header class="core-head">
+                        <div class="core-badge">2</div>
+                        <h3 class="core-title">Vận hành</h3>
+                    </header>
+                    <div class="core-body">
+                        <p>Kế hoạch pháp lệnh từ trung ương, bao cấp qua hệ thống <b>"giá – lương – tiền"</b>. Nhà nước
+                            định giá, ấn định lương và kiểm soát lưu thông tiền tệ.</p>
+                    </div>
+                </article>
+
+                <article class="core-card col-12 md-6 lg-4">
+                    <header class="core-head">
+                        <div class="core-badge">3</div>
+                        <h3 class="core-title">Kết quả trước mắt</h3>
+                    </header>
+                    <div class="core-body">
+                        <p>Thống nhất thể chế quản lý, khôi phục một phần sản xuất, ổn định tạm thời xã hội trong bối
+                            cảnh hậu chiến.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="flag"></span>⚠️ Hạn chế và Khủng hoảng</h2>
+
+            <div class="card" style="margin-bottom:20px">
+                <h3 style="margin-top:0;color:#b61f1f">Biểu hiện khủng hoảng</h3>
+                <div
+                    style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:14px">
+                    <div
+                        style="padding:14px;background:linear-gradient(135deg,#ffe6e6,#fff);border:1px solid rgba(0,0,0,.06);border-radius:12px">
+                        <div style="font-weight:800;color:#d62828;font-size:20px">📊 Hai giá</div>
+                        <p style="margin:6px 0 0;font-size:14px">Giá chính thức thấp, giá chợ đen cao gấp nhiều lần → bất
+                            bình đẳng tiếp cận hàng hóa</p>
+                    </div>
+                    <div
+                        style="padding:14px;background:linear-gradient(135deg,#ffe6e6,#fff);border:1px solid rgba(0,0,0,.06);border-radius:12px">
+                        <div style="font-weight:800;color:#d62828;font-size:20px">💸 Lạm phát cao</div>
+                        <p style="margin:6px 0 0;font-size:14px">Đồng tiền mất giá, sức mua giảm mạnh, người dân khó khăn
+                            trong sinh hoạt hàng ngày</p>
+                    </div>
+                    <div
+                        style="padding:14px;background:linear-gradient(135deg,#ffe6e6,#fff);border:1px solid rgba(0,0,0,.06);border-radius:12px">
+                        <div style="font-weight:800;color:#d62828;font-size:20px">📝 Cơ chế xin-cho</div>
+                        <p style="margin:6px 0 0;font-size:14px">Doanh nghiệp phụ thuộc vào cấp trên, thiếu tự chủ, năng
+                            suất thấp</p>
+                    </div>
+                    <div
+                        style="padding:14px;background:linear-gradient(135deg,#ffe6e6,#fff);border:1px solid rgba(0,0,0,.06);border-radius:12px">
+                        <div style="font-weight:800;color:#d62828;font-size:20px">📉 Sản xuất trì trệ</div>
+                        <p style="margin:6px 0 0;font-size:14px">Nông nghiệp, công nghiệp đều tăng trưởng thấp, không đáp
+                            ứng nhu cầu dân sinh</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" id="quizBox" style="background:linear-gradient(135deg,#f4f4f4,#fff)">
+                <h3 style="margin-top:0;color:#b61f1f">🎯 Trắc nghiệm kiến thức</h3>
+                <div id="quizContent"></div>
+                <div id="quizResult" style="margin-top:16px;padding:12px;border-radius:8px;display:none"></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="flag"></span>💡 Đổi mới và Bài học rút ra</h2>
+
+            <div class="card" style="margin-bottom:20px">
+                <h3 style="margin-top:0;color:#b61f1f">Quá trình Đổi mới</h3>
+                <p style="line-height:1.8">
+                    Từ các bước <b>khoán 1981</b> trong nông nghiệp, <b>tự chủ xí nghiệp</b> trong công nghiệp,
+                    đến <b>Đổi Mới 1986</b> tại Đại hội VI — chuyển dần sang <b>nền kinh tế thị trường có điều tiết của
+                        Nhà nước</b>.
+                    Đây là bước ngoặt lịch sử đưa Việt Nam thoát khỏi khủng hoảng kinh tế – xã hội.
+                </p>
+            </div>
+
+            <div class="core-wrap">
+                <article class="core-card col-12 md-6 lg-4">
+                    <header class="core-head">
+                        <div class="core-badge">1</div>
+                        <h3 class="core-title">Tôn trọng quy luật thị trường</h3>
+                    </header>
+                    <div class="core-body">
+                        <p>Không thể duy ý chí, áp đặt mệnh lệnh hành chính lên sản xuất kinh doanh. Phải để thị trường
+                            điều tiết cung cầu.</p>
+                    </div>
+                </article>
+
+                <article class="core-card col-12 md-6 lg-4">
+                    <header class="core-head">
+                        <div class="core-badge">2</div>
+                        <h3 class="core-title">Thiết kế cải cách đồng bộ</h3>
+                    </header>
+                    <div class="core-body">
+                        <p>Cải cách giá, lương, tiền phải đồng bộ; không thể tách rời các yếu tố của nền kinh tế.</p>
+                    </div>
+                </article>
+
+                <article class="core-card col-12 md-6 lg-4">
+                    <header class="core-head">
+                        <div class="core-badge">3</div>
+                        <h3 class="core-title">Lấy nông nghiệp làm nền</h3>
+                    </header>
+                    <div class="core-body">
+                        <p>Ưu tiên giải quyết lương thực, thực phẩm trước khi công nghiệp hóa nhanh.</p>
+                    </div>
+                </article>
+
+                <article class="core-card col-12 md-6 lg-6">
+                    <header class="core-head">
+                        <div class="core-badge">4</div>
+                        <h3 class="core-title">Xóa bao cấp, mở rộng tự chủ</h3>
+                    </header>
+                    <div class="core-body">
+                        <p>Trao quyền tự chủ cho doanh nghiệp và người dân, khuyến khích sáng tạo, cạnh tranh lành mạnh.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="core-card col-12 md-6 lg-6">
+                    <header class="core-head">
+                        <div class="core-badge">5</div>
+                        <h3 class="core-title">Linh hoạt điều chỉnh khi thực tế thay đổi</h3>
+                    </header>
+                    <div class="core-body">
+                        <p>Chính sách phải sát với thực tiễn, sẵn sàng điều chỉnh khi thấy sai lầm, không cố chấp với
+                            giáo điều.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        © 2025 Nhóm 8
+    </footer>
+
+    <script>
+        // Timeline periods data
+        const PERIODS = {
+            p1: {
+                title: "1976 – Đại hội IV",
+                text: `Đại hội Đảng lần thứ IV (12/1976) quyết định:
+• Thống nhất thể chế quản lý kinh tế hai miền theo mô hình kế hoạch hóa tập trung.
+• Áp dụng cơ chế bao cấp toàn diện: giá cả, lương bổng, phân phối hàng hóa qua tem phiếu.
+• Mục tiêu: xây dựng CNXH, khôi phục kinh tế hậu chiến, tập trung nguồn lực.`
+            },
+            p2: {
+                title: "1982 – Đại hội V",
+                text: `Đại hội V (3/1982) ghi nhận:
+• Thực tế kinh tế trì trệ, lạm phát cao, hai giá (giá chính thức vs giá chợ đen).
+• Bắt đầu thí điểm "khoán 10" trong nông nghiệp, cho phép hộ gia đình được tự chủ hơn.
+• Nhưng vẫn chưa dám cải cách toàn diện, vẫn bám vào mô hình bao cấp.`
+            },
+            p3: {
+                title: "1985 – Cải cách giá–lương–tiền",
+                text: `Tháng 9/1985, thực hiện cải cách giá–lương–tiền:
+• Mục tiêu: điều chỉnh giá cả, tăng lương, phát hành tiền mới.
+• Thực tế: thất bại nghiêm trọng → lạm phát phi mã, đời sống người dân khó khăn tột cùng.
+• Bài học: cải cách thiếu đồng bộ, thiếu chuẩn bị, không tôn trọng quy luật thị trường.`
+            },
+            p4: {
+                title: "1986 – Đại hội VI – Đổi mới",
+                text: `Đại hội VI (12/1986) đánh dấu bước ngoặt lịch sử:
+• Chính thức khởi động "Đổi Mới" – chuyển sang kinh tế thị trường có điều tiết của NNXHCN.
+• Xóa bỏ bao cấp, mở rộng tự chủ cho doanh nghiệp, hộ gia đình.
+• Kết quả: kinh tế phục hồi, tăng trưởng ổn định, đời sống cải thiện rõ rệt.`
+            }
+        };
+
+        // Timeline interaction
+        const preview = document.getElementById('preview');
+        const prevTitle = document.getElementById('prevTitle');
+        const prevText = document.getElementById('prevText');
+        const prevImg = document.getElementById('prevImg');
+
+        function showPeriod(key) {
+            const p = PERIODS[key];
+            if (!p) return;
+            prevTitle.textContent = p.title;
+            prevText.textContent = p.text;
+            if (p.img) {
+                prevImg.src = p.img;
+                prevImg.style.display = 'block';
+            } else {
+                prevImg.style.display = 'none';
+            }
+        }
+
+        function hidePeriod() {
+            prevTitle.textContent = '';
+            prevText.textContent = 'Di chuột qua từng mốc để xem chi tiết';
+            prevImg.style.display = 'none';
+        }
+
+        document.querySelectorAll('.pill').forEach(pill => {
+            pill.addEventListener('mouseenter', () => {
+                const key = pill.getAttribute('data-key');
+                showPeriod(key);
+            });
+            pill.addEventListener('mouseleave', hidePeriod);
+        });
+
+        hidePeriod();
+
+        // Quiz
+        const QUIZ = [{
+            q: 'Nguyên nhân chính dẫn đến khủng hoảng kinh tế thời kỳ bao cấp là gì?',
+            opts: [
+                'A. Thiên tai, dịch bệnh liên tục',
+                'B. Cơ chế kế hoạch hóa tập trung, bao cấp không phù hợp với quy luật thị trường',
+                'C. Thiếu nguồn lực tự nhiên',
+                'D. Dân số tăng quá nhanh'
+            ],
+            ans: 'B',
+            exp: 'Cơ chế bao cấp, kế hoạch hóa tập trung không tôn trọng quy luật thị trường, dẫn đến sản xuất trì trệ, lạm phát cao, hai giá.'
+        },
+        {
+            q: 'Bài học quan trọng nhất từ thời kỳ bao cấp là gì?',
+            opts: [
+                'A. Phải tôn trọng quy luật thị trường, cải cách đồng bộ, linh hoạt điều chỉnh chính sách',
+                'B. Phải tăng cường kiểm soát giá cả',
+                'C. Phải tập trung mọi nguồn lực vào công nghiệp nặng',
+                'D. Phải duy trì chính sách bao cấp lâu dài'
+            ],
+            ans: 'A',
+            exp: 'Đổi mới 1986 thành công vì tôn trọng quy luật thị trường, cải cách đồng bộ giá-lương-tiền, linh hoạt điều chỉnh theo thực tế.'
+        }
+        ];
+
+        let userAnswers = [];
+
+        function renderQuiz() {
+            const html = QUIZ.map((item, i) => `
+    <div style="margin-bottom:20px;padding:14px;background:#fff;border-radius:8px;border:1px solid rgba(0,0,0,.06)">
+      <div style="font-weight:700;margin-bottom:10px">Câu ${i + 1}: ${item.q}</div>
+      ${item.opts.map((opt, j) => `
+        <label style="display:block;padding:8px;cursor:pointer;transition:background .2s;border-radius:6px" onmouseover="this.style.background='#f9f9f9'" onmouseout="this.style.background='transparent'">
+          <input type="radio" name="q${i}" value="${String.fromCharCode(65 + j)}" style="margin-right:8px">
+          ${opt}
+        </label>
+      `).join('')}
     </div>
-  </section>
+  `).join('');
 
-  <section class="section" id="cotloi">
-    <h2 class="section-title"><span class="flag"></span>Tư tưởng Hồ Chí Minh về đại đoàn kết toàn dân tộc</h2>
-    <div class="core-wrap">
-      <article class="core-card col-12 md-6 lg-4">
-        <header class="core-head"><div class="core-badge">1</div><h3 class="core-title">Vai trò</h3></header>
-        <div class="core-body"><p>Đại đoàn kết là <b>chiến lược quyết định</b> của cách mạng: <b>sức mạnh vô địch</b>, <b>then chốt của thành công</b>.</p></div>
-      </article>
-      <article class="core-card col-12 md-6 lg-4">
-        <header class="core-head"><div class="core-badge">2</div><h3 class="core-title">Lực lượng</h3></header>
-        <div class="core-body"><p><b>Chủ thể:</b> toàn dân tộc. <b>Nền tảng:</b> liên minh <i>công – nông – trí thức</i> dưới sự lãnh đạo của Đảng.</p></div>
-      </article>
-      <article class="core-card col-12 md-6 lg-4">
-        <header class="core-head"><div class="core-badge">3</div><h3 class="core-title">Điều kiện</h3></header>
-        <div class="core-body"><p>Đặt lợi ích dân tộc lên trên hết; kế thừa truyền thống yêu nước – nhân nghĩa; khoan dung, “cầu đồng tồn dị”; xây dựng <b>niềm tin của nhân dân</b>.</p></div>
-      </article>
-      <article class="core-card col-12 md-6 lg-6">
-        <header class="core-head"><div class="core-badge">4</div><h3 class="core-title">Mặt trận thống nhất</h3></header>
-        <div class="core-body"><p><i>Việt Minh → Liên Việt → Mặt trận Tổ quốc</i>; nguyên tắc <b>hiệp thương dân chủ</b>, đoàn kết <b>lâu dài – chân thành</b>.</p></div>
-      </article>
-      <article class="core-card col-12 md-6 lg-6">
-        <header class="core-head"><div class="core-badge">5</div><h3 class="core-title">Phương thức</h3></header>
-        <div class="core-body"><p><b>Dân vận</b>: tổ chức, giáo dục, phát huy trí – lực quần chúng; phối hợp các tổ chức quần chúng trong Mặt trận.</p></div>
-      </article>
-    </div>
-  </section>
+            document.getElementById('quizContent').innerHTML = html + `
+    <button onclick="checkQuiz()" style="margin-top:12px;padding:12px 24px;background:linear-gradient(135deg,var(--red),#5a1818);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:16px;transition:transform .2s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      Nộp bài
+    </button>
+  `;
+        }
 
-  <section class="section">
-    <div class="hdr"><h2>🕰️ Dòng thời gian minh chứng (4 giai đoạn)</h2></div>
+        function checkQuiz() {
+            userAnswers = [];
+            let score = 0;
 
-    <div class="tl-flex">
-      <div class="card timeline" id="tlBox">
-        <div class="tbar">
-          <div class="seg s1" title="1941–1946"></div>
-          <div class="seg s2" title="1946–1954"></div>
-          <div class="seg s3" title="1954–1975"></div>
-          <div class="seg s4" title="1986–nay"></div>
+            QUIZ.forEach((item, i) => {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const userAns = selected ? selected.value : '';
+                userAnswers.push(userAns);
+                if (userAns === item.ans) score++;
+            });
+
+            const resultBox = document.getElementById('quizResult');
+            const percent = Math.round((score / QUIZ.length) * 100);
+            let color = '#28a745';
+            if (percent < 50) color = '#dc3545';
+            else if (percent < 80) color = '#ffc107';
+
+            let detailHTML = QUIZ.map((item, i) => {
+                const isCorrect = userAnswers[i] === item.ans;
+                const icon = isCorrect ? '✅' : '❌';
+                return `
+      <div style="margin-top:12px;padding:10px;background:${isCorrect ? '#e7f9e7' : '#ffe7e7'};border-radius:6px">
+        <div style="font-weight:700">${icon} Câu ${i + 1}: ${item.q}</div>
+        <div style="margin-top:6px;font-size:14px">
+          <b>Bạn chọn:</b> ${userAnswers[i] || 'Không chọn'} | <b>Đáp án:</b> ${item.ans}
         </div>
-        <div class="periods">
-          <div class="pill" data-key="p1">1941–1946 · Khởi nghĩa & lập quốc</div>
-          <div class="pill" data-key="p2">1946–1954 · Kháng chiến chống Pháp</div>
-          <div class="pill" data-key="p3">1954–1975 · Kháng chiến chống Mỹ</div>
-          <div class="pill" data-key="p4">1986–nay · Đổi mới & phát triển</div>
-        </div>
+        <div style="margin-top:6px;font-size:14px;color:#555">${item.exp}</div>
       </div>
+    `;
+            }).join('');
 
-      <aside class="tl-preview" id="preview" aria-live="polite">
-        <img class="tl-prev-img" id="prevImg" src="" alt="" style="display:none">
-        <h4 class="tl-prev-title" id="prevTitle"></h4>
-        <p class="tl-prev-text" id="prevText"></p>
-      </aside>
+            resultBox.innerHTML = `
+    <div style="text-align:center;font-size:24px;font-weight:800;color:${color}">
+      Điểm: ${score}/${QUIZ.length} (${percent}%)
     </div>
-  </section>
+    ${detailHTML}
+  `;
+            resultBox.style.display = 'block';
+        }
 
-</main>
+        renderQuiz();
+    </script>
 
-<footer style="padding:26px 0;text-align:center;color:#6a6a6a;border-top:3px solid var(--red);background:#fffbe9">
-  © 2025 Nhóm 8
-</footer>
-
-<script>
-const PERIODS = {
-  p1: {
-    title: "1941–1946 – Khởi nghĩa & lập quốc",
-    img:  "images/pac-bo.jpg",
-    text: `Giai đoạn 1941–1946 đánh dấu những bước ngoặt lịch sử quan trọng nhất của cách mạng Việt Nam, trực tiếp đưa đến sự ra đời của nước Việt Nam Dân chủ Cộng hòa.
-
-1) Sự trở về và xác định đường lối (1941)
-• Tháng 5/1941, Hồ Chí Minh trở về nước tại Pác Bó (Cao Bằng).
-• Chủ trì Hội nghị Trung ương 8 (5/1941), hoàn thành chuyển hướng chiến lược – giương cao ngọn cờ GIẢI PHÓNG DÂN TỘC.
-• Quyết định thành lập Mặt trận Việt Minh để đoàn kết toàn dân.
-
-2) Cách mạng Tháng Tám và lập quốc (1945–1946)
-• Cách mạng Tháng Tám 1945 thành công trong cả nước.
-• Ngày 02/09/1945, đọc Tuyên ngôn Độc lập, khai sinh nước VNDCCH.
-• Mục tiêu độc lập gắn với hạnh phúc nhân dân: “làm cho dân có ăn, có mặc, có ở, có học”.
-• 19/12/1946, ra Lời kêu gọi Toàn quốc kháng chiến khi Pháp tái xâm lược.`
-  },
-  p2: {
-    title: "1946–1954 – Kháng chiến chống Pháp & xây dựng miền Bắc",
-    img:  "images/geneve.jpg",
-    text: `• Lãnh đạo toàn dân kháng chiến toàn diện, lâu dài, dựa vào sức mình là chính.
-• Sau 1954, miền Bắc bước vào thời kỳ quá độ lên CNXH; miền Nam tiếp tục sự nghiệp giải phóng.
-• Định hình quan điểm về CNXH ở Việt Nam: xã hội do nhân dân lao động làm chủ, không còn áp bức bóc lột.`
-  },
-  p3: {
-    title: "1954–1975 – Kháng chiến chống Mỹ & thống nhất đất nước",
-    img:  "images/image.png", 
-    text: `• Lãnh đạo sự nghiệp chống Mỹ cứu nước, kết hợp sức mạnh dân tộc với sức mạnh thời đại.
-• Chân lý thời đại nêu ngày 17/07/1966: “Không có gì quý hơn độc lập, tự do.”
-• 30/04/1975: Giải phóng hoàn toàn miền Nam, đất nước thống nhất; bước vào thời kỳ xây dựng CNXH.`
-  },
-  p4: {
-    title: "1986–nay – Đổi mới & phát triển",
-    img:  "images/daihoidangXii.jpg", 
-    text: `• Đại hội VI (1986) mở ra công cuộc Đổi mới, đưa đất nước vượt qua khủng hoảng.
-• Đại hội VII (1991) khẳng định: Tư tưởng Hồ Chí Minh cùng CN Mác–Lênin là nền tảng tư tưởng, kim chỉ nam cho hành động.
-• Tiếp tục kiên định mục tiêu “Dân giàu, nước mạnh, dân chủ, công bằng, văn minh”.`
-  }
-};
-
-const box   = document.getElementById('tlBox');
-const prev  = document.getElementById('preview');
-const pImg  = document.getElementById('prevImg');
-const pTit  = document.getElementById('prevTitle');
-const pText = document.getElementById('prevText');
-
-function showPeriod(key){
-  const d = PERIODS[key];
-  if(!d) return;
-  pTit.textContent  = d.title || "";
-  pText.textContent = d.text  || "";
-  if(d.img){
-    pImg.src = d.img;
-    pImg.alt = d.title || "";
-    pImg.style.display = 'block';
-  }else{
-    pImg.style.display = 'none';
-  }
-  prev.classList.add('show');
-}
-function hidePeriod(){
-  prev.classList.remove('show');
-  pImg.style.display = 'none';
-  pTit.textContent = "";
-  pText.textContent = "";
-}
-
-document.querySelectorAll('.pill[data-key]').forEach(el=>{
-  const k = el.getAttribute('data-key');
-  el.addEventListener('mouseenter', ()=>showPeriod(k));
-  el.addEventListener('focus', ()=>showPeriod(k));
-});
-box.addEventListener('mouseleave', hidePeriod);
-box.addEventListener('blur', hidePeriod, true);
-</script>
 </body>
+
 </html>
